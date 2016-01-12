@@ -110,7 +110,6 @@ public class GameBoard extends Board implements ActionListener {
 
 		gameStatus = "ingame";
 
-		Bridge.setPlayer(new Player(0, 0));
 		Utils.savePlayerInfo(Bridge.getPlayer());
 
 		addKeyListener(new TAdapter());
@@ -631,10 +630,10 @@ public class GameBoard extends Board implements ActionListener {
 
 		g.drawImage(Utils.getBackground(Utils.getPlayerLevel()).getImage(), 0, 0, 960, 540, this);
 		g.setColor(Color.black);
-		g.setFont(new Font("Helvetica", Font.BOLD, 10));
-		g.drawString("Lives: " + Bridge.getPlayer().lives, B_WIDTH / 4, 20);
-		g.drawString("Score: " + Bridge.getPlayer().score, (B_WIDTH / 2 + B_WIDTH) / 2, 10);
-		g.drawString("Tool:", (B_WIDTH / 2 + B_WIDTH) / 2, 20);
+		g.setFont(new Font("Helvetica", Font.BOLD, 20));
+		g.drawString("Lives: " + Bridge.getPlayer().lives, B_WIDTH / 4, 40);
+		g.drawString("Score: " + Bridge.getPlayer().getScore(), (B_WIDTH / 2 + B_WIDTH) / 2, 20);
+		g.drawString("Tool:", (B_WIDTH / 2 + B_WIDTH) / 2, 40);
 		for (Sprite sprite : sprites) {
 
 			if (!(sprite instanceof Player) && !(sprite instanceof Knobber)){

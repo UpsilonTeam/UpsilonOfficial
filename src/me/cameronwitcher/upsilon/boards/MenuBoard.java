@@ -19,6 +19,7 @@ import javax.swing.Timer;
 
 
 import me.cameronwitcher.upsilon.Bridge;
+import me.cameronwitcher.upsilon.sprites.Player;
 import me.cameronwitcher.upsilon.spriteutils.Clickable;
 import me.cameronwitcher.upsilon.utils.Background;
 import me.cameronwitcher.upsilon.utils.Board;
@@ -86,7 +87,9 @@ public class MenuBoard extends Board implements ActionListener {
 		
 		
 
-		g.drawImage(Texture.loadTexture("playermodels/yellow/stand_right.png"),
+		
+		g.drawImage(Texture.loadTexture("playermodels/" + Bridge.getPlayer().getPlayerModel() + "/stand_right.png"),
+		
 				(M_WIDTH / 2) - ((13 * 5) / 2), (M_HEIGHT / 2) - ((44 * 5) / 2), 13 * 5, 44 * 5, null);
 
 		g.setColor(Color.white);
@@ -106,64 +109,111 @@ public class MenuBoard extends Board implements ActionListener {
 	}
 
 	private class TAdapter extends KeyAdapter {
+		
+		boolean g = false;
+		boolean r = false;
+		boolean n = false;
 
 		@Override
-		public void keyReleased(KeyEvent e) {
+		public void keyReleased(KeyEvent event) {
+			
+			if(event.getKeyCode() == KeyEvent.VK_G){
+				g = false;
+			}
+			
+			if(event.getKeyCode() == KeyEvent.VK_R){
+				r = false;
+			}
+			
+			
+			if(event.getKeyCode() == KeyEvent.VK_N){
+				n = false;
+			}
+			
 		}
 
 		@Override
-		public void keyPressed(KeyEvent e) {
+		public void keyPressed(KeyEvent event) {
 
 			// Cameron
 			// Quit.
-			if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+			if (event.getKeyCode() == KeyEvent.VK_ESCAPE) {
 				Bridge.quit();
 			}
 
 			// Cameron
-			// Open level debugger.
-			if(e.getKeyCode() == KeyEvent.VK_1){
+			if(event.getKeyCode() == KeyEvent.VK_1){
 				Utils.setPlayerLevel(1);
 				LEVEL_DEBUG = 1;
 			}
 			
-			if(e.getKeyCode() == KeyEvent.VK_2){
+			if(event.getKeyCode() == KeyEvent.VK_2){
 				Utils.setPlayerLevel(2);
 				LEVEL_DEBUG = 2;
 			}
 			
-			if(e.getKeyCode() == KeyEvent.VK_3){
+			if(event.getKeyCode() == KeyEvent.VK_3){
 				Utils.setPlayerLevel(3);
 				LEVEL_DEBUG = 3;
 			}
 			
-			if(e.getKeyCode() == KeyEvent.VK_4){
+			if(event.getKeyCode() == KeyEvent.VK_4){
 				Utils.setPlayerLevel(4);
 				LEVEL_DEBUG = 4;
 			}
 			
-			if(e.getKeyCode() == KeyEvent.VK_5){
+			if(event.getKeyCode() == KeyEvent.VK_5){
 				Utils.setPlayerLevel(5);
 				LEVEL_DEBUG = 5;
 			}
 			
-			if(e.getKeyCode() == KeyEvent.VK_6){
+			if(event.getKeyCode() == KeyEvent.VK_6){
 				Utils.setPlayerLevel(6);
 				LEVEL_DEBUG = 6;
 			}
 			
-			if(e.getKeyCode() == KeyEvent.VK_7){
+			if(event.getKeyCode() == KeyEvent.VK_7){
 				Utils.setPlayerLevel(7);
 				LEVEL_DEBUG = 7;
 			}
 			
-			if(e.getKeyCode() == KeyEvent.VK_8){
+			if(event.getKeyCode() == KeyEvent.VK_8){
 				Utils.setPlayerLevel(8);
 				LEVEL_DEBUG = 8;
 			}
 			
-			if(e.getKeyCode() == KeyEvent.VK_D){
+			if(event.getKeyCode() == KeyEvent.VK_D){
 				Bridge.openLevelDebug(LEVEL_DEBUG);
+			}
+			
+			//Cameron
+			//Hidden feature.
+			
+			if(event.getKeyCode() == KeyEvent.VK_G){
+				g = true;
+//				Utils.broadcastMessage("G true");
+			}
+			
+			if(event.getKeyCode() == KeyEvent.VK_R){
+				r = true;
+//				Utils.broadcastMessage("R true");
+			}
+			
+			
+			
+			if(event.getKeyCode() == KeyEvent.VK_N){
+				n = true;
+//				Utils.broadcastMessage("N true");
+			}
+			
+			//Check if user is pressing "g", "r", and "n"
+			
+			if(g&&r&&n){
+				if(Bridge.getPlayer().getPlayerModel().equalsIgnoreCase("yellow")) Bridge.getPlayer().setPlayerModel("green");
+				else Bridge.getPlayer().setPlayerModel("yellow");
+				g=false;
+				r=false;
+				n=false;
 			}
 		}
 	}

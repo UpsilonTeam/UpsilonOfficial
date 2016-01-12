@@ -33,6 +33,8 @@ public class Bridge {
 			Utils.runInstall();
 		}
 		Utils.init();
+		
+		setPlayer(new Player(0,0));
 
 	}
 	
@@ -74,8 +76,8 @@ public class Bridge {
 	public static void start() {
 		
 		
-
-		player = new Player(0, 0);
+		Utils.broadcastMessage(player.getPlayerModel());
+		
 		
 		game.clear();
 		
@@ -86,7 +88,7 @@ public class Bridge {
 		game.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		game.setVisible(true);
 		game.setIconImage(Texture.loadTexture("logo.png"));
-		game.setPreferredSize(new Dimension(965, 570));
+		game.setPreferredSize(new Dimension(965, 565));
 		game.pack();
 		
 		game.setResizable(false);
@@ -95,6 +97,8 @@ public class Bridge {
 		player.level = 1;
 		Utils.setPlayerLevel(1);
 		((GameBoard) game.board).init();
+		
+		Utils.broadcastMessage(player.getPlayerModel());
 	
 	
 	}
@@ -123,7 +127,7 @@ public class Bridge {
 		game.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		game.setVisible(true);
 		game.setIconImage(Texture.loadTexture("logo.png"));
-		game.setPreferredSize(new Dimension(640*2, 655));
+		game.setPreferredSize(new Dimension(965, 565));
 		game.pack();
 		
 		game.setResizable(false);

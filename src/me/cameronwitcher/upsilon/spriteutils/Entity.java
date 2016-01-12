@@ -45,7 +45,7 @@ public class Entity extends Sprite {
 		if (health <= 0) {
 			this.kill(reason);
 			if (damager instanceof Player) {
-				((Player) damager).score = ((Player) damager).score + this.score;
+				((Player) damager).addScore(score);
 			}
 		}
 

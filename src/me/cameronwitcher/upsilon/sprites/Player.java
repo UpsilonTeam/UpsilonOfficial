@@ -37,12 +37,14 @@ public class Player extends Entity implements Moveable,Keyable {
 	public boolean left = false;
 	public boolean right = false;
 	public boolean up = false;
-	public int score = 0;
+	private int score = 0;
+	private int sscore = 0;
 	public int lives = 3;
 	private int i;
 	public int speedboost = 1;
 	public int level = 1;
 	int f = 970;
+	private String model = "yellow";
 	public List<Tool> inventory = new ArrayList<>();
 	private HashMap<Integer, Integer> jumpInfo = new HashMap<>();
 	private boolean ctrl = false;
@@ -65,13 +67,20 @@ public class Player extends Entity implements Moveable,Keyable {
 	}
 	
 	
+	public void setPlayerModel(String model){
+		this.model = model;
+	}
+	public String getPlayerModel(){
+		return model;
+	}
+	
 	
 
 	
 
 	private void initPlayer() {
 		Utils.checkPlayerInfo(this);
-		loadImage("playermodels/yellow/stand_right.png");
+		loadImage("playermodels/" + model + "/stand_right.png");
 		setImageDimensions(13, 41, -2, -2);
 		setDirection(Direction.RIGHT);
 		
@@ -99,7 +108,7 @@ public class Player extends Entity implements Moveable,Keyable {
 				walking= true;
 				
 
-				loadImage("playermodels/yellow/walk_left.gif");
+				loadImage("playermodels/" + model + "/walk_left.gif");
 				setImageDimensions(29, 41, -2, -2);
 				
 				
@@ -112,8 +121,9 @@ public class Player extends Entity implements Moveable,Keyable {
 				dx = 2;
 				walking= true;
 				
+				
 
-				loadImage("playermodels/yellow/walk_right.gif");
+				loadImage("playermodels/" + model + "/walk_right.gif");
 				setImageDimensions(29, 41, -2, -2);
 				
 				
@@ -226,7 +236,7 @@ public class Player extends Entity implements Moveable,Keyable {
 			if (key == KeyEvent.VK_A || key == KeyEvent.VK_LEFT) {
 				dx = 0;
 				walking= false;
-				loadImage("playermodels/yellow/stand_left.png");
+				loadImage("playermodels/" + model + "/stand_left.png");
 				if(invisible)
 					toggleInvisiblility();
 				
@@ -236,7 +246,7 @@ public class Player extends Entity implements Moveable,Keyable {
 			if (key == KeyEvent.VK_D || key == KeyEvent.VK_RIGHT) {
 				dx = 0;
 				walking= false;
-				loadImage("playermodels/yellow/stand_right.png");
+				loadImage("playermodels/" + model + "/stand_right.png");
 				if(invisible)
 					toggleInvisiblility();
 				setImageDimensions(13, 41, -2, -2);
@@ -274,6 +284,8 @@ public class Player extends Entity implements Moveable,Keyable {
 	
 
 	public void levelUp() {
+		score = score + sscore;
+		sscore = 0;
 		Utils.setPlayerLevel(level + 1);
 		level = level +1;
 		((GameBoard)Bridge.getGame().getBoard()).sprites.clear();
@@ -508,15 +520,24 @@ public class Player extends Entity implements Moveable,Keyable {
 
 	
 
-	private void addScore(int value) {
-		score = score + value;
+	public void addScore(int value) {
+		sscore = sscore + value;
 		Audio.playSound(Sound.SCORE);
+	}
+	
+	public int getScore(){
+		return score + sscore;
+	}
+	
+	public void setScore(int s){
+		score = s;
 	}
 
 	@Override
 	public void kill(DamageReason reason) {
 		lives = lives - 1;
 		((GameBoard) Bridge.getGame().getBoard()).loadLevel();
+		sscore = 0;
 		x = 0;
 		y = 0;
 		health = 100;

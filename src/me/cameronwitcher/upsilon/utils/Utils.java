@@ -152,7 +152,7 @@ public class Utils {
 		}
 		try {
 			player_level = player.level;
-			player_score = player.score;
+			player_score = player.getScore();
 		} catch (NullPointerException ex) {
 		}
 
@@ -195,7 +195,7 @@ public class Utils {
 
 	public static void initPlayer(Player player) {
 		player.level = player_level;
-		player.score = player_score;
+		player.setScore(player_score);
 		for (String i : player_inv) {
 			try {
 				player.inventory.add(ToolType.getNewTool(ToolType.valueOf(i)));
@@ -258,7 +258,6 @@ public class Utils {
 
 	public static void checkPlayerInfo(Player player) {
 		player.level = player_level;
-		player.score = player_score;
 	}
 
 
