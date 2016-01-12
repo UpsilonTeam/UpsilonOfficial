@@ -1,0 +1,8 @@
+
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+    <comment>this is a comment</comment>
+    <entry key="version">0.0.3 BETA</entry> 
+    <entry key="authors">[Cameron Witcher,Joseph Phillips]</entry> 
+    <entry key="description">An open source game for FBLA</entry> 
+</properties>
