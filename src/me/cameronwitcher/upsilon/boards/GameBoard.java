@@ -181,7 +181,7 @@ public class GameBoard extends Board implements ActionListener {
 		}
 		
 		for(int x=0;x!=10;x++){
-			level1.add(new Gold(x*32, 510));
+			level1.add(new Gold((x*32)+13, 510-(x/2)));
 		}
 		
 		
