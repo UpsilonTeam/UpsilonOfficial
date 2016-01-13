@@ -5,6 +5,8 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
@@ -75,6 +77,10 @@ public class GameBoard extends Board implements ActionListener {
 	private int my = 0;
 	public Sprite sprite = null;
 	public boolean in = false;
+	private boolean fs = false;
+	private int extra = 1;
+	
+	private GraphicsDevice vc;
 
 	public boolean paused = false;
 	public Map<Integer, String> messages = new HashMap<>();
@@ -132,6 +138,8 @@ public class GameBoard extends Board implements ActionListener {
 
 		update();
 		loadLevel();
+		
+		vc = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
 
 	}
 	
@@ -620,10 +628,11 @@ public class GameBoard extends Board implements ActionListener {
 		g.drawString("Lives: " + Bridge.getPlayer().lives, B_WIDTH / 4, 40);
 		g.drawString("Score: " + Bridge.getPlayer().getScore(), (B_WIDTH / 2 + B_WIDTH) / 2, 20);
 		g.drawString("Tool:", (B_WIDTH / 2 + B_WIDTH) / 2, 40);
+		
 		for (Sprite sprite : sprites) {
 
 			if (!(sprite instanceof Player) && !(sprite instanceof Knobber)){
-				g.drawImage(sprite.getImage(), sprite.getX(), sprite.getY(), sprite.getWidth(), sprite.getHeight(), this);
+				g.drawImage(sprite.getImage(), sprite.getX(), sprite.getY(), sprite.getWidth()+extra, sprite.getHeight()+extra, this);
 			}
 			if (debug && hitboxes)
 				g.drawPolygon(sprite.getPolygon());
@@ -635,16 +644,16 @@ public class GameBoard extends Board implements ActionListener {
 			switch (type) {
 			case KNOBBER:
 				Knobber sk = (Knobber) s;
-				g.drawImage(sprite.getImage(), (sprite.getX()), sprite.getY(), 29, 41, this);
+				g.drawImage(sprite.getImage(), (sprite.getX()), sprite.getY(), 29+extra, 41+extra, this);
 				((Knobber) s).drawHealthBar(g, sk.x - (50 / 2), sk.y - 20, 50, 5);
 				if (!((Knobber) sprite).hasTool())
 					((Knobber) sprite).setTool(new Bow(0, 0));
 				break;
 			case ARROW:
-				g.drawImage(sprite.getImage(), (sprite.getX()), sprite.getY(), 16, 4, this);
+				g.drawImage(sprite.getImage(), (sprite.getX()), sprite.getY(), 16+extra, 4+extra, this);
 				break;
 			default:
-				g.drawImage(sprite.getImage(), sprite.getX(), sprite.getY(), sprite.getWidth(), sprite.getHeight(), this);
+				g.drawImage(sprite.getImage(), sprite.getX(), sprite.getY(), sprite.getWidth()+extra, sprite.getHeight()+extra, this);
 				break;
 			}
 
@@ -1014,6 +1023,28 @@ public class GameBoard extends Board implements ActionListener {
 
 				
 
+			}
+			
+			if(e.getKeyCode() == KeyEvent.VK_F11){
+				if(!fs){
+					Bridge.getGame().dispose();
+					Bridge.getGame().setUndecorated(true);
+					vc.setFullScreenWindow(Bridge.getGame());
+					fs = true;
+					extra = Bridge.getGame().getWidth()/Bridge.getGameBoardSize(0);
+					double s = Bridge.getGame().getWidth()/Bridge.getGameBoardSize(0);
+					Utils.broadcastMessage(Bridge.getGame().getWidth()/Bridge.getGameBoardSize(0) + "");
+					return;
+				}
+				else {
+					fs = false;
+					Bridge.getGame().dispose();
+					vc.setFullScreenWindow(null);
+					Bridge.getGame().setUndecorated(false);
+					Bridge.getGame().setVisible(true);
+					
+				}
+				
 			}
 			
 			if(e.getKeyCode() == KeyEvent.VK_1){

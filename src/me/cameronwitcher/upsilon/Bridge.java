@@ -18,6 +18,9 @@ public class Bridge {
 
 	private static Game game;
 	public static Player player;
+
+
+	
 	
 	//Cameron
 	//First value is X or Y. 0 = x : 1 = y
