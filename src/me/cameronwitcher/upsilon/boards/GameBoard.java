@@ -184,46 +184,27 @@ public class GameBoard extends Board implements ActionListener {
 			level1.add(new Gold((x*32)+13, 510-(x/2)));
 		}
 		
-		
 		for(int y=10;y!=16;y++){
-			level1.add(new Ladder(29*32,y*32));
+			level1.add(new Ladder(31*30,y*32));
+		
 		}
 		
+		for(int x=2;x!=31;x++){
+			level1.add(new Floor(x*30, 16*22));
+		}
 		
+		for(int y=5;y!=12;y++){
+			level1.add(new Ladder(3*21, (y*30)-10));
+		}
+	
+		for(int x=3;x!=20;x++){
+			level1.add(new Floor(x*30,11*15));
+		}
 		
-		level1.add(new Floor(16 * 15, 16 * 15));
-		level1.add(new Floor(15 * 15, 16 * 15));
-		level1.add(new Floor(14 * 15, 16 * 15));
-		level1.add(new Floor(13 * 15, 16 * 15));
-		level1.add(new Floor(12 * 15, 16 * 15));
-		level1.add(new Floor(11 * 15, 16 * 15));
-		level1.add(new Floor(10 * 15, 16 * 15));
-		level1.add(new Floor(9 * 15, 16 * 15));
-		level1.add(new Floor(8 * 15, 16 * 15));
-		level1.add(new Floor(7 * 15, 16 * 15));
-		level1.add(new Floor(6 * 15, 16 * 15));
-		level1.add(new Floor(5 * 15, 16 * 15));
-		level1.add(new Floor(4 * 15, 16 * 15));
-		level1.add(new Floor(3 * 15, 16 * 15));
-		level1.add(new Ladder(3 * 15, 15 * 15));
-		level1.add(new Ladder(3 * 15, 14 * 15));
-		level1.add(new Ladder(3 * 15, 13 * 15));
-		level1.add(new Ladder(3 * 15, 12 * 15));
-		level1.add(new Ladder(3 * 15, 11 * 15));
-		level1.add(new Ladder(3 * 15, 10 * 15));
-		level1.add(new Floor(4 * 15, 11 * 15));
-		level1.add(new Floor(5 * 15, 11 * 15));
-		level1.add(new Floor(6 * 15, 11 * 15));
-		level1.add(new Floor(7 * 15, 11 * 15));
-		level1.add(new Floor(8 * 15, 11 * 15));
-		level1.add(new Wall(8 * 15, 10 * 15, 50, State.VERTICAL));
-		level1.add(new Floor(9 * 15, 11 * 15));
-		level1.add(new Floor(10 * 15, 11 * 15));
-		level1.add(new Floor(11 * 15, 11 * 15));
-		level1.add(new Floor(12 * 15, 11 * 15));
-		level1.add(new Gate(12 * 15, 10 * 15));
-		level1.add(new Bow(9 * 15, 14 * 15));
-		level1.add(new NinjaCloak(10 * 15, 14 * 15));
+		level1.add(new Wall(18 * 15, (7* 15)+10, 50, State.VERTICAL));
+		level1.add(new Gate(19 * 30, (9 * 15)-2));
+		level1.add(new Bow(9 * 30, 20 * 15));
+		level1.add(new NinjaCloak(15 * 30, 20 * 15));
 		if(!debug) level1.add(Bridge.getPlayer());
 
 		levels.put(1, level1);
