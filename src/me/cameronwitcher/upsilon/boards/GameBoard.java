@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
+import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -72,6 +73,8 @@ public class GameBoard extends Board implements ActionListener {
 	public int l = 0;
 	private int mx = 0;
 	private int my = 0;
+	public Sprite sprite = null;
+	public boolean in = false;
 
 	public boolean paused = false;
 	public Map<Integer, String> messages = new HashMap<>();
@@ -791,7 +794,9 @@ public class GameBoard extends Board implements ActionListener {
 			g.drawPolygon(clickable.drawPolygon(g));
 		}
 		
-		if(paused) g.drawImage(Texture.loadTexture("pointer.png"), mx, my, this);
+		if(paused || debug) g.drawImage(Texture.loadTexture("pointer.png"), mx, my, this);
+		
+		if(in) this.sprite.drawInfo(mx, my, g);
 
 	}
 
@@ -1073,6 +1078,18 @@ public class GameBoard extends Board implements ActionListener {
 			
 			mx = e.getX();
 			my = e.getY();
+			if(debug)
+				for(Sprite ssprite : sprites){
+					if(ssprite.getPolygon().contains(new Point(mx, my))){
+						in = true;
+						sprite = ssprite;
+						return;
+					}
+					sprite = null;
+					in = false;
+				}
+			
+		
 			for (Clickable clickable : clickables) {
 				if (clickable.getPolygon().contains(e.getPoint())) {
 					clickable.mouseMoved(e);

@@ -1,5 +1,6 @@
 package me.cameronwitcher.upsilon.spriteutils;
 
+import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Polygon;
 import java.awt.Rectangle;
@@ -148,6 +149,13 @@ public class Sprite {
 	
 	public int getHeight() {
 		return height;
+	}
+
+
+	public void drawInfo(int x, int y, Graphics g) {
+		String name = sprite.getType().name();
+		g.drawString(name, x, y);
+		
 	}
 
 
