@@ -8,7 +8,8 @@ public enum Background {
 	SKY("sky-background.png"),
 	HELL("hell-background.gif"),
 	TEST("test-background.gif"),
-	WIN("win-background.png");
+	WIN("win-background.png"),
+	GAMEOVER("gameover-background.png");
 	
 	String background;
 	

@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
+import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -72,6 +73,8 @@ public class GameBoard extends Board implements ActionListener {
 	public int l = 0;
 	private int mx = 0;
 	private int my = 0;
+	public Sprite sprite = null;
+	public boolean in = false;
 
 	public boolean paused = false;
 	public Map<Integer, String> messages = new HashMap<>();
@@ -585,7 +588,7 @@ public class GameBoard extends Board implements ActionListener {
 		clickables.clear();
 		clickables.add(restart);
 
-		g.drawImage(Texture.loadTexture("background-win.png"), 0, 0, null);
+		g.drawImage(Background.WIN.getImage(), 0, 0, Bridge.getGameBoardSize(0), Bridge.getGameBoardSize(1), this);
 
 		String won = "You won!";
 
@@ -602,6 +605,8 @@ public class GameBoard extends Board implements ActionListener {
 		for (Clickable clickable : clickables) {
 			clickable.drawPolygon(g);
 		}
+		
+		g.drawImage(Texture.loadTexture("pointer.png"), mx, my, this);
 
 		
 
@@ -770,53 +775,47 @@ public class GameBoard extends Board implements ActionListener {
 			g.drawPolygon(clickable.drawPolygon(g));
 		}
 		
-		if(paused) g.drawImage(Texture.loadTexture("pointer.png"), mx, my, this);
+		if(paused || debug) g.drawImage(Texture.loadTexture("pointer.png"), mx, my, this);
+		
+		if(in) this.sprite.drawInfo(mx, my, g);
 
 	}
 
 	private void drawGameOver(Graphics g) {
 
 		if (gameStatus.contains("gameover")) {
-
-			g.drawImage(Background.WIN.getImage(), 0, 0, null);
-
+			
+			
+			g.drawImage(Background.GAMEOVER.getImage(), 0, 0, Bridge.getGameBoardSize(0), Bridge.getGameBoardSize(1), this);
+			g.setColor(Color.black);
+			
 			String gameover = "Game Over";
 			String reason = gameStatus.split(":")[1];
 			reason = reason.replaceAll("_", " ");
 
 			Button restart = new Button("Restart", B_WIDTH / 2, B_HEIGHT / 2, B_WIDTH / 6, B_HEIGHT / 10,
-					Color.decode("#44cc44"), Color.white, new Font("Helvetica", Font.PLAIN, 15), ButtonMethod.RESTART);
-			g.drawPolygon(restart.drawPolygon(g));
-			g.setColor(restart.getForeground());
-			g.setFont(restart.getFont());
-			g.drawString(restart.getString(),
-					restart.x - (getFontMetrics(restart.getFont()).stringWidth(restart.getString()) / 2),
-					restart.y + (getFontMetrics(restart.getFont()).getHeight() / 4));
+					Color.decode("#950000"), Color.white, new Font("Helvetica", Font.PLAIN, 15), ButtonMethod.RESTART);
+			
+			
 			clickables.clear();
 			clickables.add(restart);
-			
-			for(Clickable click : clickables)
-				click.drawPolygon(getGraphics());
 
-			Font small = new Font("Helvetica", Font.BOLD, 14);
-			Font large = new Font("Helvetica", Font.BOLD, 20);
-			FontMetrics fm = getFontMetrics(small);
-			FontMetrics fml = getFontMetrics(large);
-
-			g.setColor(Color.black);
-			g.setFont(large);
-			g.drawString(gameover, (B_WIDTH - fml.stringWidth(gameover)) / 2, B_HEIGHT / 3);
-			g.setFont(small);
-			g.drawString(reason, (B_WIDTH - fm.stringWidth(reason)) / 2, B_HEIGHT / 3 + 20);
+			g.drawPolygon(restart.drawPolygon(g));
 			
+
+			g.setFont(new Font("Helvetica", Font.BOLD, 20));
+			g.drawString(gameover, (B_WIDTH - g.getFontMetrics().stringWidth(gameover)) / 2, B_HEIGHT / 4);
+			
+			g.setFont(new Font("Helvetica", Font.BOLD, 15));
+			g.drawString(reason, (B_WIDTH - g.getFontMetrics().stringWidth(reason)) / 2, B_HEIGHT / 3);
+			
+
 			g.drawImage(Texture.loadTexture("pointer.png"), mx, my, this);
 			
-			
-
 		}
 		if (gameStatus.contains("won")) {
 
-			g.drawImage(Background.WIN.getImage(), 0, 0, null);
+			g.drawImage(Background.WIN.getImage(), 0, 0, Bridge.getGameBoardSize(0), Bridge.getGameBoardSize(1), this);
 			g.setColor(Color.black);
 			String won = "You won level " + gameStatus.split(":")[1] + "!";
 
@@ -1060,6 +1059,18 @@ public class GameBoard extends Board implements ActionListener {
 			
 			mx = e.getX();
 			my = e.getY();
+			if(debug)
+				for(Sprite ssprite : sprites){
+					if(ssprite.getPolygon().contains(new Point(mx, my))){
+						in = true;
+						sprite = ssprite;
+						return;
+					}
+					sprite = null;
+					in = false;
+				}
+			
+		
 			for (Clickable clickable : clickables) {
 				if (clickable.getPolygon().contains(e.getPoint())) {
 					clickable.mouseMoved(e);
