@@ -29,7 +29,7 @@ import me.cameronwitcher.upsilon.utils.ButtonMethod;
 import me.cameronwitcher.upsilon.utils.Utils;
 import res.Texture;
 
-public class MenuBoard extends Board implements ActionListener {
+public class CreditsBoard extends Board implements ActionListener {
 
 	/**
 	 * 
@@ -44,7 +44,7 @@ public class MenuBoard extends Board implements ActionListener {
 	Timer timer;
 	public List<Clickable> clickables = new ArrayList<>();
 
-	public MenuBoard() {
+	public CreditsBoard() {
 		setType(BoardType.MENU_BOARD);
 		initBoard();
 	}
@@ -57,16 +57,9 @@ public class MenuBoard extends Board implements ActionListener {
 		addKeyListener(new TAdapter());
 		addMouseMotionListener(new MMListener());
 		addMouseListener(new MListener());
-
-		clickables.add(new Button("Play", M_WIDTH / 4, (M_HEIGHT / 2 + M_HEIGHT) / 2, M_WIDTH / 4, (M_HEIGHT / 20 + 10),
-				Color.gray, Color.white, new Font("Helvetica", Font.BOLD, 25), ButtonMethod.START));
-
-		clickables.add(new Button("Quit", ((M_WIDTH / 2) + M_WIDTH) / 2, (M_HEIGHT / 2 + M_HEIGHT) / 2, M_WIDTH / 4,
-				(M_HEIGHT / 20 + 10), Color.gray, Color.white, new Font("Helvetica", Font.BOLD, 25),
-				ButtonMethod.QUIT));
 		
-		clickables.add(new Button("Credits", M_WIDTH / 2, ((((M_HEIGHT / 2) + M_HEIGHT)/2) + M_HEIGHT)/2, M_WIDTH / 4, (M_HEIGHT / 20 + 10),
-				Color.gray, Color.white, new Font("Helvetica", Font.BOLD, 25), ButtonMethod.CREDITS));
+		clickables.add(new Button("Back to menu", 100, 50, 100, 20, Color.GRAY, Color.WHITE, new Font(Font.SANS_SERIF, Font.BOLD, 15), ButtonMethod.MAIN_MENU));
+
 
 		setLayout(null);
 
@@ -88,14 +81,18 @@ public class MenuBoard extends Board implements ActionListener {
 
 		g.drawImage(Background.WIN.getImage(), 0, 0, M_WIDTH, M_HEIGHT, null);
 		
+		g.setColor(Color.WHITE);
+		g.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 50));
 		
+		
+		g.drawString("Upsilon", (M_WIDTH/2) - (g.getFontMetrics().stringWidth("Upsilon")/2), 55);
 
 		
-		g.drawImage(Texture.loadTexture("playermodels/" + Bridge.getPlayer().getPlayerModel() + "/stand_right.png"),
+		g.setFont(new Font(Font.SANS_SERIF, Font.TYPE1_FONT, 15));
+		g.drawString("Authors & Developers:", M_WIDTH/2 - (g.getFontMetrics().stringWidth("Authors & Developers:")/2), 100);
 		
-				(M_WIDTH / 2) - ((13 * 5) / 2), (M_HEIGHT / 2) - ((44 * 5) / 2), 13 * 5, 44 * 5, null);
-
-		g.setColor(Color.white);
+		String a = Bridge.getGame().description.getProperty("authors");
+		g.drawString(a, M_WIDTH/2 - (g.getFontMetrics().stringWidth(a)/2), 120);
 
 		for (Clickable clickable : clickables) {
 			g.drawPolygon(clickable.drawPolygon(g));

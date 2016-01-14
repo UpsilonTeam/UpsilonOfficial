@@ -6,6 +6,7 @@ import java.util.HashMap;
 
 import javax.swing.JFrame;
 
+import me.cameronwitcher.upsilon.boards.CreditsBoard;
 import me.cameronwitcher.upsilon.boards.Game;
 import me.cameronwitcher.upsilon.boards.GameBoard;
 import me.cameronwitcher.upsilon.boards.LevelDebugBoard;
@@ -158,6 +159,19 @@ public class Bridge {
 	
 	public static int getGameBoardSize(int value){
 		return gameBoardSize.get(value);
+	}
+
+	public static void credits() {
+		game.clear();
+		game = null;
+		game = new Game();
+		game.setPreferredSize(new Dimension(960, 640));
+		game.setBoard(new CreditsBoard());
+		game.pack();
+		game.setVisible(true);
+		
+		
+		game.setLocationRelativeTo(null);
 	}
 
 }

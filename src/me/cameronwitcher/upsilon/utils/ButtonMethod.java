@@ -14,7 +14,8 @@ public enum ButtonMethod {
 	CLOSE_INVENTORY("close_inventory"),
 	SELECT_TOOL("select_tool"),
 	QUIT("quit"),
-	START("start");
+	START("start"),
+	CREDITS("credits");
 	
 	String method;
 	
@@ -62,6 +63,10 @@ public enum ButtonMethod {
 			t = t.replaceAll("_", " ");
 			Utils.displayMessage(10, t, b.getGraphics().getFontMetrics().stringWidth(t)/2, 32, 100, "#FF0000", 12);
 			
+		}
+		
+		if(this.equals(CREDITS)){
+			Bridge.credits();
 		}
 		
 	}
