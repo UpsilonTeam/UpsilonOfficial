@@ -57,6 +57,8 @@ public class CreditsBoard extends Board implements ActionListener {
 		addKeyListener(new TAdapter());
 		addMouseMotionListener(new MMListener());
 		addMouseListener(new MListener());
+		
+		clickables.add(new Button("Back to menu", 100, 50, 100, 20, Color.GRAY, Color.WHITE, new Font(Font.SANS_SERIF, Font.BOLD, 15), ButtonMethod.MAIN_MENU));
 
 
 		setLayout(null);
@@ -87,12 +89,9 @@ public class CreditsBoard extends Board implements ActionListener {
 
 		
 		g.setFont(new Font(Font.SANS_SERIF, Font.TYPE1_FONT, 15));
-		g.drawString("Authors:", M_WIDTH/2 - (g.getFontMetrics().stringWidth("Authors:")/2), 100);
+		g.drawString("Authors & Developers:", M_WIDTH/2 - (g.getFontMetrics().stringWidth("Authors & Developers:")/2), 100);
 		
 		String a = Bridge.getGame().description.getProperty("authors");
-		a = a.replaceAll("[", "");
-		a = a.replaceAll("]", "");
-		a = a.replaceAll(",", ", ");
 		g.drawString(a, M_WIDTH/2 - (g.getFontMetrics().stringWidth(a)/2), 120);
 
 		for (Clickable clickable : clickables) {

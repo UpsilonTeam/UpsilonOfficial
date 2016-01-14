@@ -65,7 +65,7 @@ public class MenuBoard extends Board implements ActionListener {
 				(M_HEIGHT / 20 + 10), Color.gray, Color.white, new Font("Helvetica", Font.BOLD, 25),
 				ButtonMethod.QUIT));
 		
-		clickables.add(new Button("Credits", M_WIDTH / 2, M_HEIGHT / 2, M_WIDTH / 4, (M_HEIGHT / 20 + 10),
+		clickables.add(new Button("Credits", M_WIDTH / 2, ((((M_HEIGHT / 2) + M_HEIGHT)/2) + M_HEIGHT)/2, M_WIDTH / 4, (M_HEIGHT / 20 + 10),
 				Color.gray, Color.white, new Font("Helvetica", Font.BOLD, 25), ButtonMethod.CREDITS));
 
 		setLayout(null);
