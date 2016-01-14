@@ -243,23 +243,15 @@ public class GameBoard extends Board implements ActionListener {
 
 		levels.put(3, level3);
 
-		level4.add(new Floor(0 * 15, 608));
-		level4.add(new Floor(1 * 15, 608));
-		level4.add(new Floor(2 * 15, 608));
-		level4.add(new Floor(3 * 15, 608));
-		level4.add(new Floor(4 * 15, 608));
-		level4.add(new Floor(5 * 15, 608));
-		level4.add(new Floor(6 * 15, 608));
-		level4.add(new Floor(7 * 15, 608));
-		level4.add(new Floor(9 * 15, 608));
-		level4.add(new Floor(10 * 15, 608));
-		level4.add(new Floor(11 * 15, 608));
-		level4.add(new Floor(12 * 15, 608));
-		level4.add(new Floor(13 * 15, 608));
-		level4.add(new Floor(14 * 15, 608));
-		level4.add(new Floor(15 * 15, 608));
-		level4.add(new Floor(16 * 15, 608));
-		level4.add(new Floor(17 * 15, 608));
+		for(int x=0;x!=18;x++){
+			if(x==8) continue;
+			level4.add(new Floor(x*30, 533));
+		}
+		
+		for(int y=0;y!=18;y++){
+			level4.add(new Ladder(17*30,(y*30)-5));
+		}
+		
 		level4.add(new Ladder(17 * 15, 18 * 15));
 		level4.add(new Ladder(17 * 15, 17 * 15));
 		level4.add(new Ladder(17 * 15, 16 * 15));
@@ -278,7 +270,7 @@ public class GameBoard extends Board implements ActionListener {
 		level4.add(new Floor(5 * 15, 16 * 15));
 		level4.add(new Floor(4 * 15, 16 * 15));
 		level4.add(new Floor(3 * 15, 16 * 15));
-		level4.add(new Wall(2 * 15, 0 * 15, 512, State.VERTICAL));
+		level4.add(new Wall(2 * 15, 0 * 15, 450, State.VERTICAL));
         
 		level4.add(new Ladder(3 * 15, 15 * 15));
 		level4.add(new Ladder(3 * 15, 14 * 15));
