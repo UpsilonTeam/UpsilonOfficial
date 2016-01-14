@@ -118,10 +118,12 @@ public class Knobber extends Entity implements Moveable,Keyable {
 				
 				if(AI.getFollowSprite(this, Bridge.player) == 1){
 					walking = true;
+					facing = Direction.RIGHT;
 					setDir(Direction.RIGHT);
 				}
 				if(AI.getFollowSprite(this, Bridge.player) == -1){
 					walking = true;
+					facing = Direction.LEFT;
 					setDir(Direction.LEFT);
 				}
 						
