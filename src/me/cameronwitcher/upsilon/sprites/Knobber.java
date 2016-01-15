@@ -68,7 +68,7 @@ public class Knobber extends Entity implements Moveable,Keyable {
 	@Override
 	public void move() {
 		if(!dead){
-			if (x >= 650 || x <= -1 || y >= 650 || y <= -1) {
+			if (x >= 970 || x <= -1 || y >= 650 || y <= -1) {
 				kill(DamageReason.VOID);
 			}
 			
@@ -77,6 +77,7 @@ public class Knobber extends Entity implements Moveable,Keyable {
 			try{
 				for (Sprite sprite : ((GameBoard)Bridge.getGame().getBoard()).sprites) {
 					if(sprite instanceof Knobber) continue;
+					if(sprite.getSubType().equals(SpriteSubType.CLIMABLE)) continue;
 					if (!getPolygon().intersects(sprite.getPolygon().getBounds())){
 						continue;
 					}

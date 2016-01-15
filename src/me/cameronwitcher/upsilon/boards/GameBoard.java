@@ -273,8 +273,10 @@ public class GameBoard extends Board implements ActionListener {
 			level4.add(new Floor((x*30)-3,(4*30)-2));
 		}
 		
+		level4.add(new Wall((3*30)-3,88,160,State.VERTICAL));
+		
 		level4.add(new Gate((14 * 30)-4, (3 * 30)-4));
-		level4.add(new Knobber(10 * 15, 14 * 15));
+		level4.add(new Knobber(11 * 15, 13 * 15));
 		if(!debug) level4.add(Bridge.getPlayer());
 
 		levels.put(4, level4);

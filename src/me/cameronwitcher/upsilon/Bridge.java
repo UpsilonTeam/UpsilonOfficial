@@ -92,7 +92,7 @@ public class Bridge {
 		game.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		game.setVisible(true);
 		game.setIconImage(Texture.loadTexture("logo.png"));
-		game.setPreferredSize(new Dimension(965, 565));
+		game.setPreferredSize(new Dimension(965, 568));
 		game.pack();
 		
 		game.setResizable(false);
