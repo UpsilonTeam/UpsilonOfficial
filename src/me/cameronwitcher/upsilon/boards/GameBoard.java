@@ -243,51 +243,37 @@ public class GameBoard extends Board implements ActionListener {
 
 		levels.put(3, level3);
 
-		for(int x=0;x!=18;x++){
-			if(x==8) continue;
-			level4.add(new Floor(x*30, 533));
+		for(int x=0;x!=32;x++){
+			if(x>=8 && x<=17)
+				level4.add(new Floor((x*30)-2, 13*30));
+			else
+			level4.add(new Floor((x*30)-2, 533));
+			
 		}
 		
-		for(int y=0;y!=18;y++){
-			level4.add(new Ladder(17*30,(y*30)-5));
+		for(int y=13;y!=18;y++){
+			level4.add(new Ladder(7*30,(y*30)-9));
+		}
+		for(int y=13;y!=18;y++){
+			level4.add(new Ladder((18*30)-2,(y*30)-9));
+		}
+		for(int y=8;y!=18;y++){
+			level4.add(new Ladder((31*30),(y*30)-9));
+		}
+		for(int x=3;x!=31;x++){
+			level4.add(new Floor(x*30,8*30));
 		}
 		
-		level4.add(new Ladder(17 * 15, 18 * 15));
-		level4.add(new Ladder(17 * 15, 17 * 15));
-		level4.add(new Ladder(17 * 15, 16 * 15));
-		level4.add(new Ladder(17 * 15, 15 * 15));
-		level4.add(new Floor(16 * 15, 16 * 15));
-		level4.add(new Floor(15 * 15, 16 * 15));
-		level4.add(new Floor(14 * 15, 16 * 15));
-		level4.add(new Floor(13 * 15, 16 * 15));
-		level4.add(new Floor(12 * 15, 16 * 15));
-		level4.add(new Floor(11 * 15, 16 * 15));
-		level4.add(new Floor(10 * 15, 16 * 15));
-		level4.add(new Floor(9 * 15, 16 * 15));
-		level4.add(new Floor(8 * 15, 16 * 15));
-		level4.add(new Floor(7 * 15, 16 * 15));
-		level4.add(new Floor(6 * 15, 16 * 15));
-		level4.add(new Floor(5 * 15, 16 * 15));
-		level4.add(new Floor(4 * 15, 16 * 15));
-		level4.add(new Floor(3 * 15, 16 * 15));
 		level4.add(new Wall(2 * 15, 0 * 15, 450, State.VERTICAL));
         
-		level4.add(new Ladder(3 * 15, 15 * 15));
-		level4.add(new Ladder(3 * 15, 14 * 15));
-		level4.add(new Ladder(3 * 15, 13 * 15));
-		level4.add(new Ladder(3 * 15, 12 * 15));
-		level4.add(new Ladder(3 * 15, 11 * 15));
-		level4.add(new Ladder(3 * 15, 10 * 15));
-		level4.add(new Floor(4 * 15, 11 * 15));
-		level4.add(new Floor(5 * 15, 11 * 15));
-		level4.add(new Floor(6 * 15, 11 * 15));
-		level4.add(new Floor(7 * 15, 11 * 15));
-		level4.add(new Floor(8 * 15, 11 * 15));
-		level4.add(new Floor(9 * 15, 11 * 15));
-		level4.add(new Floor(10 * 15, 11 * 15));
-		level4.add(new Floor(11 * 15, 11 * 15));
-		level4.add(new Floor(12 * 15, 11 * 15));
-		level4.add(new Gate(12 * 15, 10 * 15));
+		for(int y=3;y!=8;y++){
+			level4.add(new Ladder((3*30), (y*30)-2));
+		}
+		for(int x=4;x!=15;x++){
+			level4.add(new Floor((x*30)-3,(4*30)-2));
+		}
+		
+		level4.add(new Gate((14 * 30)-4, (3 * 30)-4));
 		level4.add(new Knobber(10 * 15, 14 * 15));
 		if(!debug) level4.add(Bridge.getPlayer());
 
