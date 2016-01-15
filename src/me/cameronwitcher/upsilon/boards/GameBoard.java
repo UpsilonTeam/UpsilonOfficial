@@ -245,7 +245,7 @@ public class GameBoard extends Board implements ActionListener {
 
 		for(int x=0;x!=32;x++){
 			if(x>=8 && x<=17)
-				level4.add(new Floor((x*30)-2, 13*30));
+				level4.add(new Floor((x*30)-2, (13*30)-2));
 			else
 			level4.add(new Floor((x*30)-2, 533));
 			
@@ -261,13 +261,13 @@ public class GameBoard extends Board implements ActionListener {
 			level4.add(new Ladder((31*30),(y*30)-9));
 		}
 		for(int x=3;x!=31;x++){
-			level4.add(new Floor(x*30,8*30));
+			level4.add(new Floor((x*30),(8*30)-2));
 		}
 		
 		level4.add(new Wall(2 * 15, 0 * 15, 450, State.VERTICAL));
         
 		for(int y=3;y!=8;y++){
-			level4.add(new Ladder((3*30), (y*30)-2));
+			level4.add(new Ladder((3*30), (y*30)-4));
 		}
 		for(int x=4;x!=15;x++){
 			level4.add(new Floor((x*30)-3,(4*30)-2));
@@ -281,89 +281,9 @@ public class GameBoard extends Board implements ActionListener {
 
 		levels.put(4, level4);
 
-		level5.add(new Floor(0 * 15, 4 * 15));
-		level5.add(new Floor(1 * 15, 4 * 15));
-		level5.add(new Floor(2 * 15, 4 * 15));
-		level5.add(new Floor(3 * 15, 4 * 15));
-		level5.add(new Floor(4 * 15, 4 * 15));
-		level5.add(new Floor(5 * 15, 4 * 15));
-		level5.add(new Floor(6 * 15, 4 * 15));
-		level5.add(new Floor(7 * 15, 4 * 15));
-		level5.add(new Floor(8 * 15, 4 * 15));
-		level5.add(new Floor(9 * 15, 4 * 15));
-		level5.add(new Floor(10 * 15, 4 * 15));
-		level5.add(new Floor(11 * 15, 4 * 15));
-		level5.add(new Floor(12 * 15, 4 * 15));
-		level5.add(new Floor(13 * 15, 4 * 15));
-		level5.add(new Floor(14 * 15, 4 * 15));
-		level5.add(new Floor(15 * 15, 4 * 15));
-		level5.add(new Floor(16 * 15, 4 * 15));
-		level5.add(new Floor(17 * 15, 4 * 15));
-		level5.add(new Floor(18 * 15, 4 * 15));
-		level5.add(new FallingFloor(19 * 15, 4 * 15));
-
-		level5.add(new FallingFloor(0 * 15, 8 * 15));
-		level5.add(new Floor(1 * 15, 8 * 15));
-		level5.add(new Floor(2 * 15, 8 * 15));
-		level5.add(new Floor(3 * 15, 8 * 15));
-		level5.add(new Floor(4 * 15, 8 * 15));
-		level5.add(new Floor(5 * 15, 8 * 15));
-		level5.add(new Floor(6 * 15, 8 * 15));
-		level5.add(new Floor(7 * 15, 8 * 15));
-		level5.add(new Floor(8 * 15, 8 * 15));
-		level5.add(new Floor(9 * 15, 8 * 15));
-		level5.add(new Floor(10 * 15, 8 * 15));
-		level5.add(new Floor(11 * 15, 8 * 15));
-		level5.add(new Floor(12 * 15, 8 * 15));
-		level5.add(new Floor(13 * 15, 8 * 15));
-		level5.add(new Floor(14 * 15, 8 * 15));
-		level5.add(new Floor(15 * 15, 8 * 15));
-		level5.add(new Floor(16 * 15, 8 * 15));
-		level5.add(new Floor(17 * 15, 8 * 15));
-		level5.add(new Floor(18 * 15, 8 * 15));
-		level5.add(new Floor(19 * 15, 8 * 15));
-
-		level5.add(new Floor(0 * 15, 12 * 15));
-		level5.add(new Floor(1 * 15, 12 * 15));
-		level5.add(new Floor(2 * 15, 12 * 15));
-		level5.add(new Floor(3 * 15, 12 * 15));
-		level5.add(new Floor(4 * 15, 12 * 15));
-		level5.add(new Floor(5 * 15, 12 * 15));
-		level5.add(new Floor(6 * 15, 12 * 15));
-		level5.add(new Floor(7 * 15, 12 * 15));
-		level5.add(new Floor(8 * 15, 12 * 15));
-		level5.add(new Floor(9 * 15, 12 * 15));
-		level5.add(new Floor(10 * 15, 12 * 15));
-		level5.add(new Floor(11 * 15, 12 * 15));
-		level5.add(new Floor(12 * 15, 12 * 15));
-		level5.add(new Floor(13 * 15, 12 * 15));
-		level5.add(new Floor(14 * 15, 12 * 15));
-		level5.add(new Floor(15 * 15, 12 * 15));
-		level5.add(new Floor(16 * 15, 12 * 15));
-		level5.add(new Floor(17 * 15, 12 * 15));
-		level5.add(new Floor(18 * 15, 12 * 15));
-		level5.add(new FallingFloor(19 * 15, 12 * 15));
-
-		level5.add(new Floor(0 * 15, 16 * 15));
-		level5.add(new Floor(1 * 15, 16 * 15));
-		level5.add(new Floor(2 * 15, 16 * 15));
-		level5.add(new Floor(3 * 15, 16 * 15));
-		level5.add(new Floor(4 * 15, 16 * 15));
-		level5.add(new Floor(5 * 15, 16 * 15));
-		level5.add(new Floor(6 * 15, 16 * 15));
-		level5.add(new Floor(7 * 15, 16 * 15));
-		level5.add(new Floor(8 * 15, 16 * 15));
-		level5.add(new Floor(9 * 15, 16 * 15));
-		level5.add(new Floor(10 * 15, 16 * 15));
-		level5.add(new Floor(11 * 15, 16 * 15));
-		level5.add(new Floor(12 * 15, 16 * 15));
-		level5.add(new Floor(13 * 15, 16 * 15));
-		level5.add(new Floor(14 * 15, 16 * 15));
-		level5.add(new Floor(15 * 15, 16 * 15));
-		level5.add(new Floor(16 * 15, 16 * 15));
-		level5.add(new Floor(17 * 15, 16 * 15));
-		level5.add(new Floor(18 * 15, 16 * 15));
-		level5.add(new Floor(19 * 15, 16 * 15));
+		for(int x=0;x!=30;x++){
+			level5.add(new FallingFloor(x*30,0 ));
+		}
 		level5.add(new Gate(1, 15 * 15));
 		if(!debug) level5.add(Bridge.getPlayer());
 
