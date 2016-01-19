@@ -19,12 +19,12 @@
 	    
 	    @Override
 	    public SpriteType getType(){
-	    	return SpriteType.FALLING_FLOOR;
+	    	return SpriteType.FALLING_WALL;
 	    }
 
 	    private void initFloor() {
 	        
-	        loadImage("Wall.png");
+	        loadImage("Wall/horizontal.png");
 	        getImageDimensions();
 	    }
 	    
@@ -35,14 +35,14 @@
 	    		public void run() {
 	    			t = true;
 	    			}
-	    		}, 500);
+	    		}, 250);
 	    	}
 
 		@Override
 		public void move() {
 			
 			if(t){
-				y = y+1;
+				y = y+2;
 			}
 		}
 

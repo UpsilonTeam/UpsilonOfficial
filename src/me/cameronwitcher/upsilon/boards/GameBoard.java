@@ -29,6 +29,7 @@ import javax.swing.Timer;
 
 import me.cameronwitcher.upsilon.Bridge;
 import me.cameronwitcher.upsilon.sprites.FallingFloor;
+import me.cameronwitcher.upsilon.sprites.FallingWall;
 import me.cameronwitcher.upsilon.sprites.Floor;
 import me.cameronwitcher.upsilon.sprites.Gate;
 import me.cameronwitcher.upsilon.sprites.Gold;
@@ -284,9 +285,9 @@ public class GameBoard extends Board implements ActionListener {
 		levels.put(4, level4);
 
 		for(int x=0;x!=30;x++){
-			level5.add(new FallingFloor(x*40, 450-(x*10)));
+			level5.add(new FallingWall(x*40, 450-(x*10)));
 		}
-		level5.add(new Gate(1, 15 * 15));
+		level5.add(new Gate(15*15, 15 * 15));
 		if(!debug) level5.add(Bridge.getPlayer());
 
 		levels.put(5, level5);

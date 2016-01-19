@@ -13,6 +13,7 @@ public enum SpriteType {
 	ARROW("arrow"),
 	BOW("bow"),
 	NINJA_CLOAK("ninja_cloak"),
+	FALLING_WALL("falling_floor"),
 	SPIKE("spike");
 	
 	SpriteType(String type) {
@@ -31,6 +32,7 @@ public enum SpriteType {
 		if(this == ARROW) return SpriteSubType.PROJECTILE;
 		if(this == BOW) return SpriteSubType.WEAPON;
 		if(this == NINJA_CLOAK) return SpriteSubType.TOOL;
+		if(this == FALLING_WALL) return SpriteSubType.COLLIDEABLE;
 		else return null;
 	}
 }

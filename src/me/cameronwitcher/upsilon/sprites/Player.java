@@ -425,6 +425,8 @@ public class Player extends Entity implements Moveable,Keyable {
 							onground = true;
 							y=sprite.getY()-(height-1);
 							falling = false;
+							if(sprite.getType().equals(SpriteType.FALLING_WALL))
+								if(!((FallingWall) sprite).t) ((FallingWall) sprite).startFalling();
 							break;
 						case UP:
 							falling = true;
