@@ -990,6 +990,30 @@ public class GameBoard extends Board implements ActionListener {
 	}
 
 	private class MMListener extends MouseMotionAdapter {
+		
+		public void mouseDragged(MouseEvent e){
+			
+			mx = e.getX();
+			my = e.getY();
+			if(debug)
+				for(Sprite ssprite : sprites){
+					if(ssprite.getPolygon().contains(new Point(mx, my))){
+						in = true;
+						sprite = ssprite;
+						return;
+					}
+					sprite = null;
+					in = false;
+				}
+			
+		
+			for (Clickable clickable : clickables) {
+				if (clickable.getPolygon().contains(e.getPoint())) {
+					clickable.mouseMoved(e);
+				}
+			}
+
+		}
 
 		public void mouseMoved(MouseEvent e) {
 			
