@@ -48,6 +48,7 @@ public class Player extends Entity implements Moveable,Keyable {
 	public List<Tool> inventory = new ArrayList<>();
 	private HashMap<Integer, Integer> jumpInfo = new HashMap<>();
 	private boolean ctrl = false;
+	public boolean ready;
 
 	public Player(int x, int y) {
 		super(x, y);
@@ -55,6 +56,7 @@ public class Player extends Entity implements Moveable,Keyable {
 		jumping = false;
 		falling = true;
 		gravity = true;
+		ready = true;
 		initPlayer();
 		health= 100;
 		maxhealth = 100;
@@ -196,6 +198,7 @@ public class Player extends Entity implements Moveable,Keyable {
 			if (key == KeyEvent.VK_K) {
 				if(shifting){
 					lives = 1;
+					ready = false;
 					kill(DamageReason.PROJECTILE);
 				}
 			}
@@ -547,6 +550,7 @@ public class Player extends Entity implements Moveable,Keyable {
 			((GameBoard)Bridge.getGame().getBoard()).gameStatus = "gameover:" + reason.getMessage();
 			((GameBoard)Bridge.getGame().getBoard()).ingame = false;
 		}
+		ready = true;
 	}
 
 	@Override
