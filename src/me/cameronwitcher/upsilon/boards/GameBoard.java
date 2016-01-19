@@ -917,9 +917,17 @@ public class GameBoard extends Board implements ActionListener {
 					ButtonMethod.CLOSE_INVENTORY.clicked();
 					return;
 				}
+				
+				
 
 				
 
+			}
+			
+			if(!ingame){
+				if(e.getKeyCode() == KeyEvent.VK_ENTER){
+					ButtonMethod.LEVEL_UP.clicked();
+				}
 			}
 			
 			if(e.getKeyCode() == KeyEvent.VK_F11){
