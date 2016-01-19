@@ -39,6 +39,10 @@ public class Projectile extends Entity implements Moveable {
 			x = x+speed;
 		if(direction.equals(Direction.LEFT))
 			x = x-speed;
+		
+		if(x > 1000){
+			remove();
+		}
 		for(Sprite sprite : ((GameBoard)Bridge.getGame().getBoard()).sprites){
 			if(!this.getPolygon().getBounds().intersects(sprite.getPolygon().getBounds())) continue;
 			if(sprite instanceof Entity){

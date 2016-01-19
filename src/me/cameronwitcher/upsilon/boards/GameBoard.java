@@ -39,6 +39,7 @@ import me.cameronwitcher.upsilon.sprites.Wall;
 import me.cameronwitcher.upsilon.sprites.tools.Bow;
 import me.cameronwitcher.upsilon.sprites.tools.NinjaCloak;
 import me.cameronwitcher.upsilon.spriteutils.Clickable;
+import me.cameronwitcher.upsilon.spriteutils.Entity;
 import me.cameronwitcher.upsilon.spriteutils.Keyable;
 import me.cameronwitcher.upsilon.spriteutils.Moveable;
 import me.cameronwitcher.upsilon.spriteutils.Sprite;
@@ -79,6 +80,7 @@ public class GameBoard extends Board implements ActionListener {
 	public boolean in = false;
 	private boolean fs = false;
 	private int extra = 1;
+	private int e = 0;
 	
 	private GraphicsDevice vc;
 
@@ -517,6 +519,10 @@ public class GameBoard extends Board implements ActionListener {
 		g.drawString("Tool:", (B_WIDTH / 2 + B_WIDTH) / 2, 40);
 		
 		for (Sprite sprite : sprites) {
+			
+			if(sprite instanceof Entity){
+				e = e+1;
+			}
 
 			if (!(sprite instanceof Player) && !(sprite instanceof Knobber)){
 				g.drawImage(sprite.getImage(), sprite.getX(), sprite.getY(), sprite.getWidth()+extra, sprite.getHeight()+extra, this);
@@ -526,6 +532,7 @@ public class GameBoard extends Board implements ActionListener {
 		}
 
 		for (Moveable s : moveables) {
+			e = e+1;
 			Sprite sprite = (Sprite) s;
 			SpriteType type = (sprite).getType();
 			switch (type) {
@@ -586,6 +593,7 @@ public class GameBoard extends Board implements ActionListener {
 			g.drawString("Up: " + player.up, 0, 100);
 			g.drawString("Climbing: " + player.climbing, 0, 110);
 			g.drawString("Level: " + player.level, 0, 120);
+			g.drawString("Entities: " + e, 0, 130);
 		}
 
 		
@@ -673,7 +681,9 @@ public class GameBoard extends Board implements ActionListener {
 		
 		if(paused || debug) g.drawImage(Texture.loadTexture("pointer.png"), mx, my, this);
 		
-		if(in) this.sprite.drawInfo(mx, my, g);
+		if(in && debug) this.sprite.drawInfo(mx, my, g);
+		
+		e=0;
 
 	}
 
