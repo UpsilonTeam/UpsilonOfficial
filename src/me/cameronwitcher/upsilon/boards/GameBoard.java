@@ -287,6 +287,7 @@ public class GameBoard extends Board implements ActionListener {
 		for(int x=0;x!=30;x++){
 			level5.add(new FallingWall(x*40, 450-(x*10)));
 		}
+		level5.add(new Wall((7*30),(10*30), 30,State.VERTICAL));
 		level5.add(new Gate(15*15, 15 * 15));
 		if(!debug) level5.add(Bridge.getPlayer());
 

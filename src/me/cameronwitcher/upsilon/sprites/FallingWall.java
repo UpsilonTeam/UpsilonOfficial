@@ -35,7 +35,7 @@
 	    		public void run() {
 	    			t = true;
 	    			}
-	    		}, 250);
+	    		}, 750);
 	    	}
 
 		@Override
