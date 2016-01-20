@@ -456,11 +456,11 @@ public class GameBoard extends Board implements ActionListener {
 
 			g.setColor(Color.WHITE);
 
-			g.setFont(large);
+			g.setFont(small);
 
 			g.drawString(inv, (B_WIDTH / 2) - (fmlarge.stringWidth(inv) / 2), 30);
 
-			g.drawImage(Bridge.getPlayer().inventory.get(l).getImage(), B_WIDTH / 2, B_HEIGHT / 2, this);
+			g.drawImage(Bridge.getPlayer().inventory.get(l).getImage(), B_WIDTH / 2, B_HEIGHT / 2, 50, 50, this);
 
 			clickables.add(new Button(close, B_WIDTH / 4, (B_HEIGHT / 2 + B_HEIGHT) / 2, B_WIDTH / 6, 18, Color.GRAY,
 					Color.WHITE, small, ButtonMethod.CLOSE_INVENTORY));
@@ -469,15 +469,8 @@ public class GameBoard extends Board implements ActionListener {
 					18, Color.GRAY, Color.WHITE, small, ButtonMethod.SELECT_TOOL));
 
 			for (Clickable clickable : clickables) {
-				g.drawPolygon(clickable.drawPolygon(g));
-				if (clickable instanceof Button) {
-					Button button = (Button) clickable;
-					g.setColor((button).getForeground());
-					g.setFont(button.getFont());
-					g.drawString((button).getString(),
-							button.x - (getFontMetrics(button.getFont()).stringWidth(button.getString()) / 2),
-							button.y + (getFontMetrics(button.getFont()).getHeight() / 4));
-				}
+				clickable.drawPolygon(g);
+				
 			}
 			
 			g.drawImage(Texture.loadTexture("pointer.png"), mx, my, this);
@@ -576,10 +569,7 @@ public class GameBoard extends Board implements ActionListener {
 		}
 		if (Bridge.getPlayer().hasTool()) {
 			Tool tool = ((Player) Bridge.getPlayer()).getTool();
-			g.drawImage(tool.getImage(),
-					((B_WIDTH / 2 + B_WIDTH) / 2)
-							+ getFontMetrics(new Font("Helvetica", Font.BOLD, 10)).stringWidth("Tool: "),
-					10, 15, 15, this);
+			g.drawImage(tool.getImage(), ((B_WIDTH / 2 + B_WIDTH) / 2 + g.getFontMetrics().stringWidth("Tool:")), 25, this);
 		}
 		if (debug && hitboxes)
 			g.drawPolygon(Bridge.getPlayer().getPolygon());
@@ -766,31 +756,33 @@ public class GameBoard extends Board implements ActionListener {
 	}
 
 	private void update() {
-		
-		for(Moveable sprite : moveables){
-			sprites.remove(sprite);
-			sprite.move();
-			moveables_temp.add(sprite);	
+		if(!paused && !inv){
 			
-		}
-		moveables.clear();
-		for (Moveable sprite : moveables_temp) {
-			moveables.add(sprite);
-			sprites.add(((Sprite)sprite));
-		}
-		moveables_temp.clear();
-		Bridge.getPlayer().move();
-		for (Sprite sprite : removedSprites){
-			if (moveables.contains(sprite))
-				moveables.remove(sprite);
-			if (tools.contains(sprite))
-				tools.remove(sprite);
-			if (sprites.contains(sprite)) {
+			for(Moveable sprite : moveables){
 				sprites.remove(sprite);
+				sprite.move();
+				moveables_temp.add(sprite);	
+				
 			}
-		}
-		removedSprites.clear();
+			moveables.clear();
+			for (Moveable sprite : moveables_temp) {
+				moveables.add(sprite);
+				sprites.add(((Sprite)sprite));
+			}
+			moveables_temp.clear();
+			Bridge.getPlayer().move();
+			for (Sprite sprite : removedSprites){
+				if (moveables.contains(sprite))
+					moveables.remove(sprite);
+				if (tools.contains(sprite))
+					tools.remove(sprite);
+				if (sprites.contains(sprite)) {
+					sprites.remove(sprite);
+				}
+			}
+			removedSprites.clear();
 
+		}
 	}
 	
 	public void toggleGravity() {
