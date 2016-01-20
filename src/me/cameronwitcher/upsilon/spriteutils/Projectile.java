@@ -43,9 +43,18 @@ public class Projectile extends Entity implements Moveable {
 		if(x > 1000){
 			remove();
 		}
+		if(x < 0){
+			remove();
+		}
+		if(!shooter.getType().equals(SpriteType.PLAYER)){
+			if(Utils.intersects(getPolygon(), Bridge.getPlayer().getPolygon())){
+				Bridge.getPlayer().damage(damage, this, DamageReason.PROJECTILE);
+			}
+		}
 		for(Sprite sprite : ((GameBoard)Bridge.getGame().getBoard()).sprites){
 			if(!this.getPolygon().getBounds().intersects(sprite.getPolygon().getBounds())) continue;
 			if(sprite instanceof Entity){
+				Utils.broadcastMessage(sprite.getType() + "");
 				if(!sprite.getType().equals(shooter.getType())){
 					((Entity) sprite).damage(this.damage, this, DamageReason.PROJECTILE);	
 				} else {

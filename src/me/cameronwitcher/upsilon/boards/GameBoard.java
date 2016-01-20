@@ -434,7 +434,7 @@ public class GameBoard extends Board implements ActionListener {
 
 	private void drawInventory(Graphics g) {
 		try {
-			g.drawImage(Background.WIN.getImage(), 0, 0, null);
+			g.drawImage(Background.WIN.getImage(), 0, 0, Bridge.getGameBoardSize(0), Bridge.getGameBoardSize(1), null);
 
 			String inv = "Inventory";
 
@@ -473,6 +473,8 @@ public class GameBoard extends Board implements ActionListener {
 							button.y + (getFontMetrics(button.getFont()).getHeight() / 4));
 				}
 			}
+			
+			g.drawImage(Texture.loadTexture("pointer.png"), mx, my, this);
 
 		} catch (IndexOutOfBoundsException ex) {
 			inv = false;
@@ -750,7 +752,7 @@ public class GameBoard extends Board implements ActionListener {
 
 		// if(loaded)
 
-		if (!paused)
+		if (!paused && Bridge.getPlayer().ready)
 			update();
 
 		repaint();
