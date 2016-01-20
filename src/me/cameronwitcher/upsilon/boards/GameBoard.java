@@ -239,8 +239,7 @@ public class GameBoard extends Board implements ActionListener {
 		
 		}
 		
-
-		level3.add(new Wall((17*30)+12, 15*30, 89, State.HORIZONTAL));
+		level3.add(new Wall((17*30)+11, 15*30, 90, State.HORIZONTAL));
 		level3.add(new Gate((19 * 30)+10, 14* 30));
 		if(!debug) level3.add(Bridge.getPlayer());
 
@@ -284,11 +283,18 @@ public class GameBoard extends Board implements ActionListener {
 
 		levels.put(4, level4);
 
-		for(int x=0;x!=30;x++){
-			level5.add(new FallingWall(x*40, 450-(x*10)));
+		for(int x=0;x!=18;x++){
+			level5.add(new FallingWall(x*40, 450-(x*5)));
 		}
-		level5.add(new Wall((7*30),(10*30), 30,State.VERTICAL));
-		level5.add(new Gate(15*15, 15 * 15));
+		for(int y=7;y!= 12;y++){
+			level5.add(new Ladder((24*30)+2, (y*30)));
+		}
+		for(int x=5;x!=24;x++){
+			level5.add(new FallingWall((x*30), (8*30)));
+		}
+		level5.add(new Wall((24*30),(12*30), 30,State.HORIZONTAL));
+		
+		level5.add(new Gate(5*30, 7*30));
 		if(!debug) level5.add(Bridge.getPlayer());
 
 		levels.put(5, level5);
