@@ -24,7 +24,7 @@
 
 	    private void initFloor() {
 	        
-	        loadImage("Wall/horizontal.png");
+	        loadImage("falling-floor.png");
 	        getImageDimensions();
 	    }
 	    

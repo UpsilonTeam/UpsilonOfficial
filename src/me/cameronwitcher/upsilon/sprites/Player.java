@@ -39,7 +39,7 @@ public class Player extends Entity implements Moveable,Keyable {
 	public boolean up = false;
 	private int score = 0;
 	private int sscore = 0;
-	public int lives = 3;
+	public int lives = 3;	
 	private int i;
 	public int speedboost = 1;
 	public int level = 1;
@@ -188,12 +188,6 @@ public class Player extends Entity implements Moveable,Keyable {
 				y = 0;
 			
 			}
-			
-			
-				
-			
-			
-			
 			
 			if (key == KeyEvent.VK_K) {
 				if(shifting){
