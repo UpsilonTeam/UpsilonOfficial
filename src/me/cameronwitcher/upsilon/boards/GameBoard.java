@@ -236,7 +236,7 @@ public class GameBoard extends Board implements ActionListener {
 		}
 		if(!debug) level2.add(Bridge.getPlayer());
 		
-		level2.add(new Gate(760,(5*30)-15));
+		level2.add(new Gate(760,(5*30)-17));
 		
 		levels.put(2, level2);
 		
