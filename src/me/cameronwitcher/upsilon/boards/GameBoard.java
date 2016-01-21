@@ -36,6 +36,8 @@ import me.cameronwitcher.upsilon.sprites.Gold;
 import me.cameronwitcher.upsilon.sprites.Knobber;
 import me.cameronwitcher.upsilon.sprites.Ladder;
 import me.cameronwitcher.upsilon.sprites.Player;
+import me.cameronwitcher.upsilon.sprites.Spike;
+import me.cameronwitcher.upsilon.sprites.Switch;
 import me.cameronwitcher.upsilon.sprites.Wall;
 import me.cameronwitcher.upsilon.sprites.tools.Bow;
 import me.cameronwitcher.upsilon.sprites.tools.NinjaCloak;
@@ -189,6 +191,10 @@ public class GameBoard extends Board implements ActionListener {
 		level4.clear();
 		level5.clear();
 		level6.clear();
+		
+		
+		level1.add(new Switch(30, 30, new Spike(40, 40), level1, 90));
+		
 		
 		for(int x=0;x!=30;x++){
 			level1.add(new Wall(x*32, 525-(x/2), 32, State.HORIZONTAL));
