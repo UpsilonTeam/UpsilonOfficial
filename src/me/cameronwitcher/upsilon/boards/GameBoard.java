@@ -307,18 +307,25 @@ public class GameBoard extends Board implements ActionListener {
 
 		level6.add(new Wall(0 * 30, 2 * 30, (30*3)+30, State.HORIZONTAL));
 
-		for (int  i= 4; i != 17; i++) {
+		for (int  i= 4; i != 15; i++) {
 			level6.add(new Wall(i * 30, (i * 30)/2, 32, State.HORIZONTAL));
 		}
 		
 
 		for (int x = 0; x != 19; x++) {
-			level6.add(new Floor(x * 30, 16 * 30));
+			level6.add(new Floor((x * 30)+9, 16 * 30));
 		}
 		for (int y = 7; y!= 16; y++) {
-			level6.add(new Ladder((18 * 30)-30, (y*30)-3));
+			level6.add(new Ladder((18 * 30)-21, (y*30)-3));
 		}
-		level6.add(new Wall ((1*30)+ 5,2*30,13*28,State.VERTICAL));
+		for (int x=2; x!= 17;x++){
+			if(x==1|| x==2 || x==3 || x==5 || x==7 || x==9 || x==11 || x==13 || x== 14 || x==15 || x==16)
+				level6.add(new Floor((x*30), 11*30));
+			else
+				continue;
+		}
+		level6.add(new Switch((2*30)+2, (10*30), new Wall(2*30, (14*30), 60, State.VERTICAL), level6, 90));
+		level6.add(new Wall ((2*30),2*30,12*30,State.VERTICAL));
 		level6.add(new Gate(0, (15* 30)-2));
 
 		if(!debug) level6.add(Bridge.getPlayer());
