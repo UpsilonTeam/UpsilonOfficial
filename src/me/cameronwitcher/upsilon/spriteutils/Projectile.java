@@ -46,6 +46,7 @@ public class Projectile extends Entity implements Moveable {
 		if(x < 0){
 			remove();
 		}
+		
 		if(!shooter.getType().equals(SpriteType.PLAYER)){
 			if(Utils.intersects(getPolygon(), Bridge.getPlayer().getPolygon())){
 				Bridge.getPlayer().damage(damage, this, DamageReason.PROJECTILE);
@@ -60,6 +61,10 @@ public class Projectile extends Entity implements Moveable {
 				} else {
 					continue;
 				}
+			}
+			if(sprite.getSubType().equals(SpriteSubType.INTERACTABLE)){
+				((Interactable) sprite).interact();
+				continue;
 			}
 			if(!sprite.getType().equals(SpriteType.LADDER))remove();
 		}
