@@ -4,11 +4,11 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Random;
 
 import me.cameronwitcher.upsilon.Bridge;
 import me.cameronwitcher.upsilon.boards.GameBoard;
 import me.cameronwitcher.upsilon.spriteutils.Entity;
+import me.cameronwitcher.upsilon.spriteutils.Interactable;
 import me.cameronwitcher.upsilon.spriteutils.Keyable;
 import me.cameronwitcher.upsilon.spriteutils.Money;
 import me.cameronwitcher.upsilon.spriteutils.Moveable;
@@ -190,6 +190,8 @@ public class Player extends Entity implements Moveable,Keyable {
 			}
 			
 			if (key == KeyEvent.VK_K) {
+				
+				
 				if(shifting){
 					lives = 1;
 					ready = false;
@@ -221,6 +223,7 @@ public class Player extends Entity implements Moveable,Keyable {
 		if(!((GameBoard)Bridge.getGame().getBoard()).paused){
 			
 			if (key == KeyEvent.VK_SHIFT) {
+			
 				shifting = false;
 			}
 			
@@ -364,6 +367,9 @@ public class Player extends Entity implements Moveable,Keyable {
 						damage(5, DamageReason.BAD_THINGS);
 						dy=0;
 						jump();
+					}
+					if(sprite.getSubType().equals(SpriteSubType.INTERACTABLE)){
+						((Interactable) sprite).interact();
 					}
 					if (sprite.getSubType().equals(SpriteSubType.PARTIAL_COLLIDEABLE) && !jumping) {
 						switch(getIntercectingDirection(sprite.getPolygon().getBounds())){

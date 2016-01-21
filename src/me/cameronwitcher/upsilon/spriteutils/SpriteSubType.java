@@ -11,6 +11,7 @@ public enum SpriteSubType {
 	NON_COLLIDEABLE("non_collideable"), 
 	BAD_THINGS("bad_things"), 
 	WEAPON("weapon"),
+	INTERACTABLE("interactable"),
 	TOOL("tool");
 	
 	String subtype;
