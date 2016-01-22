@@ -64,6 +64,7 @@ public class Projectile extends Entity implements Moveable {
 			}
 			if(sprite.getSubType().equals(SpriteSubType.INTERACTABLE)){
 				((Interactable) sprite).interact();
+				this.remove();
 				continue;
 			}
 			if(!sprite.getType().equals(SpriteType.LADDER))remove();
