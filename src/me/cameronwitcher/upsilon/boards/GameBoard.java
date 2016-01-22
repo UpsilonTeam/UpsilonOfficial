@@ -105,6 +105,7 @@ public class GameBoard extends Board implements ActionListener {
 	ArrayList<Sprite> level4 = new ArrayList<>();
 	ArrayList<Sprite> level5 = new ArrayList<>();
 	ArrayList<Sprite> level6 = new ArrayList<>();
+	ArrayList<Sprite> level7 = new ArrayList<>();
 	private HashMap<Integer, ArrayList<Sprite>> levels = new HashMap<>();
 
 	public GameBoard() {
@@ -176,6 +177,7 @@ public class GameBoard extends Board implements ActionListener {
 		level4.clear();
 		level5.clear();
 		level6.clear();
+		level7.clear();
 		levels.clear();
 		
 		
@@ -190,11 +192,8 @@ public class GameBoard extends Board implements ActionListener {
 		level3.clear();
 		level4.clear();
 		level5.clear();
-		level6.clear();
-		
-		
-		level1.add(new Switch(30, 30, new Spike(40, 40), level1, 90));
-		
+		level6.clear();	
+		level7.clear();
 		
 		for(int x=0;x!=30;x++){
 			level1.add(new Wall(x*32, 525-(x/2), 32, State.HORIZONTAL));
@@ -307,16 +306,16 @@ public class GameBoard extends Board implements ActionListener {
 
 		level6.add(new Wall(0 * 30, 2 * 30, (30*3)+30, State.HORIZONTAL));
 
-		for (int  i= 4; i != 15; i++) {
+		for (int  i= 4; i != 17; i++) {
 			level6.add(new Wall(i * 30, (i * 30)/2, 32, State.HORIZONTAL));
 		}
 		
 
 		for (int x = 0; x != 19; x++) {
-			level6.add(new Floor((x * 30)+9, 16 * 30));
+			level6.add(new Floor((x * 30), 16 * 30));
 		}
-		for (int y = 7; y!= 16; y++) {
-			level6.add(new Ladder((18 * 30)-21, (y*30)-3));
+		for (int y = 8; y!= 16; y++) {
+			level6.add(new Ladder((17 * 30), (y*30)-3));
 		}
 		for (int x=2; x!= 17;x++){
 			if(x==1|| x==2 || x==3 || x==5 || x==7 || x==9 || x==11 || x==13 || x== 14 || x==15 || x==16)
@@ -331,6 +330,10 @@ public class GameBoard extends Board implements ActionListener {
 		if(!debug) level6.add(Bridge.getPlayer());
 
 		levels.put(6, level6);
+		
+		if(!debug) level7.add(Bridge.getPlayer());
+		
+		levels.put(7, level7);
 
 	}
 
