@@ -23,8 +23,7 @@ public class Sprite {
     protected boolean vis;
     private Image image;
     public String imagePath = "";
-    @SuppressWarnings("unused")
-	private Sprite sprite;
+    private Sprite sprite;
     public Polygon bounds;
 
     public Sprite(int x, int y) {

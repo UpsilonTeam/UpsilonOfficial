@@ -107,6 +107,7 @@ public class GameBoard extends Board implements ActionListener {
 	ArrayList<Sprite> level5 = new ArrayList<>();
 	ArrayList<Sprite> level6 = new ArrayList<>();
 	ArrayList<Sprite> level7 = new ArrayList<>();
+	ArrayList<Sprite> level8 = new ArrayList<>();
 	private HashMap<Integer, ArrayList<Sprite>> levels = new HashMap<>();
 
 	public GameBoard() {
@@ -114,10 +115,10 @@ public class GameBoard extends Board implements ActionListener {
 
 	}
 	
-	public void startDebug(){
+	public void startDebug(int i){
 		ingame = true;
 		gameStatus = "ingame";
-		loadLevels(true);
+		loadLevels(true, i);
 	}
 
 	public void init() {
@@ -134,7 +135,7 @@ public class GameBoard extends Board implements ActionListener {
 		setFocusable(true);
 		setBackground(Color.RED);
 
-		loadLevels(false);
+		loadLevels(false, 0);
 
 		setPreferredSize(new Dimension(B_WIDTH, B_HEIGHT));
 
@@ -179,6 +180,7 @@ public class GameBoard extends Board implements ActionListener {
 		level5.clear();
 		level6.clear();
 		level7.clear();
+		level8.clear();
 		levels.clear();
 		
 		
@@ -186,7 +188,7 @@ public class GameBoard extends Board implements ActionListener {
 	
 	
 
-	public void loadLevels(boolean debug) {
+	public void loadLevels(boolean debug, int i) {
 		levels.clear();
 		level1.clear();
 		level2.clear();
@@ -195,7 +197,52 @@ public class GameBoard extends Board implements ActionListener {
 		level5.clear();
 		level6.clear();	
 		level7.clear();
+		level8.clear();
 		
+		if(debug){
+			if(i==1) loadLevel1(true);
+			if(i==2) loadLevel2(true);
+			if(i==3) loadLevel3(true);
+			if(i==4) loadLevel4(true);
+			if(i==5) loadLevel5(true);
+			if(i==6) loadLevel6(true);
+			if(i==7) loadLevel7(true);
+			if(i==8) loadLevel8(true);
+			
+			return;
+			
+		}
+		
+		loadLevel1(false);
+		loadLevel2(false);
+		loadLevel3(false);
+		loadLevel4(false);
+		loadLevel5(false);
+		loadLevel6(false);
+		loadLevel7(false);
+		loadLevel8(false);
+
+		
+		
+
+		
+
+		
+
+		
+	
+		
+		
+		
+		
+		
+		if(!debug) level7.add(Bridge.getPlayer());
+		
+		levels.put(8, level8);
+
+	}
+
+	private void loadLevel1(boolean debug) {
 		for(int x=0;x!=30;x++){
 			level1.add(new Wall(x*32, 525-(x/2), 32, State.HORIZONTAL));
 		}
@@ -228,9 +275,10 @@ public class GameBoard extends Board implements ActionListener {
 		if(!debug) level1.add(Bridge.getPlayer());
 
 		levels.put(1, level1);
-
+	}
+	
+	private void loadLevel2(boolean debug) {
 		
-
 		for(int x=0;x!=20;x++){
 			level2.add(new Wall(x*40, 450-(x*15), 30, State.HORIZONTAL));
 		}
@@ -239,6 +287,9 @@ public class GameBoard extends Board implements ActionListener {
 		level2.add(new Gate(760,(5*30)-17));
 		
 		levels.put(2, level2);
+		
+	}
+	private void loadLevel3(boolean debug) {
 		
 		for(int x=0;x!=15;x++){
 			level3.add(new FallingFloor(x*35, 100+(x*25)));
@@ -250,7 +301,8 @@ public class GameBoard extends Board implements ActionListener {
 		if(!debug) level3.add(Bridge.getPlayer());
 
 		levels.put(3, level3);
-
+	}
+	private void loadLevel4(boolean debug) {
 		for(int x=0;x!=32;x++){
 			if(x>=8 && x<=17)
 				level4.add(new Floor((x*30)-2, (13*30)-2));
@@ -288,7 +340,9 @@ public class GameBoard extends Board implements ActionListener {
 		if(!debug) level4.add(Bridge.getPlayer());
 
 		levels.put(4, level4);
-
+		
+	}
+	private void loadLevel5(boolean debug) {
 		for(int x=0;x!=18;x++){
 			level5.add(new FallingWall(x*40, 450-(x*5), 30, State.HORIZONTAL));
 		}
@@ -304,7 +358,10 @@ public class GameBoard extends Board implements ActionListener {
 		if(!debug) level5.add(Bridge.getPlayer());
 
 		levels.put(5, level5);
-
+		
+	}
+	private void loadLevel6(boolean debug) {
+		
 		level6.add(new Wall(0 * 30, 2 * 30, (30*3)+30, State.HORIZONTAL));
 
 		for (int  i= 4; i != 17; i++) {
@@ -331,7 +388,10 @@ public class GameBoard extends Board implements ActionListener {
 		if(!debug) level6.add(Bridge.getPlayer());
 
 		levels.put(6, level6);
-	
+		
+	}
+	private void loadLevel7(boolean debug) {
+		
 		for (int x=0;x!=13;x++){
 			level7.add(new Floor(x*30, (14*30)-15));
 			
@@ -366,16 +426,42 @@ public class GameBoard extends Board implements ActionListener {
 			}
 		level7.add(new Switch((31*30)+15, 7*32, new Wall(5*30,(7*30)-8,65,State.VERTICAL), level7,270));
 		level7.add(new Gate((2*30)+5,(8*30)-4));
+
 		if(!debug) level7.add(Bridge.getPlayer());
 		
 		levels.put(7, level7);
-
+		
+		
 	}
+	
+	private void loadLevel8(boolean debug){
+		
+		level8.add(new Wall(0, 270, 460, State.HORIZONTAL));
+		level8.add(new Switch(945, 230, new Wall(460,270,50,State.HORIZONTAL), level8, -90));
+		level8.add(new Wall(510,270,450,State.HORIZONTAL));
+		level8.add(new Wall(400,350,560,State.HORIZONTAL));
+		level8.add(new Gate(920, 318));
+		level8.add(new Wall(510,0,220,State.VERTICAL));
+		level8.add(new Wall(510,250,20,State.VERTICAL));
+		
+		level8.add(new Bow(450, 220));
+		
+		if(!debug) level8.add(Bridge.getPlayer());
+		
+		levels.put(8, level8);
+		
+	}
+	
 
 	public ArrayList<Sprite> getLevel(int level) {
 		
 
-		return levels.get(level);
+		try{
+			return levels.get(level);
+		} catch(NullPointerException ex){
+			return level1;
+		}
+		
 	}
 
 	@Override
@@ -942,6 +1028,8 @@ public class GameBoard extends Board implements ActionListener {
 		removedSprites.add(sprite);
 	}
 
+
+
 	private class TAdapter extends KeyAdapter {
 
 		@Override
@@ -1125,6 +1213,9 @@ public class GameBoard extends Board implements ActionListener {
 	public void addSprite(Sprite sprite2) {
 		sprite_temp.add(sprite2);
 	}
+	
+
+	
 	
 	
 
