@@ -96,6 +96,7 @@ public class GameBoard extends Board implements ActionListener {
 
 	public List<Moveable> moveables_temp = new ArrayList<>();
 	public List<Sprite> removedSprites = new ArrayList<>();
+	public List<Sprite> sprite_temp = new ArrayList<>();
 	public List<String> strings_temp = new ArrayList<>();
 	public List<String> strings_temp_player = new ArrayList<>();
 	public List<Sprite> tools = new ArrayList<>();
@@ -798,6 +799,14 @@ public class GameBoard extends Board implements ActionListener {
 				}
 			}
 			removedSprites.clear();
+			
+			for(Sprite sprite : sprite_temp){
+				if(sprite instanceof Moveable){
+					moveables.add(((Moveable) sprite));
+				} else 
+					sprites.add(sprite);
+			}
+			sprite_temp.clear();
 
 		}
 	}
@@ -1077,6 +1086,10 @@ public class GameBoard extends Board implements ActionListener {
 					clickable.mouseReleased(e);
 		}
 
+	}
+
+	public void addSprite(Sprite sprite2) {
+		sprite_temp.add(sprite2);
 	}
 	
 	

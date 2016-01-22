@@ -35,7 +35,7 @@ public enum SpriteType {
 		if(this == BOW) return SpriteSubType.WEAPON;
 		if(this == NINJA_CLOAK) return SpriteSubType.TOOL;
 		if(this == SWITCH) return SpriteSubType.INTERACTABLE;
-		if(this == TRIGGERED_SWITCH) return SpriteSubType.COLLIDEABLE;
+		if(this == TRIGGERED_SWITCH) return SpriteSubType.INTERACTABLE;
 		if(this == FALLING_WALL) return SpriteSubType.COLLIDEABLE;
 		else return null;
 	}
