@@ -294,6 +294,8 @@ public class Player extends Entity implements Moveable,Keyable {
 		((GameBoard)Bridge.getGame().getBoard()).tools.clear();
 		((GameBoard)Bridge.getGame().getBoard()).moveables_temp.clear();
 		((GameBoard)Bridge.getGame().getBoard()).removedSprites.clear();
+		inventory.clear();
+		
 		
 		
 
