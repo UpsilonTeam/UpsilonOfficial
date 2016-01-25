@@ -38,7 +38,6 @@ public class CreditsBoard extends Board implements ActionListener {
 
 	public int M_WIDTH = 960;
 	public int M_HEIGHT = 640;
-	public int LEVEL_DEBUG = 6;
 	private int mx = 0;
 	private int my = 0;
 	Timer timer;
@@ -110,112 +109,6 @@ public class CreditsBoard extends Board implements ActionListener {
 
 	private class TAdapter extends KeyAdapter {
 		
-		boolean g = false;
-		boolean r = false;
-		boolean n = false;
-
-		@Override
-		public void keyReleased(KeyEvent event) {
-			
-			if(event.getKeyCode() == KeyEvent.VK_G){
-				g = false;
-			}
-			
-			if(event.getKeyCode() == KeyEvent.VK_R){
-				r = false;
-			}
-			
-			
-			if(event.getKeyCode() == KeyEvent.VK_N){
-				n = false;
-			}
-			
-		}
-
-		@Override
-		public void keyPressed(KeyEvent event) {
-
-			// Cameron
-			// Quit.
-			if (event.getKeyCode() == KeyEvent.VK_ESCAPE) {
-				Bridge.quit();
-			}
-
-			// Cameron
-			if(event.getKeyCode() == KeyEvent.VK_1){
-				Utils.setPlayerLevel(1);
-				LEVEL_DEBUG = 1;
-			}
-			
-			if(event.getKeyCode() == KeyEvent.VK_2){
-				Utils.setPlayerLevel(2);
-				LEVEL_DEBUG = 2;
-			}
-			
-			if(event.getKeyCode() == KeyEvent.VK_3){
-				Utils.setPlayerLevel(3);
-				LEVEL_DEBUG = 3;
-			}
-			
-			if(event.getKeyCode() == KeyEvent.VK_4){
-				Utils.setPlayerLevel(4);
-				LEVEL_DEBUG = 4;
-			}
-			
-			if(event.getKeyCode() == KeyEvent.VK_5){
-				Utils.setPlayerLevel(5);
-				LEVEL_DEBUG = 5;
-			}
-			
-			if(event.getKeyCode() == KeyEvent.VK_6){
-				Utils.setPlayerLevel(6);
-				LEVEL_DEBUG = 6;
-			}
-			
-			if(event.getKeyCode() == KeyEvent.VK_7){
-				Utils.setPlayerLevel(7);
-				LEVEL_DEBUG = 7;
-			}
-			
-			if(event.getKeyCode() == KeyEvent.VK_8){
-				Utils.setPlayerLevel(8);
-				LEVEL_DEBUG = 8;
-			}
-			
-			if(event.getKeyCode() == KeyEvent.VK_D){
-				Bridge.openLevelDebug(LEVEL_DEBUG);
-			}
-			
-			//Cameron
-			//Hidden feature.
-			
-			if(event.getKeyCode() == KeyEvent.VK_G){
-				g = true;
-//				Utils.broadcastMessage("G true");
-			}
-			
-			if(event.getKeyCode() == KeyEvent.VK_R){
-				r = true;
-//				Utils.broadcastMessage("R true");
-			}
-			
-			
-			
-			if(event.getKeyCode() == KeyEvent.VK_N){
-				n = true;
-//				Utils.broadcastMessage("N true");
-			}
-			
-			//Check if user is pressing "g", "r", and "n"
-			
-			if(g&&r&&n){
-				if(Bridge.getPlayer().getPlayerModel().equalsIgnoreCase("yellow")) Bridge.getPlayer().setPlayerModel("green");
-				else Bridge.getPlayer().setPlayerModel("yellow");
-				g=false;
-				r=false;
-				n=false;
-			}
-		}
 	}
 
 	private class MMListener extends MouseMotionAdapter {

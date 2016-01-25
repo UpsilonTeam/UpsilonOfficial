@@ -39,7 +39,7 @@ public class LevelDebugBoard extends Board implements ActionListener {
 		this.i = i;
 		init();
 
-		testing.startDebug();
+		testing.startDebug(i);
 	}
 	
 	public void init(){
@@ -79,6 +79,8 @@ public class LevelDebugBoard extends Board implements ActionListener {
 	
 	public void drawMenu(Graphics g){
 		
+		testing.loadLevels(true, i);
+		
 		g.drawRect(0, 0, Bridge.getGameBoardSize(0), Bridge.getGameBoardSize(1));
 		
 		
@@ -91,12 +93,12 @@ public class LevelDebugBoard extends Board implements ActionListener {
 			g.drawRect(sprite.getX(), sprite.getY(), sprite.getWidth(), sprite.getHeight());
 		}
 		
-		testing.loadLevels(true);
+		
 		
 
 		g.drawImage(Texture.loadTexture("pointer.png"), mx, my, this);
 		
-		
+		g.setColor(Color.WHITE);
 		g.drawString("X: " + mx, 0, 10);
 		g.drawString("Y: " + my, 0, 20);
 		
