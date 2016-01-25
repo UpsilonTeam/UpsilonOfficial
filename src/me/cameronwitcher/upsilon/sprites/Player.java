@@ -4,6 +4,7 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Random;
 
 import me.cameronwitcher.upsilon.Bridge;
 import me.cameronwitcher.upsilon.boards.GameBoard;
@@ -39,6 +40,7 @@ public class Player extends Entity implements Moveable,Keyable {
 	public boolean up = false;
 	private int score = 0;
 	private int sscore = 0;
+	private Interactable interact = null;
 	public int lives = 3;	
 	private int i;
 	public int speedboost = 1;
@@ -223,7 +225,9 @@ public class Player extends Entity implements Moveable,Keyable {
 		if(!((GameBoard)Bridge.getGame().getBoard()).paused){
 			
 			if (key == KeyEvent.VK_SHIFT) {
-			
+				if(interact != null){
+					interact.interact();
+				}
 				shifting = false;
 			}
 			
@@ -371,8 +375,9 @@ public class Player extends Entity implements Moveable,Keyable {
 						jump();
 					}
 					if(sprite.getSubType().equals(SpriteSubType.INTERACTABLE)){
-						((Interactable) sprite).interact();
-					}
+						interact = (Interactable)sprite;
+						Utils.addPlayerMessage(new Random().nextInt(), "Press \"SHIFT\" to interact", 30, 20, 210, "#000000", 15);
+					} else interact = null;
 					if (sprite.getSubType().equals(SpriteSubType.PARTIAL_COLLIDEABLE) && !jumping) {
 						switch(getIntercectingDirection(sprite.getPolygon().getBounds())){
 						case DOWN:
