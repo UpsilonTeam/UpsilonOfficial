@@ -1,3 +1,4 @@
+package me.cameronwitcher.upsilon.utils;
 public enum InteractionMethod {
 	DISAPPEAR("disappear"),
 	APPEAR("appear");
@@ -10,7 +11,7 @@ public enum InteractionMethod {
 	public void interact(){
 		switch(this){
 		case DISAPPEAR:
-			remove();
+//			remove();
 			break;
 		default:
 			break;

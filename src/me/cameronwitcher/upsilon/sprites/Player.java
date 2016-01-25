@@ -197,7 +197,7 @@ public class Player extends Entity implements Moveable,Keyable {
 				if(shifting){
 					lives = 1;
 					ready = false;
-					kill(DamageReason.PROJECTILE);
+					kill(DamageReason.RANDOM);
 				}
 			}
 		}
