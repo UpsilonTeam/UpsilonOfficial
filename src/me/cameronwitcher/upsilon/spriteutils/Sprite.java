@@ -15,7 +15,6 @@ public class Sprite {
 
     public int x;
     public int y;
-    public int id;
     public int bw=0;
     public int bh=0;
     protected int width;
@@ -27,9 +26,6 @@ public class Sprite {
     public Polygon bounds;
 
     public Sprite(int x, int y) {
-    	
-    	this.id = Utils.getNextID();
-
     	this.sprite = this;
         this.x = x;
         this.y = y;
@@ -133,9 +129,6 @@ public class Sprite {
     public String getLocation(){
     	return x+":"+y;
     }
-	public int getID() {
-		return id;
-	}
 
 	public SpriteSubType getSubType() {
 		return getType().getSubType();

@@ -11,6 +11,9 @@ public class Interactable extends Sprite {
 		// TODO Auto-generated method stub
 		
 	}
+	public void interact(Tool tool) {
+		
+	}
 
 
 }

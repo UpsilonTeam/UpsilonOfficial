@@ -226,7 +226,8 @@ public class Player extends Entity implements Moveable,Keyable {
 			
 			if (key == KeyEvent.VK_SHIFT) {
 				if(interact != null){
-					interact.interact();
+					if(tool != null)interact.interact(tool);
+					else interact.interact();
 				}
 				shifting = false;
 			}
@@ -421,7 +422,7 @@ public class Player extends Entity implements Moveable,Keyable {
 						y = 0;
 					}
 					
-					if(sprite.getSubType().equals(SpriteSubType.COLLIDEABLE)){
+					if(sprite.getSubType().equals(SpriteSubType.COLLIDEABLE) || sprite.getSubType().equals(SpriteSubType.INTERACTABLE)){
 						switch(getIntercectingDirection(sprite.getPolygon().getBounds())){
 						case LEFT:
 							if(!onground) onground = false;

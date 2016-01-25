@@ -7,6 +7,7 @@ import me.cameronwitcher.upsilon.boards.GameBoard;
 import me.cameronwitcher.upsilon.spriteutils.Interactable;
 import me.cameronwitcher.upsilon.spriteutils.Sprite;
 import me.cameronwitcher.upsilon.spriteutils.SpriteType;
+import me.cameronwitcher.upsilon.spriteutils.Tool;
 import me.cameronwitcher.upsilon.utils.Images;
 import res.Texture;
 
@@ -50,6 +51,11 @@ public class Switch extends Interactable {
         getImageDimensions();
     }
     
+    
+    @Override
+    public void interact(Tool tool){
+    	interact();
+    }
     @Override
     public void interact(){
     	if(triggered){

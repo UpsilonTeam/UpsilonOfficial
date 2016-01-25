@@ -16,6 +16,9 @@ public enum SpriteType {
 	FALLING_WALL("falling_floor"),
 	SWITCH("switch"),
 	TRIGGERED_SWITCH("triggered_switch"),
+	KEY("key"),
+	DOOR("door"),
+	OPEN_DOOR("open_door"),
 	SPIKE("spike");
 	
 	SpriteType(String type) {
@@ -34,6 +37,9 @@ public enum SpriteType {
 		if(this == ARROW) return SpriteSubType.PROJECTILE;
 		if(this == BOW) return SpriteSubType.WEAPON;
 		if(this == NINJA_CLOAK) return SpriteSubType.TOOL;
+		if(this == KEY) return SpriteSubType.TOOL;
+		if(this == DOOR) return SpriteSubType.INTERACTABLE;
+		if(this == OPEN_DOOR) return SpriteSubType.PARTIAL_COLLIDEABLE;
 		if(this == SWITCH) return SpriteSubType.INTERACTABLE;
 		if(this == TRIGGERED_SWITCH) return SpriteSubType.INTERACTABLE;
 		if(this == FALLING_WALL) return SpriteSubType.COLLIDEABLE;

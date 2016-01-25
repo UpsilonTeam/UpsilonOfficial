@@ -29,6 +29,7 @@ import javax.swing.Timer;
 
 import me.cameronwitcher.upsilon.Bridge;
 import me.cameronwitcher.upsilon.sprites.Arrow;
+import me.cameronwitcher.upsilon.sprites.Door;
 import me.cameronwitcher.upsilon.sprites.FallingFloor;
 import me.cameronwitcher.upsilon.sprites.FallingWall;
 import me.cameronwitcher.upsilon.sprites.Floor;
@@ -40,7 +41,7 @@ import me.cameronwitcher.upsilon.sprites.Player;
 import me.cameronwitcher.upsilon.sprites.Switch;
 import me.cameronwitcher.upsilon.sprites.Wall;
 import me.cameronwitcher.upsilon.sprites.tools.Bow;
-import me.cameronwitcher.upsilon.sprites.tools.NinjaCloak;
+import me.cameronwitcher.upsilon.sprites.tools.Key;
 import me.cameronwitcher.upsilon.spriteutils.Clickable;
 import me.cameronwitcher.upsilon.spriteutils.Entity;
 import me.cameronwitcher.upsilon.spriteutils.Keyable;
@@ -270,9 +271,10 @@ public class GameBoard extends Board implements ActionListener {
 			level1.add(new Floor(x*30,11*15));
 		}
 		
-		level1.add(new Wall(18 * 15, (7* 15)+10, 50, State.VERTICAL));
+		level1.add(new Door(18 * 15, (7* 15)+10, 1));
 		level1.add(new Bow(9 * 30, 20 * 15));
-		level1.add(new NinjaCloak(15 * 30, 20 * 15));
+		level1.add(new Key(15 * 30, 20 * 15, 1));
+		level1.add(new Gate(19*30, (9*15)-1));
 		if(!debug) level1.add(Bridge.getPlayer());
 
 		levels.put(1, level1);
@@ -678,6 +680,9 @@ public class GameBoard extends Board implements ActionListener {
 			if (!(sprite instanceof Player) && !(sprite instanceof Knobber)){
 				if(sprite instanceof Ladder){
 					g.drawImage(sprite.getImage(), sprite.getX(), sprite.getY(), 30+extra, 30+extra, this);
+					continue;
+				}
+				if(sprite instanceof Tool){
 					continue;
 				}
 				if(sprite instanceof Arrow) continue;

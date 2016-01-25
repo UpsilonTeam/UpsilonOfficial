@@ -27,6 +27,7 @@ public class Arrow extends Projectile  {
 
     private void init() {
     	Utils.broadcastMessage(direction.toString());
+    	Utils.broadcastMessage(direction.getAngle() + "");
         loadImage(Images.rotate(Texture.loadTexture("arrow.png"), direction.getAngle()));
         setImageDimensions(11, 4, 0, 0);
     }	

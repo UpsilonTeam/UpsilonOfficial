@@ -14,10 +14,10 @@ public enum Direction {
 	}
 	
 	public double getAngle(){
-		if(direction.equals(Direction.LEFT)) return 180;
-		if(direction.equals(Direction.RIGHT)) return 0;
-		if(direction.equals(Direction.UP)) return 270;
-		if(direction.equals(Direction.DOWN)) return 90;
+		if(this.equals(Direction.LEFT)) return 180;
+		if(this.equals(Direction.RIGHT)) return 0;
+		if(this.equals(Direction.UP)) return 270;
+		if(this.equals(Direction.DOWN)) return 90;
 		return 0;
 	}
 	
