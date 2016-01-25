@@ -32,13 +32,7 @@ public class Projectile extends Entity implements Moveable {
 	public Entity getShooter(){
 		return shooter;
 	}
-	public double getAngle(){
-		if(direction.equals(Direction.LEFT)) return 180;
-		if(direction.equals(Direction.RIGHT)) return 0;
-		if(direction.equals(Direction.UP)) return 270;
-		if(direction.equals(Direction.DOWN)) return 90;
-		return 0;
-	}
+	
 
 	@Override
 	public void move() {
