@@ -368,6 +368,8 @@ public class GameBoard extends Board implements ActionListener {
 		level7.add(new Gate((2*30)+5,(8*30)-4));
 		if(!debug) level7.add(Bridge.getPlayer());
 		
+		
+		
 		levels.put(7, level7);
 
 	}

@@ -13,7 +13,7 @@ import res.Texture;
 public class Switch extends Interactable {
 	
 	Sprite sprite;
-	ArrayList<Sprite> sprites;
+	Sprite[] sprites;
 	double rotation;
 	SpriteType type;
 	boolean triggered = false;
@@ -28,7 +28,7 @@ public class Switch extends Interactable {
         initFloor();
     }
 	
-	public Switch(int x, int y, ArrayList<Sprite> sprites, ArrayList<Sprite> level, double rotation) {
+	public Switch(int x, int y, Sprite[] sprites, ArrayList<Sprite> level, double rotation) {
         super(x, y);
         type = SpriteType.SWITCH;
         this.sprites = sprites;
