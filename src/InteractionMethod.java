@@ -7,6 +7,16 @@ public enum InteractionMethod {
 		this.interaction = interaction;	
 	}
 	
+	public void interact(){
+		switch(this){
+		case DISAPPEAR:
+			remove();
+			break;
+		default:
+			break;
+		}
+	}
+	
 	
 }
 
