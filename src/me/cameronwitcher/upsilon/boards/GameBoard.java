@@ -28,6 +28,7 @@ import java.util.Random;
 import javax.swing.Timer;
 
 import me.cameronwitcher.upsilon.Bridge;
+import me.cameronwitcher.upsilon.sprites.Arrow;
 import me.cameronwitcher.upsilon.sprites.FallingFloor;
 import me.cameronwitcher.upsilon.sprites.FallingWall;
 import me.cameronwitcher.upsilon.sprites.Floor;
@@ -36,7 +37,6 @@ import me.cameronwitcher.upsilon.sprites.Gold;
 import me.cameronwitcher.upsilon.sprites.Knobber;
 import me.cameronwitcher.upsilon.sprites.Ladder;
 import me.cameronwitcher.upsilon.sprites.Player;
-import me.cameronwitcher.upsilon.sprites.Spike;
 import me.cameronwitcher.upsilon.sprites.Switch;
 import me.cameronwitcher.upsilon.sprites.Wall;
 import me.cameronwitcher.upsilon.sprites.tools.Bow;
@@ -243,6 +243,8 @@ public class GameBoard extends Board implements ActionListener {
 	}
 
 	private void loadLevel1(boolean debug) {
+		
+		
 		for(int x=0;x!=30;x++){
 			level1.add(new Wall(x*32, 525-(x/2), 32, State.HORIZONTAL));
 		}
@@ -261,7 +263,7 @@ public class GameBoard extends Board implements ActionListener {
 		}
 		
 		for(int y=5;y!=12;y++){
-			level1.add(new Ladder(3*21, (y*30)-10));
+			level1.add(new Ladder(3*30, (y*30)-10));
 		}
 	
 		for(int x=3;x!=20;x++){
@@ -269,7 +271,6 @@ public class GameBoard extends Board implements ActionListener {
 		}
 		
 		level1.add(new Wall(18 * 15, (7* 15)+10, 50, State.VERTICAL));
-		level1.add(new Gate(19 * 30, (9 * 15)-2));
 		level1.add(new Bow(9 * 30, 20 * 15));
 		level1.add(new NinjaCloak(15 * 30, 20 * 15));
 		if(!debug) level1.add(Bridge.getPlayer());
@@ -675,6 +676,11 @@ public class GameBoard extends Board implements ActionListener {
 			}
 
 			if (!(sprite instanceof Player) && !(sprite instanceof Knobber)){
+				if(sprite instanceof Ladder){
+					g.drawImage(sprite.getImage(), sprite.getX(), sprite.getY(), 30+extra, 30+extra, this);
+					continue;
+				}
+				if(sprite instanceof Arrow) continue;
 				g.drawImage(sprite.getImage(), sprite.getX(), sprite.getY(), sprite.getWidth()+extra, sprite.getHeight()+extra, this);
 			}
 			if (debug && hitboxes)
@@ -695,7 +701,7 @@ public class GameBoard extends Board implements ActionListener {
 				break;
 			case ARROW:
 				g.drawImage(sprite.getImage(), (sprite.getX()), sprite.getY(), 16+extra, 4+extra, this);
-				break;
+				continue;
 			default:
 				g.drawImage(sprite.getImage(), sprite.getX(), sprite.getY(), sprite.getWidth()+extra, sprite.getHeight()+extra, this);
 				break;

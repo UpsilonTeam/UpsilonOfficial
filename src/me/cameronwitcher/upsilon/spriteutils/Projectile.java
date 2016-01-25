@@ -32,6 +32,7 @@ public class Projectile extends Entity implements Moveable {
 	public Entity getShooter(){
 		return shooter;
 	}
+	
 
 	@Override
 	public void move() {

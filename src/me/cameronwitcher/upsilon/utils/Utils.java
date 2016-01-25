@@ -24,18 +24,15 @@ public class Utils {
 
 	private static List<Integer> ids = new ArrayList<>();
 	private static File config;
-	private static File inventoryFile;
 	private static int player_level;
 	public static int player_score;
 	private static String root;
 	private static File rootFile;
 	public static HashMap<Integer, Background> backgrounds = new HashMap<>();
-	private static ArrayList<String> player_inv = new ArrayList<>();
 
 	public static void init() {
 		root = "C://Upsilon/";
 		config = new File(root + "/config.txt");
-		inventoryFile = new File(root + "/inventory.txt");
 		
 		
 		
@@ -72,40 +69,7 @@ public class Utils {
 			e1.printStackTrace();
 		}
 
-		int invl = (int) inventoryFile.length();
-		byte[] invb = new byte[invl];
-		FileInputStream invin;
-		try {
-			invin = new FileInputStream(inventoryFile);
-			try {
-				invin.read(invb);
-			} catch (IOException e) {
-
-				e.printStackTrace();
-			} finally {
-				try {
-					invin.close();
-				} catch (IOException e) {
-
-					e.printStackTrace();
-				}
-			}
-		} catch (FileNotFoundException e1) {
-
-			e1.printStackTrace();
-		}
-
 		
-
-		String invs = new String(invb);
-		String[] invd = invs.split("-");
-		for (String info : invd) {
-			if (info.equalsIgnoreCase("empty"))
-				break;
-			if (info.contains("empty"))
-				info.replaceAll("empty", "");
-			player_inv.add(info);
-		}
 
 		String contents = new String(bytes);
 		String[] data = contents.split("-");
@@ -149,9 +113,6 @@ public class Utils {
 		config.delete();
 		if (!config.getParentFile().mkdirs()) {
 		}
-		inventoryFile.delete();
-		if (!inventoryFile.getParentFile().mkdirs()) {
-		}
 		try {
 			player_level = player.level;
 			player_score = player.getScore();
@@ -174,23 +135,7 @@ public class Utils {
 			}
 		}
 
-		try {
-			out = new BufferedWriter(new FileWriter(inventoryFile, true));
-			try {
-				for (Tool tool : player.inventory) {
-					out.append(tool.getType() + "-");
-				}
-			} catch (NullPointerException ex) {
-			}
-		} catch (IOException ex) {
-		} finally {
-			try {
-				out.close();
-			} catch (IOException e) {
-
-				e.printStackTrace();
-			}
-		}
+		
 		
 
 	}
@@ -198,12 +143,6 @@ public class Utils {
 	public static void initPlayer(Player player) {
 		player.level = player_level;
 		player.setScore(player_score);
-		for (String i : player_inv) {
-			try {
-				player.inventory.add(ToolType.getNewTool(ToolType.valueOf(i)));
-			} catch (IllegalArgumentException ex) {
-			}
-		}
 
 	}
 
@@ -213,13 +152,12 @@ public class Utils {
 		if (!rootFile.exists())
 			rootFile.mkdirs();
 		config = new File(root + "/config.txt");
-		inventoryFile = new File(root + "/inventory.txt");
+		
 
 		if (!config.getParentFile().mkdirs()) {
 		}
 		
-		if (!inventoryFile.getParentFile().mkdirs()) {
-		}
+		
 
 		BufferedWriter out = null;
 
@@ -240,21 +178,7 @@ public class Utils {
 
 		
 
-		BufferedWriter invout = null;
 
-		try {
-			invout = new BufferedWriter(new FileWriter(inventoryFile, true));
-			invout.append("empty");
-		} catch (IOException ex) {
-			ex.printStackTrace();
-		} finally {
-			try {
-				invout.close();
-			} catch (IOException e) {
-
-				e.printStackTrace();
-			}
-		}
 
 	}
 
