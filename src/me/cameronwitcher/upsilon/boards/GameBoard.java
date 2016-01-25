@@ -312,7 +312,7 @@ public class GameBoard extends Board implements ActionListener {
 		}
 		
 		for(int y=13;y!=18;y++){
-			level4.add(new Ladder(7*30,(y*30)-9));
+			level4.add(new Ladder((7*30)+4,(y*30)-9));
 		}
 		for(int y=13;y!=18;y++){
 			level4.add(new Ladder((18*30)-2,(y*30)-9));
@@ -438,15 +438,22 @@ public class GameBoard extends Board implements ActionListener {
 	
 	private void loadLevel8(boolean debug){
 		
-		level8.add(new Wall(0, 270, 460, State.HORIZONTAL));
-		level8.add(new Switch(945, 230, new Wall(460,270,50,State.HORIZONTAL), level8, -90));
-		level8.add(new Wall(510,270,450,State.HORIZONTAL));
-		level8.add(new Wall(400,350,560,State.HORIZONTAL));
-		level8.add(new Gate(920, 318));
-		level8.add(new Wall(510,0,220,State.VERTICAL));
-		level8.add(new Wall(510,250,20,State.VERTICAL));
+		for(int x=0;x!=14;x++){
+			level8.add(new Floor((x*30),(9*30)));
+		}
+		for(int y=0;y!=7;y++){
+			level8.add(new Wall(16*30,y*30,30,State.VERTICAL));
+		}
+		for(int y=0;y!=10;y++){
+			level8.add(new Wall(32*30,y*30,30,State.VERTICAL));	
+		}
 		
-		level8.add(new Bow(450, 220));
+		level8.add(new Switch((31*30),7*32,(new Sprite[] {new Wall(10*30,10*30,40,State.VERTICAL),new Switch(15*30,12*30,new Wall(15*30,10*30,30,State.HORIZONTAL),level8,270)}),level8,270));	
+		
+		
+		
+		
+		
 		
 		if(!debug) level8.add(Bridge.getPlayer());
 		
