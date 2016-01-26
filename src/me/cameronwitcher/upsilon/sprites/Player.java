@@ -46,6 +46,12 @@ public class Player extends Entity implements Moveable,Keyable {
 	public int speedboost = 1;
 	public int level = 1;
 	int f = 970;
+	
+	private int rw = 13;
+	private int rh = 40;
+	private int ww = 30;
+	private int wh = 40;
+	
 	private String model = "yellow";
 	public List<Tool> inventory = new ArrayList<>();
 	private HashMap<Integer, Integer> jumpInfo = new HashMap<>();
@@ -84,7 +90,7 @@ public class Player extends Entity implements Moveable,Keyable {
 
 	private void initPlayer() {
 		Utils.checkPlayerInfo(this);
-		loadImage("playermodels/" + model + "/stand_right.png");
+		loadImage("playermodels/" + model + "/stand.png");
 		setImageDimensions(13, 41, -2, -2);
 		setDirection(Direction.RIGHT);
 		
@@ -112,7 +118,7 @@ public class Player extends Entity implements Moveable,Keyable {
 				walking= true;
 				
 
-				loadImage("playermodels/" + model + "/walk_left.gif");
+				loadImage("playermodels/" + model + "/walk.gif");
 				setImageDimensions(29, 41, -2, -2);
 				
 				
@@ -128,7 +134,7 @@ public class Player extends Entity implements Moveable,Keyable {
 				
 				
 
-				loadImage("playermodels/" + model + "/walk_right.gif");
+				loadImage("playermodels/" + model + "/walk.gif");
 				setImageDimensions(29, 41, -2, -2);
 				
 				
@@ -242,7 +248,7 @@ public class Player extends Entity implements Moveable,Keyable {
 			if (key == KeyEvent.VK_A || key == KeyEvent.VK_LEFT) {
 				dx = 0;
 				walking= false;
-				loadImage("playermodels/" + model + "/stand_left.png");
+				loadImage("playermodels/" + model + "/stand.png");
 				
 				if(invisible)
 					toggleInvisiblility();
@@ -254,7 +260,7 @@ public class Player extends Entity implements Moveable,Keyable {
 				dx = 0;
 				walking= false;
 				x=x+(29-13);
-				loadImage("playermodels/" + model + "/stand_right.png");
+				loadImage("playermodels/" + model + "/stand.png");
 				if(invisible)
 					toggleInvisiblility();
 				setImageDimensions(13, 41, -2, -2);
@@ -572,6 +578,19 @@ public class Player extends Entity implements Moveable,Keyable {
 	@Override
 	public void enable() {
 		disabled = false;
+	}
+
+	public int getRestingWidth() {
+		return rw;
+	}
+	public int getRestingHeight() {
+		return rh;
+	}
+	public int getWalkingWidth() {
+		return ww;
+	}
+	public int getWalkingHeight() {
+		return wh;
 	}
 
 

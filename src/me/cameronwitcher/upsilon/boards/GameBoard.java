@@ -46,6 +46,7 @@ import me.cameronwitcher.upsilon.spriteutils.Clickable;
 import me.cameronwitcher.upsilon.spriteutils.Entity;
 import me.cameronwitcher.upsilon.spriteutils.Keyable;
 import me.cameronwitcher.upsilon.spriteutils.Moveable;
+import me.cameronwitcher.upsilon.spriteutils.Rotation;
 import me.cameronwitcher.upsilon.spriteutils.Sprite;
 import me.cameronwitcher.upsilon.spriteutils.SpriteType;
 import me.cameronwitcher.upsilon.spriteutils.State;
@@ -55,6 +56,7 @@ import me.cameronwitcher.upsilon.utils.Board;
 import me.cameronwitcher.upsilon.utils.BoardType;
 import me.cameronwitcher.upsilon.utils.Button;
 import me.cameronwitcher.upsilon.utils.ButtonMethod;
+import me.cameronwitcher.upsilon.utils.Direction;
 import me.cameronwitcher.upsilon.utils.InteractionMethod;
 import me.cameronwitcher.upsilon.utils.Utils;
 import res.Texture;
@@ -385,7 +387,7 @@ public class GameBoard extends Board implements ActionListener {
 			else
 				continue;
 		}
-		level6.add(new Switch((2*30)+2, (10*30), new Wall(2*30, (14*30), 60, State.VERTICAL), level6, 90, InteractionMethod.DISAPPEAR));
+		level6.add(new Switch((2*30)+2, (10*30), new Wall(2*30, (14*30), 60, State.VERTICAL), level6, Rotation.RIGHT, InteractionMethod.DISAPPEAR));
 		level6.add(new Wall ((2*30),2*30,12*30,State.VERTICAL));
 		level6.add(new Gate(0, (15* 30)-2));
 
@@ -428,7 +430,8 @@ public class GameBoard extends Board implements ActionListener {
 			level7.add(new Wall((32*30)-2,(y*30)-2,30, State.VERTICAL));
 		
 			}
-		level7.add(new Switch((31*30)+15, 7*32, new Wall(5*30,(7*30)-8,65,State.VERTICAL), level7,270, InteractionMethod.DISAPPEAR));
+		level7.add(new Bow(15*30,7*30));
+		level7.add(new Switch((31*30)+15, 7*32, new Wall(5*30,(7*30)-8,65,State.VERTICAL), level7,Rotation.UP, InteractionMethod.DISAPPEAR));
 		level7.add(new Gate((2*30)+5,(8*30)-4));
 
 		if(!debug) level7.add(Bridge.getPlayer());
@@ -452,7 +455,7 @@ public class GameBoard extends Board implements ActionListener {
 			level8.add(new Wall(32*30,y*30,30,State.VERTICAL));	
 		}
 		
-		level8.add(new Switch((31*30),7*32,(new Sprite[] {new Wall(10*30,10*30,40,State.VERTICAL),new Switch(15*30,12*30,new Wall(15*30,10*30,30,State.HORIZONTAL),level8,270, InteractionMethod.DISAPPEAR)}),level8,270, InteractionMethod.DISAPPEAR));	
+		level8.add(new Switch((31*30),7*32,(new Sprite[] {new Wall(10*30,10*30,40,State.VERTICAL),new Switch(15*30,12*30,new Wall(15*30,10*30,30,State.HORIZONTAL),level8,Rotation.RIGHT, InteractionMethod.DISAPPEAR)}),level8,Rotation.RIGHT, InteractionMethod.DISAPPEAR));	
 		
 		
 		
@@ -719,13 +722,22 @@ public class GameBoard extends Board implements ActionListener {
 		Player player = Bridge.getPlayer();
 
 		Bridge.getPlayer().drawHealthBar(g, player.x - (100 / 2), player.y - 20, 100, 5);
+		
+		
+		
 		if (!Bridge.getPlayer().walking) {
-			g.drawImage((Bridge.getPlayer()).getImage(), (Bridge.getPlayer().getX()), Bridge.getPlayer().getY(), 13, 41,
-					this);
+			if(player.getFacingDirection().equals(Direction.LEFT))
+				g.drawImage(player.getImage(), player.x + player.getRestingWidth(), player.y, -(player.getRestingWidth()), player.getRestingHeight(), this);
+			if(player.getFacingDirection().equals(Direction.RIGHT))
+				g.drawImage(player.getImage(), player.x, player.y, player.getRestingWidth(), player.getRestingHeight(), this);
 		} else {
-			g.drawImage((Bridge.getPlayer()).getImage(), (Bridge.getPlayer().getX()), Bridge.getPlayer().getY(), 29, 41,
-					this);
+			if(player.getFacingDirection().equals(Direction.LEFT))
+				g.drawImage(player.getImage(), player.x + player.getWalkingWidth(), player.y, -(player.getWalkingWidth()), player.getWalkingHeight(), this);
+			if(player.getFacingDirection().equals(Direction.RIGHT))
+				g.drawImage(player.getImage(), player.x, player.y, player.getWalkingWidth(), player.getWalkingHeight(), this);
 		}
+		
+		
 		if (Bridge.getPlayer().hasTool()) {
 			Tool tool = ((Player) Bridge.getPlayer()).getTool();
 			g.drawImage(tool.getImage(), ((B_WIDTH / 2 + B_WIDTH) / 2 + g.getFontMetrics().stringWidth("Tool:")), 25, this);

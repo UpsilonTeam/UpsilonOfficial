@@ -2,9 +2,8 @@ package me.cameronwitcher.upsilon.sprites;
 
 import java.util.ArrayList;
 
-import me.cameronwitcher.upsilon.Bridge;
-import me.cameronwitcher.upsilon.boards.GameBoard;
 import me.cameronwitcher.upsilon.spriteutils.Interactable;
+import me.cameronwitcher.upsilon.spriteutils.Rotation;
 import me.cameronwitcher.upsilon.spriteutils.Sprite;
 import me.cameronwitcher.upsilon.spriteutils.SpriteType;
 import me.cameronwitcher.upsilon.spriteutils.Tool;
@@ -16,13 +15,13 @@ public class Switch extends Interactable {
 	
 	Sprite sprite;
 	Sprite[] sprites;
-	double rotation;
+	Rotation rotation;
 	SpriteType type;
 	boolean triggered = false;
 	private boolean multiple = false;
 	private InteractionMethod method;
 
-	public Switch(int x, int y, Sprite sprite, ArrayList<Sprite> level, double rotation, InteractionMethod method) {
+	public Switch(int x, int y, Sprite sprite, ArrayList<Sprite> level, Rotation rotation, InteractionMethod method) {
         super(x, y);
         type = SpriteType.SWITCH;
         this.sprite = sprite;
@@ -32,7 +31,7 @@ public class Switch extends Interactable {
         initFloor();
     }
 	
-	public Switch(int x, int y, Sprite[] sprites, ArrayList<Sprite> level, double rotation, InteractionMethod method) {
+	public Switch(int x, int y, Sprite[] sprites, ArrayList<Sprite> level, Rotation rotation, InteractionMethod method) {
         super(x, y);
         type = SpriteType.SWITCH;
         this.sprites = sprites;
@@ -51,7 +50,7 @@ public class Switch extends Interactable {
 
     private void initFloor() {
         
-        loadImage(Images.rotate(Texture.loadTexture("switch.png"), rotation));
+        loadImage(Images.rotate(Texture.loadTexture("switch.png"), rotation.getRotation()));
         getImageDimensions();
     }
     
@@ -68,14 +67,17 @@ public class Switch extends Interactable {
     		for(Sprite sprite : sprites) method.interact(sprite);
     	
     	if(triggered){
+    		if(rotation.equals(Rotation.RIGHT)) x = x-5;
     		triggered = false;
-    		loadImage(Images.rotate(Texture.loadTexture("switch.png"), rotation));
+    		loadImage(Images.rotate(Texture.loadTexture("switch.png"), rotation.getRotation()));
         	getImageDimensions();
         	type = SpriteType.SWITCH;
         	return;
     		
     	} else {
-    		loadImage(Images.rotate(Texture.loadTexture("triggered-switch.png"), rotation));
+    		if(rotation.equals(Rotation.RIGHT)) x = x+5;
+
+    		loadImage(Images.rotate(Texture.loadTexture("triggered-switch.png"), rotation.getRotation()));
         	getImageDimensions();
         	type = SpriteType.TRIGGERED_SWITCH;
         	triggered = true;

@@ -91,9 +91,9 @@ public class MenuBoard extends Board implements ActionListener {
 		
 
 		
-		g.drawImage(Texture.loadTexture("playermodels/" + Bridge.getPlayer().getPlayerModel() + "/stand_right.png"),
+		g.drawImage(Texture.loadTexture("playermodels/" + Bridge.getPlayer().getPlayerModel() + "/stand.png"),
 		
-				(M_WIDTH / 2) - ((13 * 5) / 2), (M_HEIGHT / 2) - ((44 * 5) / 2), 13 * 5, 44 * 5, null);
+				(M_WIDTH / 2) - ((13 * 5) / 2), (M_HEIGHT / 2) - ((44 * 5) / 2), Bridge.getPlayer().getRestingWidth() * 5, Bridge.getPlayer().getRestingHeight() * 5, null);
 
 		g.setColor(Color.white);
 
