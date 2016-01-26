@@ -37,7 +37,7 @@ public class Door extends Interactable {
     	if(tool instanceof Key){
     		if(((Key) tool).getID() == id){
     			type = SpriteType.OPEN_DOOR;
-    			loadImage(Texture.loadTexture("open_door.png"));
+    			loadImage(Texture.loadTexture("door_open.png"));
     	    	setImageDimensions(2, 45);
     		}
     	}
