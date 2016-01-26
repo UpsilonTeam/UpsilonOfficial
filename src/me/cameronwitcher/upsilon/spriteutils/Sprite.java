@@ -24,12 +24,14 @@ public class Sprite {
     public String imagePath = "";
     private Sprite sprite;
     public Polygon bounds;
+    private boolean exists = false;
 
     public Sprite(int x, int y) {
     	this.sprite = this;
         this.x = x;
         this.y = y;
         vis = true;
+        exists = true;
        
         
         
@@ -38,6 +40,7 @@ public class Sprite {
 
 	public void remove(){
 		((GameBoard)Bridge.getGame().getBoard()).removeSprite(this);
+		exists = false;
     }
     
     public SpriteType getType(){return null;}
@@ -148,6 +151,16 @@ public class Sprite {
 		String name = sprite.getType().name();
 		g.drawString(name, x, y);
 		
+	}
+	
+	public boolean exists(){
+		return exists;
+	}
+
+
+	public void add() {
+		((GameBoard)Bridge.getGame().getBoard()).addSprite(this);
+		exists = true;
 	}
 
 

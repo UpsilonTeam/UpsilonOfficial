@@ -1,17 +1,21 @@
 package me.cameronwitcher.upsilon.utils;
+
+import me.cameronwitcher.upsilon.spriteutils.Sprite;
+
 public enum InteractionMethod {
-	DISAPPEAR("disappear"),
-	APPEAR("appear");
+	DISAPPEAR("disappear");
 	String interaction;
 
 	InteractionMethod(String interaction){
 		this.interaction = interaction;	
 	}
 	
-	public void interact(){
+	public void interact(Sprite sprite){
 		switch(this){
 		case DISAPPEAR:
-//			remove();
+			if(sprite.exists()){
+				sprite.remove();
+			} else sprite.add();
 			break;
 		default:
 			break;

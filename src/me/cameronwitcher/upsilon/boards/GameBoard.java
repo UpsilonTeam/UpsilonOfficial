@@ -55,6 +55,7 @@ import me.cameronwitcher.upsilon.utils.Board;
 import me.cameronwitcher.upsilon.utils.BoardType;
 import me.cameronwitcher.upsilon.utils.Button;
 import me.cameronwitcher.upsilon.utils.ButtonMethod;
+import me.cameronwitcher.upsilon.utils.InteractionMethod;
 import me.cameronwitcher.upsilon.utils.Utils;
 import res.Texture;
 
@@ -384,7 +385,7 @@ public class GameBoard extends Board implements ActionListener {
 			else
 				continue;
 		}
-		level6.add(new Switch((2*30)+2, (10*30), new Wall(2*30, (14*30), 60, State.VERTICAL), level6, 90));
+		level6.add(new Switch((2*30)+2, (10*30), new Wall(2*30, (14*30), 60, State.VERTICAL), level6, 90, InteractionMethod.DISAPPEAR));
 		level6.add(new Wall ((2*30),2*30,12*30,State.VERTICAL));
 		level6.add(new Gate(0, (15* 30)-2));
 
@@ -427,7 +428,7 @@ public class GameBoard extends Board implements ActionListener {
 			level7.add(new Wall((32*30)-2,(y*30)-2,30, State.VERTICAL));
 		
 			}
-		level7.add(new Switch((31*30)+15, 7*32, new Wall(5*30,(7*30)-8,65,State.VERTICAL), level7,270));
+		level7.add(new Switch((31*30)+15, 7*32, new Wall(5*30,(7*30)-8,65,State.VERTICAL), level7,270, InteractionMethod.DISAPPEAR));
 		level7.add(new Gate((2*30)+5,(8*30)-4));
 
 		if(!debug) level7.add(Bridge.getPlayer());
@@ -451,7 +452,7 @@ public class GameBoard extends Board implements ActionListener {
 			level8.add(new Wall(32*30,y*30,30,State.VERTICAL));	
 		}
 		
-		level8.add(new Switch((31*30),7*32,(new Sprite[] {new Wall(10*30,10*30,40,State.VERTICAL),new Switch(15*30,12*30,new Wall(15*30,10*30,30,State.HORIZONTAL),level8,270)}),level8,270));	
+		level8.add(new Switch((31*30),7*32,(new Sprite[] {new Wall(10*30,10*30,40,State.VERTICAL),new Switch(15*30,12*30,new Wall(15*30,10*30,30,State.HORIZONTAL),level8,270, InteractionMethod.DISAPPEAR)}),level8,270, InteractionMethod.DISAPPEAR));	
 		
 		
 		
