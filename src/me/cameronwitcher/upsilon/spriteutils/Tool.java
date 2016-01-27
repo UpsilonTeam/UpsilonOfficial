@@ -7,7 +7,7 @@ import me.cameronwitcher.upsilon.Bridge;
 import me.cameronwitcher.upsilon.boards.GameBoard;
 import me.cameronwitcher.upsilon.utils.Direction;
 
-public class Tool extends Sprite {
+public class Tool extends Entity {
 
 	public Entity entity;
 	public Image left;

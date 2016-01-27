@@ -4,9 +4,6 @@ import me.cameronwitcher.upsilon.spriteutils.Entity;
 import me.cameronwitcher.upsilon.spriteutils.Projectile;
 import me.cameronwitcher.upsilon.spriteutils.SpriteType;
 import me.cameronwitcher.upsilon.utils.Direction;
-import me.cameronwitcher.upsilon.utils.Images;
-import me.cameronwitcher.upsilon.utils.Utils;
-import res.Texture;
 
 public class Arrow extends Projectile  {
 	
@@ -26,9 +23,7 @@ public class Arrow extends Projectile  {
     }
 
     private void init() {
-    	Utils.broadcastMessage(direction.toString());
-    	Utils.broadcastMessage(direction.getAngle() + "");
-        loadImage(Images.rotate(Texture.loadTexture("arrow.png"), direction.getAngle()));
-        setImageDimensions(11, 4, 0, 0);
+        loadImage("arrow.png");
+        setImageDimensions(16, 4, 0, 0);
     }	
 }

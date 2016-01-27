@@ -249,8 +249,8 @@ public class GameBoard extends Board implements ActionListener {
 	private void loadLevel1(boolean debug) {
 		
 		
-		for(int x=0;x!=30;x++){
-			level1.add(new Wall(x*32, 525-(x/2), 32, State.HORIZONTAL));
+		for(int x=0;x!=15;x++){
+			level1.add(new Wall(x*30, 17*30-(x), 60, State.HORIZONTAL));
 		}
 		
 		for(int x=0;x!=10;x++){
@@ -274,9 +274,9 @@ public class GameBoard extends Board implements ActionListener {
 			level1.add(new Floor(x*30,11*15));
 		}
 		
-		level1.add(new Door(18 * 15, (7* 15)+10, 1));
-		level1.add(new Bow(9 * 30, 20 * 15));
-		level1.add(new Key(15 * 30, 20 * 15, 1));
+//		level1.add(new Door(18 * 15, (7* 15)+10, 1));
+//		level1.add(new Bow(9 * 30, 20 * 15));
+//		level1.add(new Key(15 * 30, 20 * 15, 1));
 		level1.add(new Gate(19*30, (9*15)-1));
 		if(!debug) level1.add(Bridge.getPlayer());
 
@@ -650,19 +650,10 @@ public class GameBoard extends Board implements ActionListener {
 			
 			if(sprite instanceof Entity){
 				e = e+1;
+				continue;
 			}
-
-			if (!(sprite instanceof Player) && !(sprite instanceof Knobber)){
-				if(sprite instanceof Ladder){
-					g.drawImage(sprite.getImage(), sprite.getX(), sprite.getY(), 30+extra, 30+extra, this);
-					continue;
-				}
-				if(sprite instanceof Tool){
-					continue;
-				}
-				if(sprite instanceof Arrow) continue;
-				g.drawImage(sprite.getImage(), sprite.getX(), sprite.getY(), sprite.getWidth()+extra, sprite.getHeight()+extra, this);
-			}
+			g.drawImage(sprite.getImage(), sprite.getX(), sprite.getY(), sprite.getWidth()+extra, sprite.getHeight()+extra, this);
+			
 			if (debug && hitboxes)
 				g.drawPolygon(sprite.getPolygon());
 		}
@@ -674,14 +665,13 @@ public class GameBoard extends Board implements ActionListener {
 			switch (type) {
 			case KNOBBER:
 				Knobber sk = (Knobber) s;
-				g.drawImage(sprite.getImage(), (sprite.getX()), sprite.getY(), 29+extra, 41+extra, this);
+				g.drawImage(sprite.getImage(), (sprite.getX()), sprite.getY(), Bridge.getPlayer().getWalkingWidth()+extra, Bridge.getPlayer().getWalkingHeight()+extra, this);
 				((Knobber) s).drawHealthBar(g, sk.x - (50 / 2), sk.y - 20, 50, 5);
-				if (!((Knobber) sprite).hasTool())
-					((Knobber) sprite).setTool(new Bow(0, 0));
 				break;
 			case ARROW:
-				g.drawImage(sprite.getImage(), (sprite.getX()), sprite.getY(), 16+extra, 4+extra, this);
-				continue;
+				if(((Arrow) sprite).getDirection().equals(Direction.LEFT)) g.drawImage(sprite.getImage(), sprite.x + 16, sprite.y, -16, 4, this);
+				else g.drawImage(sprite.getImage(), (sprite.getX()), sprite.getY(), 16+extra, 4+extra, this);
+				break;
 			default:
 				g.drawImage(sprite.getImage(), sprite.getX(), sprite.getY(), sprite.getWidth()+extra, sprite.getHeight()+extra, this);
 				break;
