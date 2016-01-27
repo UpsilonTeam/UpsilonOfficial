@@ -30,6 +30,7 @@ import javax.swing.Timer;
 import me.cameronwitcher.upsilon.Bridge;
 import me.cameronwitcher.upsilon.sprites.Arrow;
 import me.cameronwitcher.upsilon.sprites.Door;
+import me.cameronwitcher.upsilon.sprites.FakeInteractable;
 import me.cameronwitcher.upsilon.sprites.FallingFloor;
 import me.cameronwitcher.upsilon.sprites.FallingWall;
 import me.cameronwitcher.upsilon.sprites.Floor;
@@ -272,6 +273,8 @@ public class GameBoard extends Board implements ActionListener {
 		for(int x=3;x!=20;x++){
 			level1.add(new Floor(x*30,6*30));
 		}
+		
+		
 		
 //		level1.add(new Door(18 * 15, (7* 15)+10, 1));
 //		level1.add(new Bow(9 * 30, 20 * 15));

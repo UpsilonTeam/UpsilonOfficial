@@ -21,7 +21,10 @@ public class FakeInteractable extends Interactable {
 	public void init(){
 		switch(type){
 		case WALL:
-			loadImage(Texture.loadTexture("wall/wall_" + state.toString().toLowerCase() + ".png"));
+			loadImage(Texture.loadTexture("wall/" + state.toString().toLowerCase() + ".png"));
+			getImageDimensions();
+		case ARROW:
+			loadImage("arrow.png");
 			getImageDimensions();
 		default:
 			break;
