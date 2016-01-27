@@ -26,6 +26,7 @@ public class Bridge {
 	//Cameron
 	//First value is X or Y. 0 = x : 1 = y
 	public static HashMap<Integer, Integer> gameBoardSize = new HashMap<>();
+	public static boolean DEBUG = false;
 	
 	public static void main(String[] args) {
 		gameBoardSize.put(0, 960);
