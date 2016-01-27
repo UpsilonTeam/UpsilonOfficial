@@ -12,6 +12,10 @@ public class Key extends Tool {
 		super(x, y);
 		this.id = id;
 		init();
+		
+		if(id==-1){
+			loadImage("magic_key.png");
+		}
 	}
 	
 	public void init(){

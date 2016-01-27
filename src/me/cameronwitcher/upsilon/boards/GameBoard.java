@@ -250,7 +250,7 @@ public class GameBoard extends Board implements ActionListener {
 	private void loadLevel1(boolean debug) {
 		
 		for(int x=0;x!=32;x++){
-			level1.add(new Floor(x*30, 35*15-(x/2)));
+			level1.add(new Wall(x*30, 35*15-(x/2), 30, State.HORIZONTAL));
 		}
 		
 		for(int x=0;x!=10;x++){
@@ -1206,8 +1206,11 @@ public class GameBoard extends Board implements ActionListener {
 
 	}
 
-	public void addSprite(Sprite sprite2) {
-		sprite_temp.add(sprite2);
+	public boolean addSprite(Sprite sprite2) {
+		if(moveables.contains(sprite2) || sprites.contains(sprite2))
+			return false;
+		else sprite_temp.add(sprite2);
+		return true;
 	}
 	
 

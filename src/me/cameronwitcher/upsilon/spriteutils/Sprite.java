@@ -158,8 +158,8 @@ public class Sprite {
 
 
 	public void add() {
-		((GameBoard)Bridge.getGame().getBoard()).addSprite(this);
-		exists = true;
+		exists = ((GameBoard)Bridge.getGame().getBoard()).addSprite(this);
+		
 	}
 
 

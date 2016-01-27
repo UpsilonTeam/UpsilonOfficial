@@ -8,6 +8,9 @@ import java.util.Random;
 
 import me.cameronwitcher.upsilon.Bridge;
 import me.cameronwitcher.upsilon.boards.GameBoard;
+import me.cameronwitcher.upsilon.sprites.tools.Bow;
+import me.cameronwitcher.upsilon.sprites.tools.Key;
+import me.cameronwitcher.upsilon.sprites.tools.NinjaCloak;
 import me.cameronwitcher.upsilon.spriteutils.Entity;
 import me.cameronwitcher.upsilon.spriteutils.Interactable;
 import me.cameronwitcher.upsilon.spriteutils.Keyable;
@@ -95,6 +98,7 @@ public class Player extends Entity implements Moveable,Keyable {
 		setDirection(Direction.RIGHT);
 		
 		Utils.initPlayer(this);
+		
 	}
 
 	@Override
@@ -309,6 +313,12 @@ public class Player extends Entity implements Moveable,Keyable {
 		((GameBoard)Bridge.getGame().getBoard()).moveables_temp.clear();
 		((GameBoard)Bridge.getGame().getBoard()).removedSprites.clear();
 		inventory.clear();
+		
+		if(Bridge.DEBUG){
+			inventory.add(new Bow(0,0));
+			inventory.add(new NinjaCloak(0,0));
+			inventory.add(new Key(0, 0, -1));
+		}
 		
 		
 		
