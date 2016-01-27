@@ -1,7 +1,6 @@
 package me.cameronwitcher.upsilon.sprites;
 
 import me.cameronwitcher.upsilon.spriteutils.Money;
-import me.cameronwitcher.upsilon.spriteutils.Moveable;
 import me.cameronwitcher.upsilon.spriteutils.Sprite;
 import me.cameronwitcher.upsilon.spriteutils.SpriteType;
 

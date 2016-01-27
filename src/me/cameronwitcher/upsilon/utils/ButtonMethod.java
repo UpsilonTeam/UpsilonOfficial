@@ -2,7 +2,6 @@ package me.cameronwitcher.upsilon.utils;
 
 import me.cameronwitcher.upsilon.Bridge;
 import me.cameronwitcher.upsilon.boards.GameBoard;
-import me.cameronwitcher.upsilon.spriteutils.PlayerModel;
 
 public enum ButtonMethod {
 	

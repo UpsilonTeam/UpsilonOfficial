@@ -17,7 +17,6 @@ import me.cameronwitcher.upsilon.utils.AI;
 import me.cameronwitcher.upsilon.utils.BoardType;
 import me.cameronwitcher.upsilon.utils.DamageReason;
 import me.cameronwitcher.upsilon.utils.Direction;
-import me.cameronwitcher.upsilon.utils.Utils;
 
 public class Knobber extends Entity implements Moveable,Keyable {
 	
@@ -29,9 +28,7 @@ public class Knobber extends Entity implements Moveable,Keyable {
 	private boolean walking = false;
 	private boolean left = false;
 	private boolean right = false;
-	private boolean up = false;
-
-    public Knobber(int x, int y) {
+	public Knobber(int x, int y) {
         super(x, y);
         init();
         score = 10;

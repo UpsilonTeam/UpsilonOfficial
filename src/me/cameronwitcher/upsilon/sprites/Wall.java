@@ -3,7 +3,6 @@ package me.cameronwitcher.upsilon.sprites;
 import me.cameronwitcher.upsilon.spriteutils.Sprite;
 import me.cameronwitcher.upsilon.spriteutils.SpriteType;
 import me.cameronwitcher.upsilon.spriteutils.State;
-import me.cameronwitcher.upsilon.utils.Utils;
 
 public class Wall extends Sprite {
 	

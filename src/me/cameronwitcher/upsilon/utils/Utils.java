@@ -16,8 +16,6 @@ import java.util.List;
 import me.cameronwitcher.upsilon.Bridge;
 import me.cameronwitcher.upsilon.boards.GameBoard;
 import me.cameronwitcher.upsilon.sprites.Player;
-import me.cameronwitcher.upsilon.spriteutils.Tool;
-import me.cameronwitcher.upsilon.spriteutils.ToolType;
 import res.Audio;
 
 public class Utils {

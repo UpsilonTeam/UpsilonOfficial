@@ -67,7 +67,8 @@ public class Switch extends Interactable {
     		for(Sprite sprite : sprites) method.interact(sprite);
     	
     	if(triggered){
-    		if(rotation.equals(Rotation.RIGHT)) x = x-5;
+    		if(rotation.equals(Rotation.LEFT)) x = x-5;
+    		if(rotation.equals(Rotation.UP)) y = y-5;
     		triggered = false;
     		loadImage(Images.rotate(Texture.loadTexture("switch.png"), rotation.getRotation()));
         	getImageDimensions();
@@ -75,7 +76,8 @@ public class Switch extends Interactable {
         	return;
     		
     	} else {
-    		if(rotation.equals(Rotation.RIGHT)) x = x+5;
+    		if(rotation.equals(Rotation.LEFT)) x = x+5;
+    		if(rotation.equals(Rotation.UP)) y = y+5;
 
     		loadImage(Images.rotate(Texture.loadTexture("triggered-switch.png"), rotation.getRotation()));
         	getImageDimensions();

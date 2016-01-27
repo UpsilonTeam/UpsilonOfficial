@@ -8,7 +8,6 @@ import java.awt.Rectangle;
 import me.cameronwitcher.upsilon.Bridge;
 import me.cameronwitcher.upsilon.boards.GameBoard;
 import me.cameronwitcher.upsilon.utils.Direction;
-import me.cameronwitcher.upsilon.utils.Utils;
 import res.Texture;
 
 public class Sprite {

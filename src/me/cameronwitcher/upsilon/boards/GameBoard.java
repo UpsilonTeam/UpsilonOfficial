@@ -38,6 +38,7 @@ import me.cameronwitcher.upsilon.sprites.Gold;
 import me.cameronwitcher.upsilon.sprites.Knobber;
 import me.cameronwitcher.upsilon.sprites.Ladder;
 import me.cameronwitcher.upsilon.sprites.Player;
+import me.cameronwitcher.upsilon.sprites.Spike;
 import me.cameronwitcher.upsilon.sprites.Switch;
 import me.cameronwitcher.upsilon.sprites.Wall;
 import me.cameronwitcher.upsilon.sprites.tools.Bow;
@@ -104,6 +105,7 @@ public class GameBoard extends Board implements ActionListener {
 	public List<String> strings_temp = new ArrayList<>();
 	public List<String> strings_temp_player = new ArrayList<>();
 	public List<Sprite> tools = new ArrayList<>();
+	
 	ArrayList<Sprite> level1 = new ArrayList<>();
 	ArrayList<Sprite> level2 = new ArrayList<>();
 	ArrayList<Sprite> level3 = new ArrayList<>();
@@ -240,9 +242,7 @@ public class GameBoard extends Board implements ActionListener {
 		
 		
 		
-		if(!debug) level7.add(Bridge.getPlayer());
 		
-		levels.put(8, level8);
 
 	}
 
@@ -398,46 +398,15 @@ public class GameBoard extends Board implements ActionListener {
 	}
 	private void loadLevel7(boolean debug) {
 		
-		for (int x=0;x!=13;x++){
-			level7.add(new Floor(x*30, (14*30)-15));
-			
-		}
-		for(int y=0;y!=9;y++){
-			level7.add(new Wall((2*30)+2,(y*30),30,State.VERTICAL));
-		}
-		for (int y=8;y!=13;y++){
-			level7.add(new Ladder((9*40)+3,(y*30)+ 13));
-		}
-		for(int x=2;x!=32;x++){
-			if(x!=12)
-			level7.add(new Floor((x*30)+2, (9*30)-2));
+		for(int x=0;x!=32;x++){
+			if(x==14||x==15||x==16)
+				level7.add(new Spike(x*30, 6*30));
 			else
-				continue;
-		}
-		for(int y=0;y!=7;y++){
-			level7.add(new Wall(5*30,(y*30)-2,30, State.VERTICAL));
+				level7.add(new Floor(x*30, 6*30));
 		}
 		
-		for(int y=0;y!=9;y++){
-				
-				if(y!=7)
-				level7.add(new Wall(17*30,(y*30)-3,30, State.VERTICAL));
-				else
-					continue;
-	
-			}
-		for(int y=0;y!=9;y++){
-			level7.add(new Wall((32*30)-2,(y*30)-2,30, State.VERTICAL));
 		
-			}
-		level7.add(new Bow(15*30,7*30));
-		level7.add(new Switch((31*30)+15, 7*32, new Wall(5*30,(7*30)-8,65,State.VERTICAL), level7,Rotation.UP, InteractionMethod.DISAPPEAR));
-		level7.add(new Gate((2*30)+5,(8*30)-4));
-
 		if(!debug) level7.add(Bridge.getPlayer());
-		
-		
-		
 		levels.put(7, level7);
 		
 		
