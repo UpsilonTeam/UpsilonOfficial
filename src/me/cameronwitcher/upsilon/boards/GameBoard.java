@@ -248,36 +248,35 @@ public class GameBoard extends Board implements ActionListener {
 
 	private void loadLevel1(boolean debug) {
 		
-		
-		for(int x=0;x!=15;x++){
-			level1.add(new Wall(x*30, 17*30-(x), 60, State.HORIZONTAL));
+		for(int x=0;x!=32;x++){
+			level1.add(new Floor(x*30, 35*15-(x/2)));
 		}
 		
 		for(int x=0;x!=10;x++){
 			level1.add(new Gold((x*32)+13, 510-(x/2)));
 		}
 		
-		for(int y=10;y!=16;y++){
-			level1.add(new Ladder(31*30,y*32));
+		for(int y=11;y!=17;y++){
+			level1.add(new Ladder(31*30,y*30));
 		
 		}
 		
 		for(int x=2;x!=31;x++){
-			level1.add(new Floor(x*30, 16*22));
+			level1.add(new Floor(x*30, 12*30));
 		}
 		
 		for(int y=5;y!=12;y++){
-			level1.add(new Ladder(3*30, (y*30)-10));
+			level1.add(new Ladder(2*30, (y*30)));
 		}
 	
 		for(int x=3;x!=20;x++){
-			level1.add(new Floor(x*30,11*15));
+			level1.add(new Floor(x*30,6*30));
 		}
 		
 //		level1.add(new Door(18 * 15, (7* 15)+10, 1));
 //		level1.add(new Bow(9 * 30, 20 * 15));
 //		level1.add(new Key(15 * 30, 20 * 15, 1));
-		level1.add(new Gate(19*30, (9*15)-1));
+		level1.add(new Gate(19*30, (5*30)-1));
 		if(!debug) level1.add(Bridge.getPlayer());
 
 		levels.put(1, level1);
