@@ -132,7 +132,7 @@ public class Player extends Entity implements Moveable,Keyable {
 			if (key == KeyEvent.VK_D || key == KeyEvent.VK_RIGHT) {
 				setDirection(Direction.RIGHT);
 				facing = Direction.RIGHT;
-				if(!walking)x=x-(29-13);
+				if(!walking && !right)x=x-(29-13);
 				dx = 2;
 				walking= true;
 				
@@ -263,7 +263,7 @@ public class Player extends Entity implements Moveable,Keyable {
 			if (key == KeyEvent.VK_D || key == KeyEvent.VK_RIGHT) {
 				dx = 0;
 				walking= false;
-				x=x+(29-13);
+				if(!right) x=x+(29-13);
 				loadImage("playermodels/" + model + "/stand.png");
 				if(invisible)
 					toggleInvisiblility();

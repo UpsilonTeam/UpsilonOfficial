@@ -206,7 +206,6 @@ public class Utils {
 	
 	public static void setPlayerLevel(int level){
 		player_level = level;
-		savePlayerInfo(Bridge.player);
 		try{
 			if(Bridge.getGame().getBoard().getType().equals(BoardType.GAME_BOARD)){
 				Bridge.getGame().loadLevel();

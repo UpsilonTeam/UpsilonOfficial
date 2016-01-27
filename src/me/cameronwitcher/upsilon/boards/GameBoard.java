@@ -29,7 +29,6 @@ import javax.swing.Timer;
 
 import me.cameronwitcher.upsilon.Bridge;
 import me.cameronwitcher.upsilon.sprites.Arrow;
-import me.cameronwitcher.upsilon.sprites.Door;
 import me.cameronwitcher.upsilon.sprites.FakeInteractable;
 import me.cameronwitcher.upsilon.sprites.FallingFloor;
 import me.cameronwitcher.upsilon.sprites.FallingWall;
@@ -42,10 +41,9 @@ import me.cameronwitcher.upsilon.sprites.Player;
 import me.cameronwitcher.upsilon.sprites.Spike;
 import me.cameronwitcher.upsilon.sprites.Switch;
 import me.cameronwitcher.upsilon.sprites.Wall;
-import me.cameronwitcher.upsilon.sprites.tools.Bow;
-import me.cameronwitcher.upsilon.sprites.tools.Key;
 import me.cameronwitcher.upsilon.spriteutils.Clickable;
 import me.cameronwitcher.upsilon.spriteutils.Entity;
+import me.cameronwitcher.upsilon.spriteutils.Interaction;
 import me.cameronwitcher.upsilon.spriteutils.Keyable;
 import me.cameronwitcher.upsilon.spriteutils.Moveable;
 import me.cameronwitcher.upsilon.spriteutils.Rotation;
@@ -407,6 +405,7 @@ public class GameBoard extends Board implements ActionListener {
 				level7.add(new Floor(x*30, 6*30));
 		}
 		
+		
 		level7.add(new Gate(31*30,5*30-1));
 		
 		
@@ -428,10 +427,17 @@ public class GameBoard extends Board implements ActionListener {
 			level8.add(new Wall(32*30,y*30,30,State.VERTICAL));	
 		}
 		
-		level8.add(new Switch((31*30),7*32,(new Sprite[] {
-				new Switch(15*30, 17*30,new FakeInteractable(10*30,10*30,SpriteType.WALL,State.VERTICAL), level8,Rotation.RIGHT,InteractionMethod.TRIGGER),
-				new Switch(15*30,12*30,new FakeInteractable(15*30,10*30,SpriteType.WALL,State.HORIZONTAL),level8,Rotation.RIGHT, InteractionMethod.DISAPPEAR)
-				}),level8,Rotation.RIGHT, InteractionMethod.DISAPPEAR));	
+		
+		level8.add(new Switch(31*30, 7*30,
+				new FakeInteractable(30, 30, SpriteType.ARROW, State.HORIZONTAL, new Interaction(){
+					public void run(){
+						addSprite(new Arrow(0, (7*30)+3, Direction.RIGHT, Bridge.getPlayer()));
+					}
+				}),
+				
+				level8,Rotation.UP, InteractionMethod.TRIGGER));
+		
+		
 		
 		
 		
@@ -484,19 +490,31 @@ public class GameBoard extends Board implements ActionListener {
 	}
 
 	public void loadLevel() {
+		levels.clear();
+		level1.clear();
+		level2.clear();
+		level3.clear();
+		level4.clear();
+		level5.clear();
+		level6.clear();
+		level7.clear();
+		level8.clear();
+		loadLevels(false, 0);
 		ingame = false;
 		loaded = false;
 		if (Utils.getPlayerLevel() > levels.size()) {
 			won = true;
 			return;
 		}
+		sprite_temp.clear();
+		moveables_temp.clear();
 		sprites.clear();
 		moveables.clear();
 		Bridge.setPlayerLocation(0, 0);
 		tools.clear();
 		clickables.clear();
 		try {
-			for (Sprite sprite : getLevel(Utils.getPlayerLevel())) {
+			for (Sprite sprite : levels.get(Utils.getPlayerLevel())) {
 				sprites.add(sprite);
 
 				if (sprite instanceof Moveable) {
@@ -1103,6 +1121,7 @@ public class GameBoard extends Board implements ActionListener {
 			
 			if(e.getKeyCode() == KeyEvent.VK_1){
 				Utils.setPlayerLevel(1);
+				loadLevel();
 			}
 			
 			if(e.getKeyCode() == KeyEvent.VK_2){
