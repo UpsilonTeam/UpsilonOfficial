@@ -114,6 +114,7 @@ public class GameBoard extends Board implements ActionListener {
 	ArrayList<Sprite> level6 = new ArrayList<>();
 	ArrayList<Sprite> level7 = new ArrayList<>();
 	ArrayList<Sprite> level8 = new ArrayList<>();
+	ArrayList<Sprite> level9 = new ArrayList<>();
 	private HashMap<Integer, ArrayList<Sprite>> levels = new HashMap<>();
 
 	public GameBoard() {
@@ -187,6 +188,7 @@ public class GameBoard extends Board implements ActionListener {
 		level6.clear();
 		level7.clear();
 		level8.clear();
+		level9.clear();
 		levels.clear();
 		
 		
@@ -204,6 +206,7 @@ public class GameBoard extends Board implements ActionListener {
 		level6.clear();	
 		level7.clear();
 		level8.clear();
+		level9.clear();
 		
 		if(debug){
 			if(i==1) loadLevel1(true);
@@ -214,6 +217,7 @@ public class GameBoard extends Board implements ActionListener {
 			if(i==6) loadLevel6(true);
 			if(i==7) loadLevel7(true);
 			if(i==8) loadLevel8(true);
+			if(i==9) loadLevel9(true);
 			
 			return;
 			
@@ -227,6 +231,7 @@ public class GameBoard extends Board implements ActionListener {
 		loadLevel6(false);
 		loadLevel7(false);
 		loadLevel8(false);
+		loadLevel9(false);
 
 		
 		
@@ -431,7 +436,7 @@ public class GameBoard extends Board implements ActionListener {
 
 		Switch s = new Switch(0, 0, new Wall(300,300,30, State.HORIZONTAL), level8, Rotation.LEFT, InteractionMethod.DISAPPEAR);
 		
-		s.interact();
+		if(!debug) s.interact();
 		
 
 		Switch s2 = new Switch(0, 0, new Wall(200,200,30, State.VERTICAL), level8, Rotation.LEFT, InteractionMethod.DISAPPEAR);
@@ -455,6 +460,21 @@ public class GameBoard extends Board implements ActionListener {
 		if(!debug) level8.add(Bridge.getPlayer());
 		
 		levels.put(8, level8);
+		
+	}
+	
+	private void loadLevel9(boolean debug){
+		
+		level9.add(new Wall(0, 10*30, 15*30,State.HORIZONTAL));
+		level9.add(new Wall(17*30, 10*30, 15*30,State.HORIZONTAL));
+		
+		level9.add(new Wall(15*30,10*30,8*30,State.VERTICAL));
+		level9.add(new Wall(17*30,10*30,8*30,State.VERTICAL));
+		
+		level9.add(new Gate(16*30-12, 37*15, 0));
+		if(!debug) level9.add(Bridge.getPlayer());
+		
+		levels.put(9, level9);
 		
 	}
 	
@@ -1099,7 +1119,7 @@ public class GameBoard extends Board implements ActionListener {
 
 			}
 			
-			if(!ingame){
+			if(!ingame && gameStatus.contains("won")){
 				if(e.getKeyCode() == KeyEvent.VK_ENTER){
 					ButtonMethod.LEVEL_UP.clicked();
 				}

@@ -42,6 +42,7 @@ public class Utils {
 		backgrounds.put(6, Background.SKY);
 		backgrounds.put(7, Background.SKY);
 		backgrounds.put(8, Background.SKY);
+		backgrounds.put(9, Background.ENTERING_CAVE);
 		
 
 		int length = (int) config.length();

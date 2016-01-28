@@ -196,6 +196,12 @@ public class MenuBoard extends Board implements ActionListener {
 				Utils.setPlayerLevel(8);
 				LEVEL_DEBUG = 8;
 			}
+			if(event.getKeyCode() == KeyEvent.VK_9){
+				Utils.setPlayerLevel(9);
+				LEVEL_DEBUG = 9;
+			}
+			
+			
 			
 			if(event.getKeyCode() == KeyEvent.VK_D){
 				Bridge.openLevelDebug(LEVEL_DEBUG);
