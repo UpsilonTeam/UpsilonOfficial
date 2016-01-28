@@ -43,6 +43,7 @@ import me.cameronwitcher.upsilon.sprites.Switch;
 import me.cameronwitcher.upsilon.sprites.Wall;
 import me.cameronwitcher.upsilon.spriteutils.Clickable;
 import me.cameronwitcher.upsilon.spriteutils.Entity;
+import me.cameronwitcher.upsilon.spriteutils.GateType;
 import me.cameronwitcher.upsilon.spriteutils.Interaction;
 import me.cameronwitcher.upsilon.spriteutils.Keyable;
 import me.cameronwitcher.upsilon.spriteutils.Moveable;
@@ -277,7 +278,7 @@ public class GameBoard extends Board implements ActionListener {
 //		level1.add(new Door(18 * 15, (7* 15)+10, 1));
 //		level1.add(new Bow(9 * 30, 20 * 15));
 //		level1.add(new Key(15 * 30, 20 * 15, 1));
-		level1.add(new Gate(19*30, (5*30)-1));
+		level1.add(new Gate(19*30, (5*30)-1, GateType.CAVE));
 		if(!debug) level1.add(Bridge.getPlayer());
 
 		levels.put(1, level1);
@@ -290,7 +291,7 @@ public class GameBoard extends Board implements ActionListener {
 		}
 		if(!debug) level2.add(Bridge.getPlayer());
 		
-		level2.add(new Gate(760,(5*30)-17));
+		level2.add(new Gate(760,(5*30)-17, GateType.FLAG));
 		
 		levels.put(2, level2);
 		
@@ -303,7 +304,7 @@ public class GameBoard extends Board implements ActionListener {
 		}
 		
 		level3.add(new Wall((17*30)+11, 15*30, 90, State.HORIZONTAL));
-		level3.add(new Gate((19 * 30)+10, (14* 30)-2));
+		level3.add(new Gate((19 * 30)+10, (14* 30)-2, GateType.FLAG));
 		if(!debug) level3.add(Bridge.getPlayer());
 
 		levels.put(3, level3);
@@ -341,7 +342,7 @@ public class GameBoard extends Board implements ActionListener {
 		
 		level4.add(new Wall((3*30)-3,86,159,State.VERTICAL));
 		
-		level4.add(new Gate((14 * 30)-4, (3 * 30)-4));
+		level4.add(new Gate((14 * 30)-4, (3 * 30)-4,GateType.FLAG));
 		level4.add(new Knobber(11 * 15, 13 * 15));
 		if(!debug) level4.add(Bridge.getPlayer());
 
@@ -360,7 +361,7 @@ public class GameBoard extends Board implements ActionListener {
 		}
 		level5.add(new Wall((24*30),(12*30), 30,State.HORIZONTAL));
 		
-		level5.add(new Gate(5*30, 7*30));
+		level5.add(new Gate(5*30, 7*30,GateType.FLAG));
 		if(!debug) level5.add(Bridge.getPlayer());
 
 		levels.put(5, level5);
@@ -389,7 +390,7 @@ public class GameBoard extends Board implements ActionListener {
 		}
 		level6.add(new Switch((2*30)+2, (10*30), new Wall(2*30, (14*30), 60, State.VERTICAL), level6, Rotation.RIGHT, InteractionMethod.DISAPPEAR));
 		level6.add(new Wall ((2*30),2*30,12*30,State.VERTICAL));
-		level6.add(new Gate(0, (15* 30)-2));
+		level6.add(new Gate(0, (15* 30)-2,GateType.FLAG));
 
 		if(!debug) level6.add(Bridge.getPlayer());
 
@@ -406,7 +407,7 @@ public class GameBoard extends Board implements ActionListener {
 		}
 		
 		
-		level7.add(new Gate(31*30,5*30-1));
+		level7.add(new Gate(31*30,5*30-1,GateType.FLAG));
 		
 		
 		if(!debug) level7.add(Bridge.getPlayer());
