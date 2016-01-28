@@ -83,7 +83,7 @@ public class Sprite {
     public Direction getIntercectingDirection(Rectangle r){
     	
     	
-    	if (bounds.getBounds().getMaxY() - r.getY() >= 0 && bounds.getBounds().getMaxY() - r.getY() <= 6) {
+    	if (bounds.getBounds().getMaxY() - r.getY() >= 0 && bounds.getBounds().getMaxY() - r.getY() <= 10) {
     		return Direction.DOWN;
     	}
     	
