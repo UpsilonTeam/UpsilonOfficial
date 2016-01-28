@@ -428,17 +428,22 @@ public class GameBoard extends Board implements ActionListener {
 		}
 		
 		
-		level8.add(new Switch(31*30, 7*30,
-				new FakeInteractable(30, 30, SpriteType.ARROW, State.HORIZONTAL, new Interaction(){
-					public void run(){
-						addSprite(new Arrow(0, (7*30)+3, Direction.RIGHT, Bridge.getPlayer()));
+		
+					
+											
+		level8.add(new Switch(31*30, 7*30,new Sprite[]{
+				new Switch(15*30,14*30,FakeInteractable(12*30,14*30,SpriteType.WALL,State.HORIZONTAL, new Interaction() {
+					
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						
 					}
-				}),
+				})),
+		},level8,Rotation.LEFT,InteractionMethod.TRIGGER));
+					
 				
-				level8,Rotation.UP, InteractionMethod.TRIGGER));
-		
-		
-		
+				
 		
 		
 		
