@@ -12,8 +12,8 @@ import me.cameronwitcher.upsilon.utils.Utils;
 
 public class Entity extends Sprite {
 
-	public int health;
-	public int maxhealth;
+	public double health;
+	public double maxhealth;
 	protected boolean dead = false;
 	public boolean invisible = false;
 	protected int score;
@@ -27,11 +27,11 @@ public class Entity extends Sprite {
 	}
 
 	public int getHealth() {
-		return health;
+		return (int)health;
 	}
 
 	public int getMaxHealth() {
-		return maxhealth;
+		return (int) maxhealth;
 	}
 	
 	public Direction getFacingDirection(){
@@ -116,21 +116,27 @@ public class Entity extends Sprite {
 	public void drawHealthBar(Graphics g, int x, int y, int width, int height) {
 
 		Color c = g.getColor();
+		
+		double s = (health/maxhealth)*100;
 
-		int shealth = ((health / maxhealth) * 100);
+		int a = (int) s;
+		
 
-		int bar = health * (width / maxhealth);
-		width = maxhealth * (width / maxhealth);
-
-		g.drawString(shealth + "%", (x + (width / 2)) - ((g.getFontMetrics().stringWidth(shealth + "%") / 2)), y);
+		int bar = (int) (health * (width / maxhealth));
+		width =  (int) (maxhealth * (width / maxhealth));
 
 		// g.drawRect(x, y, ((health/2)), 5);
+		
+		
+		
+		
+		
 		g.drawRect(x, y, width, height);
-		if (shealth >= 75)
+		if (a >= 75)
 			g.setColor(Color.GREEN);
-		if (shealth < 75 && health >= 25)
+		if (a < 75 && health >= 25)
 			g.setColor(Color.YELLOW);
-		if (shealth < 25)
+		if (a < 25)
 			g.setColor(Color.RED);
 
 		g.fillRect(x, y, bar, height);

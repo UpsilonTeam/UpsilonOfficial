@@ -4,10 +4,12 @@ import me.cameronwitcher.upsilon.spriteutils.Sprite;
 import me.cameronwitcher.upsilon.spriteutils.SpriteType;
 
 public class Gate extends Sprite {
+	
+	private int type;
 
-    public Gate(int x, int y) {
+    public Gate(int x, int y, int type) {
         super(x, y-13);
-
+        this.type = type;
         init();
     }
     
@@ -17,8 +19,16 @@ public class Gate extends Sprite {
     }
 
     private void init() {
-        
-        loadImage("True gate animation.gif");
+    	
+    	switch(type){
+    	case 0:
+    		loadImage("gates/flag.gif");
+    		break;
+    	case 1:
+    		loadImage("gates/cave.png");
+    	default:
+    		break;
+    	}
         getImageDimensions();
     }
 }
