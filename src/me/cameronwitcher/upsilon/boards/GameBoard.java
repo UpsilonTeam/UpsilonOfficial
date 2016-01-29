@@ -87,7 +87,7 @@ public class GameBoard extends Board implements ActionListener {
 	public Sprite sprite = null;
 	public boolean in = false;
 	private boolean fs = false;
-	private double extra = 1;
+	public double extra = 1;
 	private int e = 0;
 	
 	private GraphicsDevice vc;
@@ -706,6 +706,8 @@ public class GameBoard extends Board implements ActionListener {
 	}
 
 	private void drawObjects(Graphics g) {
+		
+//		Utils.broadcastMessage(extra + "");
 
 		g.drawImage(Utils.getBackground(Utils.getPlayerLevel()).getImage(), 0, 0, 960, 540, this);
 		g.setColor(Color.black);
@@ -720,7 +722,7 @@ public class GameBoard extends Board implements ActionListener {
 				e = e+1;
 				continue;
 			}
-			g.drawImage(sprite.getImage(), sprite.getX(), sprite.getY(), (int) (sprite.getWidth()*extra), (int) (sprite.getHeight()*extra), this);
+			g.drawImage(sprite.getImage(), sprite.getX(), sprite.getY(), (int) (sprite.getWidth()), (int) (sprite.getHeight()), this);
 			
 			if (debug && hitboxes)
 				g.drawPolygon(sprite.getPolygon());
@@ -733,15 +735,15 @@ public class GameBoard extends Board implements ActionListener {
 			switch (type) {
 			case KNOBBER:
 				Knobber sk = (Knobber) s;
-				g.drawImage(sprite.getImage(), (sprite.getX()), sprite.getY(), (int) (Bridge.getPlayer().getWalkingWidth()*extra), (int) (Bridge.getPlayer().getWalkingHeight()*extra), this);
+				g.drawImage(sprite.getImage(), (int) (sprite.getX()*extra), (int) (sprite.getY()*extra), (int) (Bridge.getPlayer().getWalkingWidth()), (int) (Bridge.getPlayer().getWalkingHeight()), this);
 				((Knobber) s).drawHealthBar(g, sk.x - (50 / 2), sk.y - 20, 50, 5);
 				break;
 			case ARROW:
-				if(((Arrow) sprite).getDirection().equals(Direction.LEFT)) g.drawImage(sprite.getImage(), sprite.x + 16, sprite.y, -16, 4, this);
-				else g.drawImage(sprite.getImage(), (sprite.getX()), sprite.getY(), (int) (16*extra), (int) (4*extra), this);
+				if(((Arrow) sprite).getDirection().equals(Direction.LEFT)) g.drawImage(sprite.getImage(), (int) ((sprite.x + 16)*extra), (int) (sprite.y*extra), -16, 4, this);
+				else g.drawImage(sprite.getImage(), (int) (sprite.getX()*extra), (int) (sprite.getY()*extra), (int) (16), (int) (4), this);
 				break;
 			default:
-				g.drawImage(sprite.getImage(), sprite.getX(), sprite.getY(), (int) (sprite.getWidth()*extra), (int) (sprite.getHeight()*extra), this);
+				g.drawImage(sprite.getImage(), (int) (sprite.getX()*extra), (int) (sprite.getY()*extra), (int) (sprite.getWidth()), (int) (sprite.getHeight()), this);
 				break;
 			}
 
@@ -750,7 +752,7 @@ public class GameBoard extends Board implements ActionListener {
 		}
 		Player player = Bridge.getPlayer();
 
-		Bridge.getPlayer().drawHealthBar(g, player.x - (100 / 2), player.y - 20, 100, 5);
+		Bridge.getPlayer().drawHealthBar(g, (int) ((player.x - (100 / 2))*extra), (int) ((player.y - 20)*extra), 100, 5);
 		
 		
 		
@@ -1143,21 +1145,86 @@ public class GameBoard extends Board implements ActionListener {
 			}
 			
 			if(e.getKeyCode() == KeyEvent.VK_F11){
+				
+				Utils.broadcastMessage(extra + "");
 				if(!fs){
+					Utils.broadcastMessage("FS false");
+					
 					Bridge.getGame().dispose();
 					Bridge.getGame().setUndecorated(true);
 					vc.setFullScreenWindow(Bridge.getGame());
 					fs = true;
 					extra = ((double) Bridge.getGame().getWidth())/((double) Bridge.getGameBoardSize(0));
-					Utils.broadcastMessage((double)(extra) + "");
+					
+					for(Sprite sprite : sprites){
+						sprite.x = (int) (sprite.x*extra);
+						sprite.y = (int) (sprite.y*extra);
+						sprite.height = (int) (sprite.height*extra);
+						sprite.width = (int) (sprite.width*extra);
+					}
+					
+					for(Moveable sprite : moveables){
+						((Sprite) sprite).x = (int) (((Sprite) sprite).x*extra);
+						((Sprite) sprite).y = (int) (((Sprite) sprite).y*extra);
+						((Sprite) sprite).height = (int) (((Sprite) sprite).height*extra);
+						((Sprite) sprite).width = (int) (((Sprite) sprite).width*extra);
+					}
+					
+					for(Sprite sprite : tools){
+						sprite.x = (int) (sprite.x*extra);
+						sprite.y = (int) (sprite.y*extra);
+						sprite.height = (int) (sprite.height*extra);
+						sprite.width = (int) (sprite.width*extra);
+					}
+					
+					Bridge.player.x = (int) (Bridge.player.x*extra);
+					Bridge.player.y = (int) (Bridge.player.y*extra);
+					Bridge.player.rh = (int) (Bridge.player.rh*extra);
+					Bridge.player.rw = (int) (Bridge.player.rw*extra);
+					Bridge.player.wh = (int) (Bridge.player.wh*extra);
+					Bridge.player.ww = (int) (Bridge.player.ww*extra);
+					
+					
 					return;
 				}
 				else {
+					Utils.broadcastMessage("FS true");
+					
+					
+					for(Sprite sprite : sprites){
+						sprite.x = (int) (sprite.x/extra);
+						sprite.y = (int) (sprite.y/extra);
+						sprite.height = (int) (sprite.height/extra);
+						sprite.width = (int) (sprite.width/extra);
+					}
+					
+					for(Moveable sprite : moveables){
+						((Sprite) sprite).x = (int) (((Sprite) sprite).x/extra);
+						((Sprite) sprite).y = (int) (((Sprite) sprite).y/extra);
+						((Sprite) sprite).height = (int) (((Sprite) sprite).height/extra);
+						((Sprite) sprite).width = (int) (((Sprite) sprite).width/extra);
+					}
+					
+					for(Sprite sprite : tools){
+						sprite.x = (int) (sprite.x/extra);
+						sprite.y = (int) (sprite.y/extra);
+						sprite.height = (int) (sprite.height/extra);
+						sprite.width = (int) (sprite.width/extra);
+					}
+					
+					Bridge.player.x = (int) (Bridge.player.x/extra);
+					Bridge.player.y = (int) (Bridge.player.y/extra);
+					Bridge.player.rh = (int) (Bridge.player.rh/extra);
+					Bridge.player.rw = (int) (Bridge.player.rw/extra);
+					Bridge.player.wh = (int) (Bridge.player.wh/extra);
+					Bridge.player.ww = (int) (Bridge.player.ww/extra);
 					fs = false;
 					Bridge.getGame().dispose();
 					vc.setFullScreenWindow(null);
 					Bridge.getGame().setUndecorated(false);
 					Bridge.getGame().setVisible(true);
+					
+					extra = 1;
 					
 				}
 				

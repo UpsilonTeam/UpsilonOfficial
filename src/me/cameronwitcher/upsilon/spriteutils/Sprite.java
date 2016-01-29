@@ -16,8 +16,8 @@ public class Sprite {
     public int y;
     public int bw=0;
     public int bh=0;
-    protected int width;
-    protected int height;
+    public int width;
+    public int height;
     protected boolean vis;
     private Image image;
     public String imagePath = "";

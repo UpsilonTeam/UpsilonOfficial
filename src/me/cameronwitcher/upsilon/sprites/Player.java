@@ -50,10 +50,10 @@ public class Player extends Entity implements Moveable,Keyable {
 	public int level = 1;
 	int f = 970;
 	
-	private int rw = 13;
-	private int rh = 40;
-	private int ww = 30;
-	private int wh = 40;
+	public int rw = 13;
+	public int rh = 40;
+	public int ww = 30;
+	public int wh = 40;
 	
 	private String model = "yellow";
 	public List<Tool> inventory = new ArrayList<>();
@@ -123,7 +123,7 @@ public class Player extends Entity implements Moveable,Keyable {
 				
 
 				loadImage("playermodels/" + model + "/walk.gif");
-				setImageDimensions(29, 41, -2, -2);
+				setImageDimensions(ww, wh, -2, -2);
 				
 				
 
@@ -139,7 +139,7 @@ public class Player extends Entity implements Moveable,Keyable {
 				
 
 				loadImage("playermodels/" + model + "/walk.gif");
-				setImageDimensions(29, 41, -2, -2);
+				setImageDimensions(ww, wh, -2, -2);
 				
 				
 
@@ -257,7 +257,7 @@ public class Player extends Entity implements Moveable,Keyable {
 				if(invisible)
 					toggleInvisiblility();
 				
-				setImageDimensions(13, 41, -2, -2);
+				setImageDimensions(rw, rh, -2, -2);
 			}
 
 			if (key == KeyEvent.VK_D || key == KeyEvent.VK_RIGHT) {
@@ -267,7 +267,7 @@ public class Player extends Entity implements Moveable,Keyable {
 				loadImage("playermodels/" + model + "/stand.png");
 				if(invisible)
 					toggleInvisiblility();
-				setImageDimensions(13, 41, -2, -2);
+				setImageDimensions(rw, rh, -2, -2);
 			}
 
 			if (key == KeyEvent.VK_W || key == KeyEvent.VK_UP) {
@@ -342,7 +342,8 @@ public class Player extends Entity implements Moveable,Keyable {
 	@Override
 	public void move() {
 		
-		
+		if(!walking) setImageDimensions(rw, rh, -2, -2);
+		else setImageDimensions(ww, wh, -2, -2);
 		
 		if(ctrl) speedboost = 2;
 		else speedboost = 1;
@@ -352,7 +353,7 @@ public class Player extends Entity implements Moveable,Keyable {
 		if (!((GameBoard)Bridge.getGame().getBoard()).ingame) {
 			return;
 		}
-		if (y >= 650) {
+		if (y >= 650*((GameBoard) Bridge.getGame().getBoard()).extra) {
 			kill(DamageReason.VOID);
 		}
 		
@@ -537,8 +538,8 @@ public class Player extends Entity implements Moveable,Keyable {
 			
 		}
 
-		x += dx * (speedboost);
-		y += dy;
+		x += dx * (((GameBoard) Bridge.getGame().getBoard()).extra);
+		y += dy * (((GameBoard) Bridge.getGame().getBoard()).extra);
 
 		if (x < 1)
 			x = 1;
