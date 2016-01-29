@@ -423,9 +423,12 @@ public class GameBoard extends Board implements ActionListener {
 	
 	private void loadLevel8(boolean debug){
 		
-		for(int x=0;x!=14;x++){
-			level8.add(new Floor((x*30),(9*30)));
-		}
+		for(int x=0;x!=32;x++){
+			if (x==14||x==15)
+				continue;
+			else
+				level8.add(new Floor((x*30),(9*30)));
+		}	
 		for(int y=0;y!=7;y++){
 			level8.add(new Wall(16*30,y*30,30,State.VERTICAL));
 		}
@@ -434,34 +437,48 @@ public class GameBoard extends Board implements ActionListener {
 		}
 		
 
-		Switch s = new Switch(0, 0, new Wall(300,300,30, State.HORIZONTAL), level8, Rotation.LEFT, InteractionMethod.DISAPPEAR);
-		
-		if(!debug) s.interact();
+		Switch s =  
+				new Switch(35*30, 35*30,new Sprite[]{ 
+						new Wall(16*30,6*30,90, State.VERTICAL)
+						
+				}, level8, Rotation.LEFT, InteractionMethod.DISAPPEAR);
 		
 
-		Switch s2 = new Switch(0, 0, new Wall(200,200,30, State.VERTICAL), level8, Rotation.LEFT, InteractionMethod.DISAPPEAR);
+	
+		if(!debug) s.interact();
+
 		
+
+		Switch s2 = new Switch(35*30, 35*30, new Sprite[]{
+				new Wall(14*30,9*30,60, State.HORIZONTAL)
+		},level8, Rotation.LEFT, InteractionMethod.DISAPPEAR);
 		
-				
+			
 		
 											
-		level8.add(new Switch(31*30, 7*30,new Sprite[] {
+		level8.add(new Switch((32*30)-15, (8*30)-7,new Sprite[] {
 				s,
 				s2
 		},level8,Rotation.LEFT,InteractionMethod.TRIGGER));
+		
 				
-					
+		
+		
 				
+		for (int x=14;x!=30;x++){
+			level8.add(new Floor(x*30,15*30));
 		
-		
-		
+		}
+		level8.add(new Gate(29*30,14*30,GateType.FLAG));
 		
 		
 		if(!debug) level8.add(Bridge.getPlayer());
 		
 		levels.put(8, level8);
 		
-	}
+
+		}
+	
 	
 	private void loadLevel9(boolean debug){
 		
