@@ -32,6 +32,7 @@ import me.cameronwitcher.upsilon.sprites.Arrow;
 import me.cameronwitcher.upsilon.sprites.FakeInteractable;
 import me.cameronwitcher.upsilon.sprites.FallingFloor;
 import me.cameronwitcher.upsilon.sprites.FallingWall;
+import me.cameronwitcher.upsilon.sprites.FireKnobber;
 import me.cameronwitcher.upsilon.sprites.Floor;
 import me.cameronwitcher.upsilon.sprites.Gate;
 import me.cameronwitcher.upsilon.sprites.Gold;
@@ -487,8 +488,9 @@ public class GameBoard extends Board implements ActionListener {
 		
 		level9.add(new Wall(15*30,10*30,8*30,State.VERTICAL));
 		level9.add(new Wall(17*30,10*30,8*30,State.VERTICAL));
-		
+		level9.add(new FireKnobber(17*30, 15*30));
 		level9.add(new Gate(16*30-12, 37*15, 0));
+		
 		if(!debug) level9.add(Bridge.getPlayer());
 		
 		levels.put(9, level9);
@@ -743,6 +745,7 @@ public class GameBoard extends Board implements ActionListener {
 			default:
 				g.drawImage(sprite.getImage(), sprite.getX(), sprite.getY(), sprite.getWidth()+extra, sprite.getHeight()+extra, this);
 				break;
+			
 			}
 
 			if (debug && hitboxes)
