@@ -88,7 +88,7 @@ public class GameBoard extends Board implements ActionListener {
 	public Sprite sprite = null;
 	public boolean in = false;
 	private boolean fs = false;
-	private int extra = 1;
+	private double extra = 1;
 	private int e = 0;
 	
 	private GraphicsDevice vc;
@@ -284,7 +284,7 @@ public class GameBoard extends Board implements ActionListener {
 //		level1.add(new Door(18 * 15, (7* 15)+10, 1));
 //		level1.add(new Bow(9 * 30, 20 * 15));
 //		level1.add(new Key(15 * 30, 20 * 15, 1));
-		level1.add(new Gate(19*30, (5*30)-1, GateType.CAVE));
+		level1.add(new Gate(19*30, (5*30)-1, GateType.FLAG));
 		if(!debug) level1.add(Bridge.getPlayer());
 
 		levels.put(1, level1);
@@ -722,7 +722,7 @@ public class GameBoard extends Board implements ActionListener {
 				e = e+1;
 				continue;
 			}
-			g.drawImage(sprite.getImage(), sprite.getX(), sprite.getY(), sprite.getWidth()+extra, sprite.getHeight()+extra, this);
+			g.drawImage(sprite.getImage(), sprite.getX(), sprite.getY(), (int) (sprite.getWidth()*extra), (int) (sprite.getHeight()*extra), this);
 			
 			if (debug && hitboxes)
 				g.drawPolygon(sprite.getPolygon());
@@ -735,15 +735,15 @@ public class GameBoard extends Board implements ActionListener {
 			switch (type) {
 			case KNOBBER:
 				Knobber sk = (Knobber) s;
-				g.drawImage(sprite.getImage(), (sprite.getX()), sprite.getY(), Bridge.getPlayer().getWalkingWidth()+extra, Bridge.getPlayer().getWalkingHeight()+extra, this);
+				g.drawImage(sprite.getImage(), (sprite.getX()), sprite.getY(), (int) (Bridge.getPlayer().getWalkingWidth()*extra), (int) (Bridge.getPlayer().getWalkingHeight()*extra), this);
 				((Knobber) s).drawHealthBar(g, sk.x - (50 / 2), sk.y - 20, 50, 5);
 				break;
 			case ARROW:
 				if(((Arrow) sprite).getDirection().equals(Direction.LEFT)) g.drawImage(sprite.getImage(), sprite.x + 16, sprite.y, -16, 4, this);
-				else g.drawImage(sprite.getImage(), (sprite.getX()), sprite.getY(), 16+extra, 4+extra, this);
+				else g.drawImage(sprite.getImage(), (sprite.getX()), sprite.getY(), (int) (16*extra), (int) (4*extra), this);
 				break;
 			default:
-				g.drawImage(sprite.getImage(), sprite.getX(), sprite.getY(), sprite.getWidth()+extra, sprite.getHeight()+extra, this);
+				g.drawImage(sprite.getImage(), sprite.getX(), sprite.getY(), (int) (sprite.getWidth()*extra), (int) (sprite.getHeight()*extra), this);
 				break;
 			
 			}
@@ -1151,9 +1151,8 @@ public class GameBoard extends Board implements ActionListener {
 					Bridge.getGame().setUndecorated(true);
 					vc.setFullScreenWindow(Bridge.getGame());
 					fs = true;
-					extra = Bridge.getGame().getWidth()/Bridge.getGameBoardSize(0);
-					double s = Bridge.getGame().getWidth()/Bridge.getGameBoardSize(0);
-					Utils.broadcastMessage(Bridge.getGame().getWidth()/Bridge.getGameBoardSize(0) + "");
+					extra = ((double) Bridge.getGame().getWidth())/((double) Bridge.getGameBoardSize(0));
+					Utils.broadcastMessage((double)(extra) + "");
 					return;
 				}
 				else {
