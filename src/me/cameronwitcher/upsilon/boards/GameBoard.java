@@ -488,7 +488,7 @@ public class GameBoard extends Board implements ActionListener {
 		
 		level9.add(new Wall(15*30,10*30,8*30,State.VERTICAL));
 		level9.add(new Wall(17*30,10*30,8*30,State.VERTICAL));
-		level9.add(new FireKnobber(17*30, 15*30));
+		level9.add(new FireKnobber(17*30, 7*30));
 		level9.add(new Gate(16*30-12, 37*15, 0));
 		
 		if(!debug) level9.add(Bridge.getPlayer());
@@ -715,6 +715,9 @@ public class GameBoard extends Board implements ActionListener {
 		g.setColor(Color.black);
 		g.setFont(new Font("Helvetica", Font.BOLD, 20));
 		g.drawString("Lives: " + Bridge.getPlayer().lives, B_WIDTH / 4, 40);
+		if(Bridge.getPlayer().lives == 3){
+			g.drawImage(Texture.loadTexture("Lives.png"), x, y, width, height, this);
+		}
 		g.drawString("Score: " + Bridge.getPlayer().getScore(), (B_WIDTH / 2 + B_WIDTH) / 2, 20);
 		g.drawString("Tool:", (B_WIDTH / 2 + B_WIDTH) / 2, 40);
 		
