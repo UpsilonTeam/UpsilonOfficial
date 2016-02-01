@@ -711,7 +711,7 @@ public class GameBoard extends Board implements ActionListener {
 		
 //		Utils.broadcastMessage(extra + "");
 
-		g.drawImage(Utils.getBackground(Utils.getPlayerLevel()).getImage(), 0, 0, 960, 540, this);
+		g.drawImage(Utils.getBackground(Utils.getPlayerLevel()).getImage(), 0, 0, (int) (960.0*extra), (int) (540.0*extra), this);
 		g.setColor(Color.black);
 		g.setFont(new Font("Helvetica", Font.BOLD, 20));
 		g.drawString("Lives: " + Bridge.getPlayer().lives, B_WIDTH / 4, 40);
@@ -1151,6 +1151,8 @@ public class GameBoard extends Board implements ActionListener {
 				
 				Utils.broadcastMessage(extra + "");
 				if(!fs){
+					
+					timer.setDelay(DELAY/2);
 					Utils.broadcastMessage("FS false");
 					
 					Bridge.getGame().dispose();
@@ -1191,6 +1193,8 @@ public class GameBoard extends Board implements ActionListener {
 					return;
 				}
 				else {
+					
+					timer.setDelay(DELAY);
 					Utils.broadcastMessage("FS true");
 					
 					

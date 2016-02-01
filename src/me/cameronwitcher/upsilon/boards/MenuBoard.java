@@ -17,10 +17,9 @@ import java.util.List;
 
 import javax.swing.Timer;
 
-
 import me.cameronwitcher.upsilon.Bridge;
-import me.cameronwitcher.upsilon.sprites.Player;
 import me.cameronwitcher.upsilon.sprites.tools.Bow;
+import me.cameronwitcher.upsilon.sprites.tools.FireBow;
 import me.cameronwitcher.upsilon.sprites.tools.Key;
 import me.cameronwitcher.upsilon.sprites.tools.NinjaCloak;
 import me.cameronwitcher.upsilon.spriteutils.Clickable;
@@ -155,6 +154,7 @@ public class MenuBoard extends Board implements ActionListener {
 				Bridge.getPlayer().inventory.add(new Bow(0,0));
 				Bridge.getPlayer().inventory.add(new NinjaCloak(0,0));
 				Bridge.getPlayer().inventory.add(new Key(0, 0, -1));
+				Bridge.getPlayer().inventory.add(new FireBow(0, 0));
 				
 			}
 			if(event.getKeyCode() == KeyEvent.VK_1){

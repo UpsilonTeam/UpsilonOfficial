@@ -19,7 +19,7 @@ public class FireBow extends Weapon {
 	
 	public void init(){
 		damage = 20;
-		loadImage("bow.png");
+		loadImage("bow_red.png");
 		setImageDimensions(16, 16,0,0);
 	}
 	
@@ -31,13 +31,13 @@ public class FireBow extends Weapon {
 	@Override
 	public void use(){
 		Audio.playSound(Sound.BOW_SHOOT);
-		FireArrow Firearrow = new FireArrow(
+		FireArrow firearrow = new FireArrow(
 				getEntity().x, 
 				getEntity().y,
 				getEntity().getFacingDirection(),
 				getEntity());
-		Firearrow.direction = getEntity().getFacingDirection();
-		((GameBoard)Bridge.getGame().getBoard()).addMoveable(Firearrow);
+		firearrow.direction = getEntity().getFacingDirection();
+		((GameBoard)Bridge.getGame().getBoard()).addMoveable(firearrow);
 		 
 	}
 	
