@@ -716,7 +716,7 @@ public class GameBoard extends Board implements ActionListener {
 		g.setFont(new Font("Helvetica", Font.BOLD, 20));
 		g.drawString("Lives: " + Bridge.getPlayer().lives, B_WIDTH / 4, 40);
 		if(Bridge.getPlayer().lives == 3){
-			g.drawImage(Texture.loadTexture("Lives.png"), x, y, width, height, this);
+			g.drawImage(Texture.loadTexture("Lives.png"), 5*30, 1*30, 16, 16, this);
 		}
 		g.drawString("Score: " + Bridge.getPlayer().getScore(), (B_WIDTH / 2 + B_WIDTH) / 2, 20);
 		g.drawString("Tool:", (B_WIDTH / 2 + B_WIDTH) / 2, 40);
