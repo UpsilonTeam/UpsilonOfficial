@@ -29,7 +29,7 @@ public class Utils {
 	public static HashMap<Integer, Background> backgrounds = new HashMap<>();
 
 	public static void init() {
-		root = "C://Upsilon/";
+		root = "C://KANSAS_WELLSVILLE_HIGHSCHOOL/Upsilon/";
 		config = new File(root + "/config.txt");
 		
 		
@@ -146,7 +146,7 @@ public class Utils {
 	}
 
 	public static void runInstall() {
-		root = "C://Upsilon/";
+		root = "C://KANSAS_WELLSVILLE_HIGHSCHOOL/Upsilon/";
 		rootFile = new File(root);
 		if (!rootFile.exists())
 			rootFile.mkdirs();
