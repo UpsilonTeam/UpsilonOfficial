@@ -118,6 +118,8 @@ public class GameBoard extends Board implements ActionListener {
 	ArrayList<Sprite> level9 = new ArrayList<>();
 	private HashMap<Integer, ArrayList<Sprite>> levels = new HashMap<>();
 
+	public static int maxlives = 5;
+
 	public GameBoard() {
 		setType(BoardType.GAME_BOARD);
 
@@ -715,18 +717,14 @@ public class GameBoard extends Board implements ActionListener {
 		g.setColor(Color.black);
 		g.setFont(new Font("Helvetica", Font.BOLD, 20));
 		g.drawString("Lives: " + Bridge.getPlayer().lives, B_WIDTH / 4, 40);
-		if(Bridge.getPlayer().lives == 3){
-			g.drawImage(Texture.loadTexture("heart.png"), 10*15, 1*15, 15, 15, this);
-			g.drawImage(Texture.loadTexture("heart.png"), 11*15, 1*15, 15, 15, this);
-			g.drawImage(Texture.loadTexture("heart.png"), 12*15, 1*15, 15, 15, this);
+		
+		for(int life=0;life!=maxlives ;life++){
+			if(life < Bridge.getPlayer().lives){
+				g.drawImage(Texture.loadTexture("heart.png"), life*30, 1*15, 30, 30, this);
+			} else g.drawImage(Texture.loadTexture("broken_heart.png"), life*30, 1*15, 30, 30, this);
 		}
-		if(Bridge.getPlayer().lives == 2){
-			g.drawImage(Texture.loadTexture("heart.png"), 10*15, 1*15, 15, 15, this);
-			g.drawImage(Texture.loadTexture("heart.png"), 11*15, 1*15, 15, 15, this);
-		}
-		if(Bridge.getPlayer().lives == 1){
-			g.drawImage(Texture.loadTexture("heart.png"), 10*15, 1*15, 15, 15, this);
-		}
+		
+		
 		g.drawString("Score: " + Bridge.getPlayer().getScore(), (B_WIDTH / 2 + B_WIDTH) / 2, 20);
 		g.drawString("Tool:", (B_WIDTH / 2 + B_WIDTH) / 2, 40);
 		

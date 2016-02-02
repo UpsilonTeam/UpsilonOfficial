@@ -44,7 +44,7 @@ public class Player extends Entity implements Moveable,Keyable {
 	private int score = 0;
 	private int sscore = 0;
 	private Interactable interact = null;
-	public int lives = 3;	
+	public int lives = GameBoard.maxlives;	
 	private int i;
 	public int speedboost = 1;
 	public int level = 1;
@@ -538,8 +538,8 @@ public class Player extends Entity implements Moveable,Keyable {
 			
 		}
 
-		x += dx * (((GameBoard) Bridge.getGame().getBoard()).extra);
-		y += dy * (((GameBoard) Bridge.getGame().getBoard()).extra);
+		x += dx * speedboost;
+		y += dy * speedboost;
 
 		if (x < 1)
 			x = 1;
