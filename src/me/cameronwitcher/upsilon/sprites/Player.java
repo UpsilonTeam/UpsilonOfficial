@@ -539,7 +539,7 @@ public class Player extends Entity implements Moveable,Keyable {
 		}
 
 		x += dx * speedboost;
-		y += dy * speedboost;
+		y += dy;
 
 		if (x < 1)
 			x = 1;

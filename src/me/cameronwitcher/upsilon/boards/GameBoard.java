@@ -42,6 +42,7 @@ import me.cameronwitcher.upsilon.sprites.Player;
 import me.cameronwitcher.upsilon.sprites.Spike;
 import me.cameronwitcher.upsilon.sprites.Switch;
 import me.cameronwitcher.upsilon.sprites.Wall;
+import me.cameronwitcher.upsilon.sprites.tools.Bow;
 import me.cameronwitcher.upsilon.spriteutils.Clickable;
 import me.cameronwitcher.upsilon.spriteutils.Entity;
 import me.cameronwitcher.upsilon.spriteutils.GateType;
@@ -474,7 +475,11 @@ public class GameBoard extends Board implements ActionListener {
 			level8.add(new Floor(x*30,15*30));
 		
 		}
+		
+		level8.add(new Bow(5*30, 7*30));
 		level8.add(new Gate(29*30,14*30,GateType.FLAG));
+		
+		
 		
 		
 		if(!debug) level8.add(Bridge.getPlayer());
@@ -492,7 +497,6 @@ public class GameBoard extends Board implements ActionListener {
 		
 		level9.add(new Wall(15*30,10*30,8*30,State.VERTICAL));
 		level9.add(new Wall(17*30,10*30,8*30,State.VERTICAL));
-		level9.add(new FireKnobber(17*30, 7*30));
 		level9.add(new Gate(16*30-12, 37*15, 0));
 		
 		if(!debug) level9.add(Bridge.getPlayer());
@@ -718,7 +722,6 @@ public class GameBoard extends Board implements ActionListener {
 		g.drawImage(Utils.getBackground(Utils.getPlayerLevel()).getImage(), 0, 0, (int) (960.0*extra), (int) (540.0*extra), this);
 		g.setColor(Color.black);
 		g.setFont(new Font("Helvetica", Font.BOLD, 20));
-		g.drawString("Lives: " + Bridge.getPlayer().lives, B_WIDTH / 4, 40);
 		
 		for(int life=0;life!=maxlives ;life++){
 			if(life < Bridge.getPlayer().lives){
@@ -729,6 +732,7 @@ public class GameBoard extends Board implements ActionListener {
 		
 		g.drawString("Score: " + Bridge.getPlayer().getScore(), (B_WIDTH / 2 + B_WIDTH) / 2, 20);
 		g.drawString("Tool:", (B_WIDTH / 2 + B_WIDTH) / 2, 40);
+		g.drawString("Level: " + Bridge.getPlayer().level, (B_WIDTH / 2 + B_WIDTH) / 2, 60);
 		
 		for (Sprite sprite : sprites) {
 			
