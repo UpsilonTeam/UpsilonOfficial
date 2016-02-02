@@ -579,6 +579,8 @@ public class Player extends Entity implements Moveable,Keyable {
 			((GameBoard)Bridge.getGame().getBoard()).ingame = false;
 		}
 		ready = true;
+		
+		interact();
 	}
 
 	@Override

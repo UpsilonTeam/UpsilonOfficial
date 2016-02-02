@@ -45,6 +45,7 @@ import me.cameronwitcher.upsilon.sprites.Wall;
 import me.cameronwitcher.upsilon.spriteutils.Clickable;
 import me.cameronwitcher.upsilon.spriteutils.Entity;
 import me.cameronwitcher.upsilon.spriteutils.GateType;
+import me.cameronwitcher.upsilon.spriteutils.Interactable;
 import me.cameronwitcher.upsilon.spriteutils.Interaction;
 import me.cameronwitcher.upsilon.spriteutils.Keyable;
 import me.cameronwitcher.upsilon.spriteutils.Moveable;
@@ -449,6 +450,7 @@ public class GameBoard extends Board implements ActionListener {
 
 	
 		if(!debug) s.interact();
+		
 
 		
 

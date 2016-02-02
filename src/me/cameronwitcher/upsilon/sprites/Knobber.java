@@ -8,6 +8,7 @@ import me.cameronwitcher.upsilon.Bridge;
 import me.cameronwitcher.upsilon.boards.GameBoard;
 import me.cameronwitcher.upsilon.sprites.tools.Bow;
 import me.cameronwitcher.upsilon.spriteutils.Entity;
+import me.cameronwitcher.upsilon.spriteutils.Interaction;
 import me.cameronwitcher.upsilon.spriteutils.Keyable;
 import me.cameronwitcher.upsilon.spriteutils.Moveable;
 import me.cameronwitcher.upsilon.spriteutils.Sprite;
@@ -28,6 +29,7 @@ public class Knobber extends Entity implements Moveable,Keyable {
 	private boolean walking = false;
 	private boolean left = false;
 	private boolean right = false;
+	
 	public Knobber(int x, int y) {
         super(x, y);
         init();
@@ -35,6 +37,16 @@ public class Knobber extends Entity implements Moveable,Keyable {
         health = 20;
         maxhealth = 20;
         setDirection(Direction.RIGHT);
+    }
+	
+	public Knobber(int x, int y, Interaction interact) {
+        super(x, y);
+        init();
+        score = 10;
+        health = 20;
+        maxhealth = 20;
+        setDirection(Direction.RIGHT);
+        this.interact = interact;
     }
     
     @Override
@@ -188,10 +200,7 @@ public class Knobber extends Entity implements Moveable,Keyable {
 	    	}
 	}
 	
-	@Override
-	public void kill(DamageReason reason){
-		this.remove();
-	}
+	
 	
 
 	@Override
@@ -209,6 +218,8 @@ public class Knobber extends Entity implements Moveable,Keyable {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	
 
 	
 

@@ -21,6 +21,7 @@ public class Entity extends Sprite {
 	public boolean walking;
 	protected Direction direction = Direction.RIGHT;
 	protected Direction facing = Direction.RIGHT;
+	protected Interaction interact;
 
 	public Entity(int x, int y) {
 		super(x, y);
@@ -63,7 +64,9 @@ public class Entity extends Sprite {
 	}
 
 	public void kill(DamageReason reason) {
+		this.remove();
 		dead = true;
+		interact();
 	}
 
 	public Tool getTool() {
@@ -143,6 +146,13 @@ public class Entity extends Sprite {
 
 		g.setColor(c);
 
+	}
+	
+	
+	public void interact(){
+		if(interact != null){
+			interact.run();
+		}
 	}
 
 }
