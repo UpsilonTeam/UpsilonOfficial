@@ -2,26 +2,27 @@ package me.cameronwitcher.upsilon.spriteutils;
 
 public enum SpriteType {
 	
-	FLOOR("floor"),
-	FALLING_FLOOR("falling_floor"),
-	KNOBBER("knobber"),
-	GATE("gate"),
-	PLAYER("player"),
-	LADDER("ladder"),
-	WALL("wall"),
-	GOLD("gold"),
-	ARROW("arrow"),
-	BOW("bow"),
-	NINJA_CLOAK("ninja_cloak"),
-	FALLING_WALL("falling_floor"),
-	SWITCH("switch"),
-	TRIGGERED_SWITCH("triggered_switch"),
-	KEY("key"),
-	DOOR("door"),
-	OPEN_DOOR("open_door"),
-	SPIKE("spike");
+	FLOOR,
+	FALLING_FLOOR,
+	KNOBBER,
+	GATE,
+	PLAYER,
+	LADDER,
+	WALL,
+	GOLD,
+	ARROW,
+	BOW,
+	NINJA_CLOAK,
+	FALLING_WALL,
+	SWITCH,
+	TRIGGERED_SWITCH,
+	KEY,
+	DOOR,
+	OPEN_DOOR,
+	SPIKE, 
+	BOOTS;
 	
-	SpriteType(String type) {
+	SpriteType() {
 		
 	}
 	
@@ -37,6 +38,7 @@ public enum SpriteType {
 		if(this == ARROW) return SpriteSubType.PROJECTILE;
 		if(this == BOW) return SpriteSubType.WEAPON;
 		if(this == NINJA_CLOAK) return SpriteSubType.TOOL;
+		if(this == BOOTS) return SpriteSubType.TOOL;
 		if(this == KEY) return SpriteSubType.TOOL;
 		if(this == DOOR) return SpriteSubType.INTERACTABLE;
 		if(this == OPEN_DOOR) return SpriteSubType.PARTIAL_COLLIDEABLE;

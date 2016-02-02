@@ -60,6 +60,7 @@ public class Player extends Entity implements Moveable,Keyable {
 	private HashMap<Integer, Integer> jumpInfo = new HashMap<>();
 	private boolean ctrl = false;
 	public boolean ready;
+	private int jumpboost = 1;
 
 	public Player(int x, int y) {
 		super(x, y);
@@ -539,7 +540,7 @@ public class Player extends Entity implements Moveable,Keyable {
 		}
 
 		x += dx * speedboost;
-		y += dy;
+		y += dy * jumpboost;
 
 		if (x < 1)
 			x = 1;
@@ -604,6 +605,15 @@ public class Player extends Entity implements Moveable,Keyable {
 	}
 	public int getWalkingHeight() {
 		return wh;
+	}
+
+	public void toggleJumpBoost() {
+		if(jumpboost  == 1){
+			jumpboost = 2;
+			return;
+		} else {
+			jumpboost = 1;
+		}
 	}
 
 

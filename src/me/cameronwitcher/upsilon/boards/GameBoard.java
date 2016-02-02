@@ -43,6 +43,7 @@ import me.cameronwitcher.upsilon.sprites.Spike;
 import me.cameronwitcher.upsilon.sprites.Switch;
 import me.cameronwitcher.upsilon.sprites.Wall;
 import me.cameronwitcher.upsilon.sprites.tools.Bow;
+import me.cameronwitcher.upsilon.sprites.tools.JumpBoots;
 import me.cameronwitcher.upsilon.spriteutils.Clickable;
 import me.cameronwitcher.upsilon.spriteutils.Entity;
 import me.cameronwitcher.upsilon.spriteutils.GateType;
@@ -284,7 +285,7 @@ public class GameBoard extends Board implements ActionListener {
 		}
 		
 		
-		
+		level1.add(new JumpBoots(10*30,10*30));
 //		level1.add(new Door(18 * 15, (7* 15)+10, 1));
 //		level1.add(new Bow(9 * 30, 20 * 15));
 //		level1.add(new Key(15 * 30, 20 * 15, 1));
