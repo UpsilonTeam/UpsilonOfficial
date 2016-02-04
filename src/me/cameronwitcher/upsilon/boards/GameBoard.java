@@ -28,7 +28,6 @@ import java.util.Random;
 import javax.swing.Timer;
 
 import me.cameronwitcher.upsilon.Bridge;
-import me.cameronwitcher.upsilon.sprites.Arrow;
 import me.cameronwitcher.upsilon.sprites.FakeInteractable;
 import me.cameronwitcher.upsilon.sprites.FallingFloor;
 import me.cameronwitcher.upsilon.sprites.FallingWall;
@@ -42,6 +41,7 @@ import me.cameronwitcher.upsilon.sprites.Player;
 import me.cameronwitcher.upsilon.sprites.Spike;
 import me.cameronwitcher.upsilon.sprites.Switch;
 import me.cameronwitcher.upsilon.sprites.Wall;
+import me.cameronwitcher.upsilon.sprites.tools.Arrow;
 import me.cameronwitcher.upsilon.sprites.tools.Bow;
 import me.cameronwitcher.upsilon.sprites.tools.JumpBoots;
 import me.cameronwitcher.upsilon.spriteutils.Clickable;

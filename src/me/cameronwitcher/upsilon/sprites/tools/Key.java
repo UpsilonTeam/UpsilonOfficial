@@ -14,12 +14,12 @@ public class Key extends Tool {
 		init();
 		
 		if(id==-1){
-			loadImage("magic_key.png");
+			loadImage("tools/magic_key.png");
 		}
 	}
 	
 	public void init(){
-		loadImage("key.png");
+		loadImage("tools/key.png");
 		setImageDimensions(17, 17,0,0);
 	}
 	

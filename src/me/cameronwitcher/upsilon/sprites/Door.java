@@ -25,7 +25,7 @@ public class Door extends Interactable {
     }
 
     private void init() {
-    	loadImage(Texture.loadTexture("door.png"));
+    	loadImage(Texture.loadTexture("objects/door.png"));
     	setImageDimensions(30, 45);
     }
     

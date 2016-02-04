@@ -50,7 +50,7 @@ public class Switch extends Interactable {
 
     private void initFloor() {
         
-        loadImage(Images.rotate(Texture.loadTexture("switch.png"), rotation.getRotation()));
+        loadImage(Images.rotate(Texture.loadTexture("objects/switch.png"), rotation.getRotation()));
         getImageDimensions();
     }
     
@@ -70,7 +70,7 @@ public class Switch extends Interactable {
     		if(rotation.equals(Rotation.LEFT)) x = x-5;
     		if(rotation.equals(Rotation.UP)) y = y-5;
     		triggered = false;
-    		loadImage(Images.rotate(Texture.loadTexture("switch.png"), rotation.getRotation()));
+    		loadImage(Images.rotate(Texture.loadTexture("objects/switch.png"), rotation.getRotation()));
         	getImageDimensions();
         	type = SpriteType.SWITCH;
         	return;
@@ -79,7 +79,7 @@ public class Switch extends Interactable {
     		if(rotation.equals(Rotation.LEFT)) x = x+5;
     		if(rotation.equals(Rotation.UP)) y = y+5;
 
-    		loadImage(Images.rotate(Texture.loadTexture("triggered-switch.png"), rotation.getRotation()));
+    		loadImage(Images.rotate(Texture.loadTexture("objects/triggered-switch.png"), rotation.getRotation()));
         	getImageDimensions();
         	type = SpriteType.TRIGGERED_SWITCH;
         	triggered = true;

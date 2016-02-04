@@ -12,7 +12,7 @@ public class NinjaCloak extends Tool {
 	}
 	
 	public void init(){
-		loadImage("ninjacloak.png");
+		loadImage("tools/ninjacloak.png");
 		setImageDimensions(17, 17,0,0);
 	}
 	

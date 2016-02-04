@@ -18,7 +18,7 @@ public class Spike extends Sprite {
 
     private void init() {
         
-        loadImage("spike.png");
+        loadImage("objects/spike.png");
         getImageDimensions();
     }
 }

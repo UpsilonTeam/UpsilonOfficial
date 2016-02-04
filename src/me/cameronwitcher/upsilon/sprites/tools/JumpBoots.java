@@ -15,7 +15,7 @@ public class JumpBoots extends Tool {
 	
 	public void init(){
 		
-		loadImage("boots.png");
+		loadImage("tools/boots.png");
 		setImageDimensions(16, 16,0,0);
 	}
 	

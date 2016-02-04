@@ -30,7 +30,7 @@ public class FakeInteractable extends Interactable {
 			getImageDimensions();
 			break;
 		case ARROW:
-			loadImage("arrow.png");
+			loadImage("tools/arrow.png");
 			getImageDimensions();
 		default:
 			break;

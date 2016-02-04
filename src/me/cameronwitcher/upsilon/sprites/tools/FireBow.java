@@ -3,7 +3,6 @@ package me.cameronwitcher.upsilon.sprites.tools;
 
 import me.cameronwitcher.upsilon.Bridge;
 import me.cameronwitcher.upsilon.boards.GameBoard;
-import me.cameronwitcher.upsilon.sprites.FireArrow;
 import me.cameronwitcher.upsilon.spriteutils.SpriteType;
 import me.cameronwitcher.upsilon.spriteutils.Weapon;
 import me.cameronwitcher.upsilon.utils.Sound;
@@ -19,7 +18,7 @@ public class FireBow extends Weapon {
 	
 	public void init(){
 		damage = 20;
-		loadImage("bow_red.png");
+		loadImage("tools/bow_red.png");
 		setImageDimensions(16, 16,0,0);
 	}
 	

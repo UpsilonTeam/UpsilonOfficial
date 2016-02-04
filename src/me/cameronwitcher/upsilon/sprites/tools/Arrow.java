@@ -1,4 +1,4 @@
-package me.cameronwitcher.upsilon.sprites;
+package me.cameronwitcher.upsilon.sprites.tools;
 
 import me.cameronwitcher.upsilon.spriteutils.Entity;
 import me.cameronwitcher.upsilon.spriteutils.Projectile;
@@ -23,7 +23,7 @@ public class Arrow extends Projectile  {
     }
 
     private void init() {
-        loadImage("arrow.png");
+        loadImage("tools/arrow.png");
         setImageDimensions(16, 4, 0, 0);
     }	
 }

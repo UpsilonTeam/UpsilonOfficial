@@ -21,7 +21,7 @@ public class Gold extends Sprite implements Money {
 
     private void initFloor() {
         
-        loadImage("gold.gif");
+        loadImage("objects/gold.gif");
         getImageDimensions();
     }
 
